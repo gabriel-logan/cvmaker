@@ -148,6 +148,10 @@ export default function CreateCVPage() {
               />
             </div>
 
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
             <div>
               <label className="mb-1 block text-sm text-zinc-400">
                 Avatar URL
@@ -185,6 +189,10 @@ export default function CreateCVPage() {
                   Remove Avatar
                 </button>
               </div>
+            </div>
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
             </div>
 
             <div>
@@ -257,6 +265,10 @@ export default function CreateCVPage() {
                 placeholder="Your career objectives"
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2"
               />
+            </div>
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
             </div>
 
             <RepeatableSection<CV["education"][number]>
@@ -334,6 +346,10 @@ export default function CreateCVPage() {
               ]}
             />
 
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
             <RepeatableSection<CV["experience"][number]>
               title="Experience"
               items={cV.experience}
@@ -393,6 +409,10 @@ export default function CreateCVPage() {
                 },
               ]}
             />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
 
             <button
               type="submit"

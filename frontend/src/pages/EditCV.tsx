@@ -110,6 +110,7 @@ export default function EditCVPage() {
             cV={cv}
             setCV={setCV}
             handleSubmit={(e) => handleSubmit(e, cvFinded.id)}
+            buttonTitle="Update CV Data"
           />
         </div>
       </div>

@@ -5,12 +5,14 @@ interface FormSectionProps {
   cV: CV;
   setCV: React.Dispatch<React.SetStateAction<CV>>;
   handleSubmit: (e: React.FormEvent) => void;
+  buttonTitle?: string;
 }
 
 export default function FormSection({
   cV,
   setCV,
   handleSubmit,
+  buttonTitle = "Submit",
 }: FormSectionProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -669,7 +671,7 @@ export default function FormSection({
         type="submit"
         className="w-full rounded-md bg-indigo-600 px-4 py-2 font-medium transition hover:bg-indigo-500"
       >
-        Create CV Data
+        {buttonTitle}
       </button>
     </form>
   );

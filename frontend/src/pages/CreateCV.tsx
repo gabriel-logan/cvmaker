@@ -81,7 +81,12 @@ export default function CreateCVPage() {
         <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">
           <h1 className="mb-6 text-2xl font-semibold">Create CV</h1>
 
-          <FormSection cV={cV} setCV={setCV} handleSubmit={handleSubmit} />
+          <FormSection
+            cV={cV}
+            setCV={setCV}
+            handleSubmit={handleSubmit}
+            buttonTitle="Create CV Data"
+          />
         </div>
       </div>
     </main>

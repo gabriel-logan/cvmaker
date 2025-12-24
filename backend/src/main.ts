@@ -8,6 +8,7 @@ import { join } from "path";
 import { AppModule } from "./app.module";
 import type { EnvGlobalConfig } from "./configs/env.global";
 import swaggerInitializer from "./configs/swagger";
+import { fallbackSpaMiddleware } from "./middleware/fallbackSpaMiddleware";
 import { apiPrefix } from "./shared/constants";
 
 const logger = new Logger("Bootstrap");
@@ -25,7 +26,9 @@ async function bootstrap(): Promise<void> {
     app.set("trust proxy", true);
   }
 
-  app.useStaticAssets(join(__dirname, "..", "..", "frontend", "dist"));
+  app.useStaticAssets(join(process.cwd(), "..", "frontend", "dist"));
+
+  app.use(fallbackSpaMiddleware);
 
   app.setGlobalPrefix(apiPrefix);
 

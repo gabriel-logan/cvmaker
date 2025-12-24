@@ -1,0 +1,48 @@
+name: Deploy to Vercel
+
+permissions:
+  contents: read
+  id-token: write
+
+on:
+  # Runs on pushes targeting the default branch
+  release:
+    types: [published]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Install Vercel CLI Global
+        run: npm install -g vercel
+      - name: Run prettier
+        run: pnpm format
+      - name: Run ESLint fix
+        run: pnpm lint:fix
+      - name: Run unit tests
+        run: pnpm test
+      - name: Build the project
+        run: pnpm build
+      - name: Check if dist directory exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory does not exist."
+            exit 1
+          fi
+      - name: Build client project
+        run: cd ../frontend && pnpm build
+      - name: Deploy to Vercel
+        run: vercel --yes --token=${{ secrets.VERCEL_TOKEN }} --prod --name=gl-cvmaker

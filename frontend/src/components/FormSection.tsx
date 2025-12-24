@@ -21,8 +21,8 @@ export default function FormSection({
           CV name <span className="text-red-500">*</span>
         </label>
         <input
-          value={cV.cvName}
-          onChange={(e) => setCV({ ...cV, cvName: e.target.value })}
+          value={cV.cVName}
+          onChange={(e) => setCV({ ...cV, cVName: e.target.value })}
           required
           placeholder="e.g. Frontend Developer – EN"
           className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2 outline-none focus:border-indigo-500"

@@ -1,6 +1,6 @@
 export interface CV {
   id: string;
-  cvName: string;
+  cVName: string;
 
   firstName: string;
   middleName: string | null;

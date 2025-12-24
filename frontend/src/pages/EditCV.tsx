@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 
 import FormSection from "../components/FormSection";
@@ -10,58 +10,60 @@ export default function EditCVPage() {
   const { id } = useParams<{ id: string }>();
   const { cvs, updateCV, deleteCV } = useCVsStore();
 
-  const cvFinded = cvs.find((cv) => cv.id === id);
+  const navigate = useNavigate();
 
-  const [cv, setCV] = useState<CV>({
-    id: cvFinded?.id || "",
-    cvName: cvFinded?.cvName || "",
-    firstName: cvFinded?.firstName || "",
-    lastName: cvFinded?.lastName || "",
-    middleName: cvFinded?.middleName || null,
-    nickname: cvFinded?.nickname || null,
-    avatar: cvFinded?.avatar || null,
-    contacts: cvFinded?.contacts || { email: "", phone: "" },
-    address: cvFinded?.address || "",
-    summary: cvFinded?.summary || "",
-    objectives: cvFinded?.objectives || null,
-    education: cvFinded?.education || [],
-    experience: cvFinded?.experience || [],
-    skills: cvFinded?.skills || [],
-    projects: cvFinded?.projects || [],
-    certifications: cvFinded?.certifications || [],
-    languages: cvFinded?.languages || [],
-    hobbies: cvFinded?.hobbies || [],
-    additionalInfo: cvFinded?.additionalInfo || null,
-    otherExperiences: cvFinded?.otherExperiences || [],
-    references: cvFinded?.references || [],
-    links: cvFinded?.links || [],
+  const cVFinded = cvs.find((cv) => cv.id === id);
+
+  const [cV, setCV] = useState<CV>({
+    id: cVFinded?.id || "",
+    cVName: cVFinded?.cVName || "",
+    firstName: cVFinded?.firstName || "",
+    lastName: cVFinded?.lastName || "",
+    middleName: cVFinded?.middleName || null,
+    nickname: cVFinded?.nickname || null,
+    avatar: cVFinded?.avatar || null,
+    contacts: cVFinded?.contacts || { email: "", phone: "" },
+    address: cVFinded?.address || "",
+    summary: cVFinded?.summary || "",
+    objectives: cVFinded?.objectives || null,
+    education: cVFinded?.education || [],
+    experience: cVFinded?.experience || [],
+    skills: cVFinded?.skills || [],
+    projects: cVFinded?.projects || [],
+    certifications: cVFinded?.certifications || [],
+    languages: cVFinded?.languages || [],
+    hobbies: cVFinded?.hobbies || [],
+    additionalInfo: cVFinded?.additionalInfo || null,
+    otherExperiences: cVFinded?.otherExperiences || [],
+    references: cVFinded?.references || [],
+    links: cVFinded?.links || [],
   });
 
-  function handleSubmit(e: React.FormEvent, cvFindedId: CV["id"]) {
+  function handleSubmit(e: React.FormEvent, cVFindedId: CV["id"]) {
     e.preventDefault();
 
-    updateCV(cvFindedId, {
-      cvName: cv.cvName,
-      firstName: cv.firstName,
-      lastName: cv.lastName,
-      middleName: cv.middleName,
-      nickname: cv.nickname,
-      avatar: cv.avatar,
-      contacts: cv.contacts,
-      address: cv.address,
-      summary: cv.summary,
-      objectives: cv.objectives,
-      education: cv.education,
-      experience: cv.experience,
-      skills: cv.skills,
-      projects: cv.projects,
-      certifications: cv.certifications,
-      languages: cv.languages,
-      hobbies: cv.hobbies,
-      additionalInfo: cv.additionalInfo,
-      otherExperiences: cv.otherExperiences,
-      references: cv.references,
-      links: cv.links,
+    updateCV(cVFindedId, {
+      cVName: cV.cVName,
+      firstName: cV.firstName,
+      lastName: cV.lastName,
+      middleName: cV.middleName,
+      nickname: cV.nickname,
+      avatar: cV.avatar,
+      contacts: cV.contacts,
+      address: cV.address,
+      summary: cV.summary,
+      objectives: cV.objectives,
+      education: cV.education,
+      experience: cV.experience,
+      skills: cV.skills,
+      projects: cV.projects,
+      certifications: cV.certifications,
+      languages: cV.languages,
+      hobbies: cV.hobbies,
+      additionalInfo: cV.additionalInfo,
+      otherExperiences: cV.otherExperiences,
+      references: cV.references,
+      links: cV.links,
     });
 
     toast.success("CV updated successfully.");
@@ -72,12 +74,14 @@ export default function EditCVPage() {
       deleteCV(cvFindedId);
 
       toast.success("CV deleted successfully.");
+
+      navigate("/");
     } else {
       toast.info("CV deletion cancelled.", { autoClose: 1000 });
     }
   }
 
-  if (!cvFinded) {
+  if (!cVFinded) {
     return (
       <main className="min-h-screen bg-zinc-950 text-zinc-100 p-10">
         CV not found
@@ -90,7 +94,7 @@ export default function EditCVPage() {
       <div className="mx-auto sm:max-w-5xl max-w-2xl space-y-8">
         <div className="rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm font-medium text-yellow-300">
           ✏️ You are <strong>editing</strong> the CV:
-          <span className="ml-1 underline">{cv.cvName}</span>
+          <span className="ml-1 underline">{cV.cVName}</span>
         </div>
 
         <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">
@@ -98,7 +102,7 @@ export default function EditCVPage() {
             <div className="flex items-center justify-between mb-6">
               <h1 className="text-2xl font-semibold">Edit CV</h1>
               <button
-                onClick={() => handleDelete(cvFinded.id)}
+                onClick={() => handleDelete(cVFinded.id)}
                 className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500 transition"
               >
                 Delete CV
@@ -107,9 +111,9 @@ export default function EditCVPage() {
           </div>
 
           <FormSection
-            cV={cv}
+            cV={cV}
             setCV={setCV}
-            handleSubmit={(e) => handleSubmit(e, cvFinded.id)}
+            handleSubmit={(e) => handleSubmit(e, cVFinded.id)}
             buttonTitle="Update CV Data"
           />
         </div>

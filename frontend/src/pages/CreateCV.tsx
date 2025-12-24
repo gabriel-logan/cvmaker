@@ -13,7 +13,7 @@ export default function CreateCVPage() {
 
   const [cV, setCV] = useState<CV>({
     id: "",
-    cvName: "",
+    cVName: "",
     firstName: "",
     lastName: "",
     middleName: null,
@@ -43,7 +43,7 @@ export default function CreateCVPage() {
 
     createCV({
       id,
-      cvName: cV.cvName,
+      cVName: cV.cVName,
       firstName: cV.firstName,
       lastName: cV.lastName,
       middleName: cV.middleName,

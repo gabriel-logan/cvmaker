@@ -22,23 +22,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "lts/*"
-          cache: "pnpm"
-
       - name: Install Vercel CLI
         run: npm install -g vercel
 
       # ======================
       # FRONTEND
       # ======================
+      - name: Setup Node (frontend)
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: "pnpm"
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Setup pnpm (frontend)
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Install frontend dependencies
         working-directory: frontend
         run: pnpm install
@@ -59,6 +60,18 @@ jobs:
       # ======================
       # BACKEND
       # ======================
+      - name: Setup Node (backend)
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: "pnpm"
+          cache-dependency-path: backend/pnpm-lock.yaml
+
+      - name: Setup pnpm (backend)
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Install backend dependencies
         working-directory: backend
         run: pnpm install
@@ -67,11 +80,19 @@ jobs:
         working-directory: backend
         run: pnpm build
 
+      - name: Check if backend dist exists
+        working-directory: backend
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Error: backend/dist directory does not exist."
+            exit 1
+          fi
+          echo "✅ backend/dist found"
+
       # ======================
-      # DEPLOY
+      # DEPLOY (MONOREPO)
       # ======================
-      - name: Deploy frontend to Vercel
-        working-directory: frontend
+      - name: Deploy entire project to Vercel
         run: |
           vercel deploy \
             --prod \

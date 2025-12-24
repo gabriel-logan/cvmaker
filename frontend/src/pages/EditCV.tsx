@@ -73,7 +73,7 @@ export default function EditCVPage() {
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 px-6 py-10">
-      <div className="mx-auto max-w-2xl space-y-8">
+      <div className="mx-auto sm:max-w-5xl max-w-2xl space-y-8">
         <div className="rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm font-medium text-yellow-300">
           ✏️ You are <strong>editing</strong> the CV:
           <span className="ml-1 underline">{cv.cvName}</span>

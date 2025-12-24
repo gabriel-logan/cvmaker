@@ -70,7 +70,7 @@ export default function CreateCVPage() {
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 px-6 py-10">
-      <div className="mx-auto max-w-2xl space-y-8">
+      <div className="mx-auto sm:max-w-5xl max-w-2xl space-y-8">
         <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-300">
           🆕 You are <strong>creating a new CV</strong>
         </div>

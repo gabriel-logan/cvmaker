@@ -48,10 +48,9 @@ export default function HomePage() {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h2 className="font-medium text-zinc-100">{cv.cvName}</h2>
-                      <p className="text-sm text-zinc-400">
-                        {cv.firstName} {cv.lastName}
-                      </p>
+                      <h2 className="font-medium text-zinc-100">
+                        Name: {cv.cVName}
+                      </h2>
                     </div>
 
                     <div className="flex space-x-5">

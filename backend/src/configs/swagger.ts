@@ -18,8 +18,8 @@ export function operationsSorter(
 }
 
 const config = new DocumentBuilder()
-  .setTitle("API V1 Server")
-  .setDescription("The API V1 Server description")
+  .setTitle("API Server")
+  .setDescription("The API Server description")
   .setVersion("1.0.0")
   .addBearerAuth()
   .build();
@@ -30,7 +30,7 @@ export default function swaggerInitializer(app: NestExpressApplication): void {
   }
 
   SwaggerModule.setup(`${apiPrefix}/docs`, app, documentFactory, {
-    customSiteTitle: "API V1 Server Documentation",
+    customSiteTitle: "API Server Documentation",
     customCss: `.swagger-ui .opblock.opblock-patch .opblock-summary-method { background:#d1bd21; }`,
     swaggerOptions: {
       operationsSorter,

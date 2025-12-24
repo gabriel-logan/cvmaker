@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { join } from "node:path";
+import { clientDistPath } from "src/shared/constants";
 
 export function fallbackSpaMiddleware(
   req: Request,
@@ -10,8 +11,6 @@ export function fallbackSpaMiddleware(
     return next();
   }
 
-  const clientPath = join(process.cwd(), "..", "frontend", "dist");
-
   // Fallback To index.html for SPA routing
-  return res.sendFile(join(clientPath, "index.html"));
+  return res.sendFile(join(clientDistPath, "index.html"));
 }

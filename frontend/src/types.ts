@@ -56,7 +56,9 @@ export interface CV {
     name: string;
     proficiency: string;
   }>;
-  hobbies: string[];
+  hobbies: Array<{
+    description: string;
+  }>;
   additionalInfo: string | null;
   otherExperiences: Array<{
     title: string;
@@ -67,8 +69,8 @@ export interface CV {
   }>;
   references: Array<{
     name: string;
-    relationship: string;
-    contactInfo: string;
+    relationship: string | null;
+    contactInfo: string | null;
   }>;
   links: Array<{
     label: string;

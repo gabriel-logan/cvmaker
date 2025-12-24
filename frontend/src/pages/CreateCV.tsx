@@ -437,6 +437,318 @@ export default function CreateCVPage() {
               ]}
             />
 
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["projects"][number]>
+              title="Projects"
+              items={cV.projects}
+              onChange={(projects) => setCV({ ...cV, projects })}
+              emptyItem={{
+                name: "",
+                description: "",
+                startDate: "",
+                endDate: null,
+                link: null,
+                location: null,
+              }}
+              fields={[
+                {
+                  name: "name",
+                  label: "Project Name",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. Personal Website",
+                },
+                {
+                  name: "description",
+                  label: "Description",
+                  type: "textarea",
+                  required: true,
+                  placeholder: "Describe the project",
+                  rowsTextArea: 4,
+                },
+                {
+                  name: "startDate",
+                  label: "Start Date",
+                  type: "month",
+                  required: true,
+                  placeholder: "e.g. 2022-01",
+                },
+                {
+                  name: "endDate",
+                  label: "End Date",
+                  type: "month",
+                  required: false,
+                  placeholder: "e.g. 2022-06",
+                },
+                {
+                  name: "link",
+                  label: "Project Link",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. https://example.com",
+                },
+                {
+                  name: "location",
+                  label: "Location",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. Remote",
+                },
+              ]}
+            />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["certifications"][number]>
+              title="Certifications"
+              items={cV.certifications}
+              onChange={(certifications) => setCV({ ...cV, certifications })}
+              emptyItem={{
+                name: "",
+                issuingOrganization: "",
+                issueDate: "",
+                expirationDate: null,
+                credentialID: null,
+                credentialURL: null,
+              }}
+              fields={[
+                {
+                  name: "name",
+                  label: "Certification Name",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. Certified Kubernetes Administrator",
+                },
+                {
+                  name: "issuingOrganization",
+                  label: "Issuing Organization",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. CNCF",
+                },
+                {
+                  name: "issueDate",
+                  label: "Issue Date",
+                  type: "month",
+                  required: true,
+                  placeholder: "e.g. 2021-05",
+                },
+                {
+                  name: "expirationDate",
+                  label: "Expiration Date",
+                  type: "month",
+                  required: false,
+                  placeholder: "e.g. 2024-05",
+                },
+                {
+                  name: "credentialID",
+                  label: "Credential ID",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. ABCD-1234-EFGH-5678",
+                },
+                {
+                  name: "credentialURL",
+                  label: "Credential URL",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. https://example.com/credential",
+                },
+              ]}
+            />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["languages"][number]>
+              title="Languages"
+              items={cV.languages}
+              onChange={(languages) => setCV({ ...cV, languages })}
+              emptyItem={{ name: "", proficiency: "" }}
+              fields={[
+                {
+                  name: "name",
+                  label: "Language",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. English",
+                },
+                {
+                  name: "proficiency",
+                  label: "Proficiency",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. Native, Fluent, Intermediate",
+                },
+              ]}
+            />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["hobbies"][number]>
+              title="Hobbies"
+              items={cV.hobbies}
+              onChange={(hobbies) => setCV({ ...cV, hobbies })}
+              emptyItem={{ description: "" }}
+              fields={[
+                {
+                  name: "description",
+                  label: "Hobby",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. Playing guitar",
+                },
+              ]}
+            />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm text-zinc-400">
+                Additional Information
+              </label>
+              <textarea
+                value={cV.additionalInfo || ""}
+                onChange={(e) =>
+                  setCV({ ...cV, additionalInfo: e.target.value || null })
+                }
+                placeholder="Any additional information"
+                className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2"
+              />
+            </div>
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["otherExperiences"][number]>
+              title="Other Experiences"
+              items={cV.otherExperiences}
+              onChange={(otherExperiences) =>
+                setCV({ ...cV, otherExperiences })
+              }
+              emptyItem={{
+                title: "",
+                description: "",
+                startDate: null,
+                endDate: null,
+                location: null,
+              }}
+              fields={[
+                {
+                  name: "title",
+                  label: "Title",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. Volunteer Work",
+                },
+                {
+                  name: "description",
+                  label: "Description",
+                  type: "textarea",
+                  required: true,
+                  placeholder: "Describe the experience",
+                  rowsTextArea: 4,
+                },
+                {
+                  name: "startDate",
+                  label: "Start Date",
+                  type: "month",
+                  required: false,
+                  placeholder: "e.g. 2020-01",
+                },
+                {
+                  name: "endDate",
+                  label: "End Date",
+                  type: "month",
+                  required: false,
+                  placeholder: "e.g. 2020-06",
+                },
+                {
+                  name: "location",
+                  label: "Location",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. City, Country",
+                },
+              ]}
+            />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["references"][number]>
+              title="References"
+              items={cV.references}
+              onChange={(references) => setCV({ ...cV, references })}
+              emptyItem={{ name: "", relationship: "", contactInfo: "" }}
+              fields={[
+                {
+                  name: "name",
+                  label: "Name",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. Jane Smith",
+                },
+                {
+                  name: "relationship",
+                  label: "Relationship",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. Former Manager",
+                },
+                {
+                  name: "contactInfo",
+                  label: "Contact Information",
+                  type: "text",
+                  required: false,
+                  placeholder: "e.g. jane.smith@example.com",
+                },
+              ]}
+            />
+
+            <div className="pt-4">
+              <hr className="border-zinc-700" />
+            </div>
+
+            <RepeatableSection<CV["links"][number]>
+              title="Links"
+              items={cV.links}
+              onChange={(links) => setCV({ ...cV, links })}
+              emptyItem={{ label: "", url: "" }}
+              fields={[
+                {
+                  name: "label",
+                  label: "Label",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. LinkedIn",
+                },
+                {
+                  name: "url",
+                  label: "URL",
+                  type: "text",
+                  required: true,
+                  placeholder: "e.g. https://linkedin.com/in/username",
+                },
+              ]}
+            />
+
+            <div className="pt-4 pb-2">
+              <hr className="border-zinc-700" />
+            </div>
+
             <button
               type="submit"
               className="w-full rounded-md bg-indigo-600 px-4 py-2 font-medium transition hover:bg-indigo-500"

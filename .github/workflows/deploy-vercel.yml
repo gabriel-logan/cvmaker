@@ -28,17 +28,17 @@ jobs:
       # ======================
       # FRONTEND
       # ======================
+      - name: Setup pnpm (frontend)
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Setup Node (frontend)
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
           cache: "pnpm"
           cache-dependency-path: frontend/pnpm-lock.yaml
-
-      - name: Setup pnpm (frontend)
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Install frontend dependencies
         working-directory: frontend
@@ -60,17 +60,17 @@ jobs:
       # ======================
       # BACKEND
       # ======================
+      - name: Setup pnpm (backend)
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Setup Node (backend)
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
           cache: "pnpm"
           cache-dependency-path: backend/pnpm-lock.yaml
-
-      - name: Setup pnpm (backend)
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Install backend dependencies
         working-directory: backend

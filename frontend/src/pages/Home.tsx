@@ -52,6 +52,14 @@ export default function HomePage() {
                       <h2 className="font-medium text-zinc-100">
                         Name: {cv.cVName}
                       </h2>
+                      <p className="text-sm text-zinc-400">
+                        Created At:{" "}
+                        {new Date(cv.createdAt).toLocaleDateString()}
+                      </p>
+                      <p className="text-sm text-zinc-400">
+                        Updated At:{" "}
+                        {new Date(cv.updatedAt).toLocaleDateString()}
+                      </p>
                     </div>
 
                     <div className="flex space-x-5">

@@ -8,6 +8,7 @@ import EditCVPage from "./pages/EditCV";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
 import PreviewPage from "./pages/Preview";
+import SendStaticPage from "./pages/SendStatic";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/create" element={<CreateCVPage />} />
         <Route path="/edit/:id" element={<EditCVPage />} />
         <Route path="/preview" element={<PreviewPage />} />
+        <Route path="/send-static" element={<SendStaticPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

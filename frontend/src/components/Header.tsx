@@ -1,5 +1,10 @@
 import { Link } from "react-router";
 
+const navLinks = [
+  { to: "/send-static", label: "Send Static" },
+  { to: "/create", label: "Create CV" },
+];
+
 export function Header() {
   return (
     <header className="border-b border-zinc-800 bg-zinc-950">
@@ -11,12 +16,17 @@ export function Header() {
           CV Maker
         </Link>
 
-        <Link
-          to="/create"
-          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
-        >
-          Create CV
-        </Link>
+        <nav className="flex items-center gap-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="text-zinc-300 transition hover:text-indigo-400"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );

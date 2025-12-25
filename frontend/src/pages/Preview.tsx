@@ -102,7 +102,7 @@ export default function PreviewPage() {
       <iframe
         title="CV Preview"
         srcDoc={html}
-        className="mt-6 h-[80vh] w-full rounded-lg border border-zinc-800 bg-white p-4 shadow-lg"
+        className="mt-6 h-[80vh] w-full rounded-lg border border-zinc-800 bg-white p-4 shadow-lg sm:max-w-4/5"
       ></iframe>
     </main>
   );

@@ -5,148 +5,385 @@ export function cvExample1Template(dto: CreateCVDto): string {
     .filter(Boolean)
     .join(" ");
 
-  return `<!DOCTYPE html>
+  const date = (v?: string | number | null): string =>
+    v ? new Date(v).toLocaleDateString() : "";
+
+  return `
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Currículo - ${fullName}</title>
+<meta charset="UTF-8" />
+<title>${dto.cVName}</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Segoe UI, sans-serif; }
-    body { background: #f4f6f8; padding: 40px; }
-    .container { max-width: 800px; margin: auto; background: #fff; padding: 40px; }
-    header { display: flex; justify-content: space-between; border-bottom: 2px solid #eee; padding-bottom: 20px; }
-    h1 { font-size: 32px; }
-    h2 { font-size: 18px; color: #777; }
-    section { margin-top: 30px; }
-    section h3 { border-left: 4px solid #3498db; padding-left: 10px; margin-bottom: 10px; }
-    .item-title { font-weight: bold; }
-    .item-subtitle { color: #777; font-size: 14px; }
-    ul.skills { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
-    ul.skills li { background: #3498db; color: #fff; padding: 6px 12px; border-radius: 20px; }
-  </style>
+<style>
+  :root {
+    --primary: #111827;
+    --secondary: #374151;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --bg-soft: #f9fafb;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: "Inter", Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .cv {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--primary);
+    color: #e5e7eb;
+    padding: 40px 28px;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 24px;
+  }
+
+  .name {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .nickname {
+    font-size: 14px;
+    color: #9ca3af;
+  }
+
+  .side-section {
+    margin-top: 28px;
+  }
+
+  .side-section h3 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    margin-bottom: 10px;
+  }
+
+  .side-section p,
+  .side-section li,
+  .side-section a {
+    font-size: 14px;
+    color: #e5e7eb;
+    margin: 4px 0;
+    text-decoration: none;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 48px 56px;
+    color: var(--primary);
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 6px;
+  }
+
+  .item {
+    margin-bottom: 20px;
+  }
+
+  .item-title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .item-subtitle {
+    font-size: 14px;
+    color: var(--secondary);
+  }
+
+  .dates {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .tags span {
+    display: inline-block;
+    padding: 6px 10px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    font-size: 13px;
+    margin: 4px 6px 0 0;
+  }
+
+  a {
+    color: var(--accent);
+  }
+
+  footer {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 60px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 12px;
+  }
+</style>
 </head>
 
 <body>
-  <div class="container">
+<div class="cv">
 
-    <!-- HEADER -->
-    <header>
-      <div>
-        <h1>${fullName}</h1>
-      </div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  ${dto.avatar ? `<img src="${dto.avatar}" class="avatar" />` : ""}
 
-      <div>
-        ${dto.contacts?.email ? `<p>📧 ${dto.contacts.email}</p>` : ""}
-        ${dto.contacts?.phone ? `<p>📱 ${dto.contacts.phone}</p>` : ""}
-        ${dto.address ? `<p>📍 ${dto.address}</p>` : ""}
-      </div>
-    </header>
+  <div class="name">${fullName}</div>
+  ${dto.nickname ? `<div class="nickname">${dto.nickname}</div>` : ""}
 
-    <!-- PERFIL -->
-    ${
-      dto.summary
-        ? `
-    <section>
-      <h3>Perfil Profissional</h3>
-      <p>${dto.summary}</p>
-    </section>`
-        : ""
-    }
-
-    <!-- EXPERIÊNCIA -->
-    ${
-      dto.experience?.length
-        ? `
-    <section>
-      <h3>Experiência Profissional</h3>
-      ${dto.experience
-        .map(
-          (exp) => `
-        <div>
-          <p class="item-title">${exp.position}</p>
-          <p class="item-subtitle">
-            ${exp.company} • ${exp.startDate} - ${exp.endDate || "Atual"}
-          </p>
-          ${exp.responsibilities ? `<p>${exp.responsibilities}</p>` : ""}
-        </div>
-      `,
-        )
-        .join("")}
-    </section>`
-        : ""
-    }
-
-    <!-- EDUCAÇÃO -->
-    ${
-      dto.education?.length
-        ? `
-    <section>
-      <h3>Formação Acadêmica</h3>
-      ${dto.education
-        .map(
-          (edu) => `
-        <div>
-          <p class="item-title">${edu.degree} - ${edu.fieldOfStudy}</p>
-          <p class="item-subtitle">
-            ${edu.institution} • ${edu.startDate} - ${edu.endDate || "Atual"}
-          </p>
-          ${edu.description ? `<p>${edu.description}</p>` : ""}
-        </div>
-      `,
-        )
-        .join("")}
-    </section>`
-        : ""
-    }
-
-    <!-- SKILLS -->
-    ${
-      dto.skills?.length
-        ? `
-    <section>
-      <h3>Habilidades</h3>
-      <ul class="skills">
-        ${dto.skills
-          .map(
-            (skill) => `
-          <li>${skill.name}${skill.level ? ` (${skill.level})` : ""}</li>
-        `,
-          )
-          .join("")}
-      </ul>
-    </section>`
-        : ""
-    }
-
-    <!-- PROJETOS -->
-    ${
-      dto.projects?.length
-        ? `
-    <section>
-      <h3>Projetos</h3>
-      ${dto.projects
-        .map(
-          (p) => `
-        <div>
-          <p class="item-title">${p.name}</p>
-          <p class="item-subtitle">${p.startDate} - ${p.endDate || "Atual"}</p>
-          <p>${p.description}</p>
-          ${p.link ? `<p>🔗 ${p.link}</p>` : ""}
-        </div>
-      `,
-        )
-        .join("")}
-    </section>`
-        : ""
-    }
-
-    <!-- FOOTER -->
-    <footer style="margin-top:40px;text-align:center;font-size:12px;color:#999;">
-      Currículo gerado automaticamente
-    </footer>
-
+  <div class="side-section">
+    <h3>Contato</h3>
+    ${dto.contacts.email ? `<p>${dto.contacts.email}</p>` : ""}
+    ${dto.contacts.phone ? `<p>${dto.contacts.phone}</p>` : ""}
+    ${dto.address ? `<p>${dto.address}</p>` : ""}
   </div>
+
+  ${
+    dto.skills.length
+      ? `
+    <div class="side-section">
+      <h3>Habilidades</h3>
+      ${dto.skills
+        .map((s) => `<p>${s.name}${s.level ? ` • ${s.level}` : ""}</p>`)
+        .join("")}
+    </div>`
+      : ""
+  }
+
+  ${
+    dto.languages.length
+      ? `
+    <div class="side-section">
+      <h3>Idiomas</h3>
+      ${dto.languages
+        .map((l) => `<p>${l.name} • ${l.proficiency}</p>`)
+        .join("")}
+    </div>`
+      : ""
+  }
+
+  ${
+    dto.hobbies.length
+      ? `
+    <div class="side-section">
+      <h3>Hobbies</h3>
+      ${dto.hobbies.map((h) => `<p>${h.description}</p>`).join("")}
+    </div>`
+      : ""
+  }
+
+  ${
+    dto.links.length
+      ? `
+    <div class="side-section">
+      <h3>Links</h3>
+      ${dto.links.map((l) => `<a href="${l.url}">${l.label}</a>`).join("<br/>")}
+    </div>`
+      : ""
+  }
+</aside>
+
+<!-- CONTENT -->
+<main class="content">
+
+${
+  dto.summary
+    ? `
+<section>
+  <h2>Resumo</h2>
+  <p>${dto.summary}</p>
+</section>`
+    : ""
+}
+
+${
+  dto.objectives
+    ? `
+<section>
+  <h2>Objetivos</h2>
+  <p>${dto.objectives}</p>
+</section>`
+    : ""
+}
+
+${
+  dto.experience.length
+    ? `
+<section>
+  <h2>Experiência Profissional</h2>
+  ${dto.experience
+    .map(
+      (e) => `
+    <div class="item">
+      <div class="item-title">${e.position} — ${e.company}</div>
+      <div class="dates">
+        ${e.startDate} ${e.endDate ? `– ${e.endDate}` : "– Atual"}
+        ${e.location ? ` | ${e.location}` : ""}
+      </div>
+      ${e.responsibilities ? `<p>${e.responsibilities}</p>` : ""}
+    </div>`,
+    )
+    .join("")}
+</section>`
+    : ""
+}
+
+${
+  dto.education.length
+    ? `
+<section>
+  <h2>Formação Acadêmica</h2>
+  ${dto.education
+    .map(
+      (e) => `
+    <div class="item">
+      <div class="item-title">${e.degree} em ${e.fieldOfStudy}</div>
+      <div class="item-subtitle">${e.institution}</div>
+      <div class="dates">
+        ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
+        ${e.location ? ` | ${e.location}` : ""}
+      </div>
+      ${e.grade ? `<p>Nota: ${e.grade}</p>` : ""}
+      ${e.description ? `<p>${e.description}</p>` : ""}
+    </div>`,
+    )
+    .join("")}
+</section>`
+    : ""
+}
+
+${
+  dto.projects.length
+    ? `
+<section>
+  <h2>Projetos</h2>
+  ${dto.projects
+    .map(
+      (p) => `
+    <div class="item">
+      <div class="item-title">${p.name}</div>
+      <div class="dates">
+        ${p.startDate} ${p.endDate ? `– ${p.endDate}` : ""}
+        ${p.location ? ` | ${p.location}` : ""}
+      </div>
+      <p>${p.description}</p>
+      ${p.link ? `<a href="${p.link}">${p.link}</a>` : ""}
+    </div>`,
+    )
+    .join("")}
+</section>`
+    : ""
+}
+
+${
+  dto.certifications.length
+    ? `
+<section>
+  <h2>Certificações</h2>
+  ${dto.certifications
+    .map(
+      (c) => `
+    <div class="item">
+      <div class="item-title">${c.name}</div>
+      <div class="item-subtitle">${c.issuingOrganization}</div>
+      <div class="dates">
+        ${c.issueDate}
+        ${c.expirationDate ? `– ${c.expirationDate}` : ""}
+      </div>
+      ${c.credentialID ? `<p>ID: ${c.credentialID}</p>` : ""}
+      ${c.credentialURL ? `<a href="${c.credentialURL}">${c.credentialURL}</a>` : ""}
+    </div>`,
+    )
+    .join("")}
+</section>`
+    : ""
+}
+
+${
+  dto.otherExperiences.length
+    ? `
+<section>
+  <h2>Outras Experiências</h2>
+  ${dto.otherExperiences
+    .map(
+      (o) => `
+    <div class="item">
+      <div class="item-title">${o.title}</div>
+      <div class="dates">
+        ${o.startDate ?? ""} ${o.endDate ? `– ${o.endDate}` : ""}
+        ${o.location ? ` | ${o.location}` : ""}
+      </div>
+      <p>${o.description}</p>
+    </div>`,
+    )
+    .join("")}
+</section>`
+    : ""
+}
+
+${
+  dto.references.length
+    ? `
+<section>
+  <h2>Referências</h2>
+  ${dto.references
+    .map(
+      (r) => `
+    <p>
+      ${r.name}
+      ${r.relationship ? ` — ${r.relationship}` : ""}
+      ${r.contactInfo ? ` (${r.contactInfo})` : ""}
+    </p>`,
+    )
+    .join("")}
+</section>`
+    : ""
+}
+
+${
+  dto.additionalInfo
+    ? `
+<section>
+  <h2>Informações Adicionais</h2>
+  <p>${dto.additionalInfo}</p>
+</section>`
+    : ""
+}
+
+<footer>
+  CV ID: ${dto.id} <br/>
+  Criado em: ${date(dto.createdAt)} | Atualizado em: ${date(dto.updatedAt)}
+</footer>
+
+</main>
+</div>
 </body>
-</html>`;
+</html>
+`;
 }

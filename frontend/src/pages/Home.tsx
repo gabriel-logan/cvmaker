@@ -56,29 +56,11 @@ export default function HomePage() {
                       </h2>
                       <p className="text-sm text-zinc-400">
                         Created At:{" "}
-                        {new Date(cV.createdAt).toLocaleDateString(
-                          window.navigator.language,
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          },
-                        )}
+                        {new Date(cV.createdAt).toLocaleDateString()}
                       </p>
                       <p className="text-sm text-zinc-400">
                         Updated At:{" "}
-                        {new Date(cV.updatedAt).toLocaleDateString(
-                          window.navigator.language,
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          },
-                        )}
+                        {new Date(cV.updatedAt).toLocaleDateString()}
                       </p>
                     </div>
 

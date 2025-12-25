@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import puppeteer from "puppeteer-core";
 import { cvExample1Template } from "src/templates/examples/example1";
 
 import { CreateCvDto } from "./dto/create-cv.dto";
@@ -17,23 +16,11 @@ export class CvsService {
   ): Promise<Uint8Array<ArrayBufferLike>> {
     const html = cvExample1Template(createCvDto);
 
-    const browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      channel: "chrome",
-    });
+    await new Promise((resolve) => setTimeout(() => resolve(html), 1000));
 
-    const page = await browser.newPage();
+    const pdfBuffer = new Uint8Array(); // Placeholder for PDF generation logic
 
-    await page.setContent(html, {
-      waitUntil: "networkidle2",
-    });
-
-    const pdfBuffer = await page.pdf({
-      format: "A4",
-      printBackground: true,
-    });
-
-    await browser.close();
+    // PDF generation logic would go here, using a library like Puppeteer or PDFKit
 
     return pdfBuffer;
   }

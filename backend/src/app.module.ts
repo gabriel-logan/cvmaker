@@ -12,7 +12,7 @@ import { CvsModule } from "./cvs/cvs.module";
     ConfigModule.forRoot({
       isGlobal: true,
       load: [envGlobal],
-      envFilePath: [join(process.cwd(), "..", ".env")],
+      envFilePath: [join(__dirname, "..", "..", ".env")],
     }),
     CvsModule,
   ],

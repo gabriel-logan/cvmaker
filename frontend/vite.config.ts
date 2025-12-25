@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  envDir: join(process.cwd(), ".."),
+  envDir: join(__dirname, "..", ".."),
   plugins: [
     tailwindcss(),
     react({

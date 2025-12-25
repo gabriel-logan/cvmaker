@@ -3,7 +3,13 @@
     "builds": [
         {
             "src": "backend/dist/main.js",
-            "use": "@vercel/node"
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": [
+                    "backend/dist/**",
+                    "frontend/dist/**"
+                ]
+            }
         }
     ],
     "routes": [

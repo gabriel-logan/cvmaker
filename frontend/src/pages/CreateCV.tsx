@@ -79,6 +79,8 @@ export default function CreateCVPage() {
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">
+      <title>Create CV - CV Maker</title>
+
       <div className="mx-auto max-w-2xl space-y-8 sm:max-w-5xl">
         <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-300">
           🆕 You are <strong>creating a new CV</strong>

@@ -17,6 +17,8 @@ export default function NotFoundPage({
 }: NotFoundPageProps) {
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">
+      <title>{title} - CV Maker</title>
+
       <div className="mx-auto max-w-2xl space-y-8">
         <div className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm font-medium text-red-300">
           {title}

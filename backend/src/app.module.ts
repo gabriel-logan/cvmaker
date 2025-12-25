@@ -5,6 +5,7 @@ import { join } from "path";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import envGlobal from "./configs/env.global";
+import { CvsModule } from "./cvs/cvs.module";
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import envGlobal from "./configs/env.global";
       load: [envGlobal],
       envFilePath: [join(process.cwd(), "..", ".env")],
     }),
+    CvsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

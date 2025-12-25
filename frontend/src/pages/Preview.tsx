@@ -20,7 +20,7 @@ export default function PreviewPage() {
         ...selectedCV,
       });
 
-      setHtml(response.data.html);
+      setHtml(response.data);
     } catch (error) {
       console.error("Error generating CV preview:", error);
     }
@@ -35,7 +35,7 @@ export default function PreviewPage() {
         ...selectedCV,
       });
 
-      setHtml(response.data.pdf);
+      setHtml(response.data);
     } catch (error) {
       console.error("Error generating CV preview:", error);
     }

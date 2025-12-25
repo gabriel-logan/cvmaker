@@ -17,10 +17,15 @@ export class CvsService {
   ): Promise<Uint8Array<ArrayBufferLike>> {
     const html = cvExample1Template(createCvDto);
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+
     const page = await browser.newPage();
 
-    await page.setContent(html, { waitUntil: "networkidle0" });
+    await page.setContent(html, {
+      waitUntil: "networkidle2",
+    });
 
     const pdfBuffer = await page.pdf({
       format: "A4",

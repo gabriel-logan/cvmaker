@@ -7,7 +7,6 @@ import CreateCVPage from "./pages/CreateCV";
 import EditCVPage from "./pages/EditCV";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
-import PreviewPage from "./pages/Preview";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreateCVPage />} />
         <Route path="/edit/:id" element={<EditCVPage />} />
-        <Route path="/preview" element={<PreviewPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

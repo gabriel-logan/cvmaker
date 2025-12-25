@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { cVsStorageKey } from "../constants";
 import type { CV } from "../types";
 
 interface CVsStore {
@@ -42,7 +43,7 @@ export const useCVsStore = create<CVsStore>()(
         })),
     }),
     {
-      name: "cvs-storage",
+      name: cVsStorageKey,
     },
   ),
 );

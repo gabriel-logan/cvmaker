@@ -169,12 +169,18 @@ export default function PreviewPage() {
         {(isLoading || !html) && (
           <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-zinc-900/80">
             <div className="flex flex-col items-center gap-3">
-              <div className="h-10 w-10 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent" />
-              <span className="text-sm text-zinc-300">
-                {isLoading
-                  ? "Generating preview..."
-                  : "Preview will appear here"}
-              </span>
+              {isLoading ? (
+                <>
+                  <div className="h-10 w-10 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent" />
+                  <span className="text-sm text-zinc-300">
+                    Generating preview...
+                  </span>
+                </>
+              ) : (
+                <span className="text-sm text-zinc-300">
+                  Preview will appear here
+                </span>
+              )}
             </div>
           </div>
         )}

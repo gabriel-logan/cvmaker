@@ -30,7 +30,6 @@ export default function HomePage() {
           saved.
         </div>
 
-        {/** Go to preview page */}
         <div className="rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm font-medium text-yellow-300">
           New: You can now preview your CVs before downloading them! Click on
           the "See Preview's" button.

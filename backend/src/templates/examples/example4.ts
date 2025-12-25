@@ -40,8 +40,8 @@ export function cvExample4Template(dto: CreateCVDto): string {
     padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 12px;
+    line-height: 1.4;
   }
 
   .page {
@@ -52,13 +52,13 @@ export function cvExample4Template(dto: CreateCVDto): string {
 
   /* TOP BAR */
   .top-bar {
-    height: 8px;
+    height: 6px;
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
   }
 
   /* PROFILE SECTION */
   .profile-section {
-    padding: 50px 70px 40px;
+    padding: 30px 40px 20px;
     background: var(--bg-accent);
     position: relative;
   }
@@ -66,57 +66,57 @@ export function cvExample4Template(dto: CreateCVDto): string {
   .profile-grid {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 35px;
+    gap: 24px;
     align-items: start;
   }
 
   .profile-avatar {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     border-radius: 12px;
     object-fit: cover;
-    border: 4px solid white;
+    border: 3px solid white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .profile-info {
-    padding-top: 10px;
+    padding-top: 6px;
   }
 
   .profile-name {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 8px 0;
+    margin: 0 0 4px 0;
     letter-spacing: -0.5px;
   }
 
   .profile-nickname {
-    font-size: 18px;
+    font-size: 15px;
     color: var(--text-light);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin-top: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
   }
 
   .contact-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 0;
-    font-size: 14px;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 12px;
     color: var(--secondary);
   }
 
   .contact-icon {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     background: var(--accent);
     border-radius: 50%;
     flex-shrink: 0;
@@ -124,30 +124,30 @@ export function cvExample4Template(dto: CreateCVDto): string {
 
   /* CONTENT AREA */
   .content-area {
-    padding: 40px 70px 50px;
+    padding: 20px 35px 25px;
   }
 
   .content-section {
-    margin-bottom: 45px;
+    margin-bottom: 22px;
   }
 
   .section-heading {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 25px;
+    gap: 8px;
+    margin-bottom: 14px;
   }
 
   .section-heading::before {
     content: "";
-    width: 4px;
-    height: 28px;
+    width: 3px;
+    height: 20px;
     background: linear-gradient(180deg, var(--accent), var(--accent-light));
     border-radius: 2px;
   }
 
   .section-heading h2 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--primary);
     margin: 0;
@@ -156,43 +156,43 @@ export function cvExample4Template(dto: CreateCVDto): string {
   }
 
   .text-block {
-    padding: 20px;
+    padding: 12px;
     background: var(--bg-accent);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent);
-    line-height: 1.8;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+    line-height: 1.5;
   }
 
   /* TIMELINE ITEMS */
   .timeline {
     position: relative;
-    padding-left: 35px;
+    padding-left: 24px;
   }
 
   .timeline::before {
     content: "";
     position: absolute;
-    left: 8px;
-    top: 8px;
-    bottom: 8px;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
     width: 2px;
     background: var(--timeline);
   }
 
   .timeline-item {
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
   }
 
   .timeline-item::before {
     content: "";
     position: absolute;
-    left: -31px;
-    top: 6px;
-    width: 12px;
-    height: 12px;
+    left: -21px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
     background: white;
-    border: 3px solid var(--accent);
+    border: 2px solid var(--accent);
     border-radius: 50%;
     z-index: 1;
   }
@@ -204,8 +204,8 @@ export function cvExample4Template(dto: CreateCVDto): string {
   .timeline-content {
     background: white;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 6px;
+    padding: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     transition: all 0.2s;
   }
@@ -219,53 +219,53 @@ export function cvExample4Template(dto: CreateCVDto): string {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin-bottom: 10px;
-    gap: 20px;
+    margin-bottom: 6px;
+    gap: 12px;
   }
 
   .timeline-title {
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--primary);
-    line-height: 1.3;
+    line-height: 1.2;
   }
 
   .timeline-date {
-    font-size: 13px;
+    font-size: 11px;
     color: white;
     background: var(--accent);
-    padding: 4px 12px;
-    border-radius: 12px;
+    padding: 3px 8px;
+    border-radius: 10px;
     white-space: nowrap;
     font-weight: 600;
   }
 
   .timeline-subtitle {
-    font-size: 15px;
+    font-size: 12px;
     color: var(--accent);
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .timeline-location {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-light);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .timeline-description {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--secondary);
-    line-height: 1.7;
+    line-height: 1.4;
   }
 
   .timeline-link {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 6px;
     color: var(--accent);
     text-decoration: none;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 11px;
   }
 
   .timeline-link:hover {
@@ -275,15 +275,15 @@ export function cvExample4Template(dto: CreateCVDto): string {
   /* GRID LAYOUTS */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
   }
 
   .card {
     background: var(--bg-accent);
     border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 6px;
+    padding: 10px;
     transition: all 0.2s;
   }
 
@@ -296,12 +296,12 @@ export function cvExample4Template(dto: CreateCVDto): string {
   .card-title {
     font-weight: 700;
     color: var(--primary);
-    font-size: 15px;
-    margin-bottom: 4px;
+    font-size: 13px;
+    margin-bottom: 2px;
   }
 
   .card-subtitle {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-light);
   }
 
@@ -309,19 +309,19 @@ export function cvExample4Template(dto: CreateCVDto): string {
   .badge-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
+    gap: 4px;
+    padding: 6px 12px;
     background: white;
     border: 2px solid var(--accent);
     color: var(--accent);
-    border-radius: 20px;
-    font-size: 14px;
+    border-radius: 16px;
+    font-size: 12px;
     font-weight: 600;
     transition: all 0.2s;
   }
@@ -332,8 +332,8 @@ export function cvExample4Template(dto: CreateCVDto): string {
   }
 
   .badge-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: currentColor;
     border-radius: 50%;
   }
@@ -341,13 +341,13 @@ export function cvExample4Template(dto: CreateCVDto): string {
   /* LINKS SECTION */
   .link-card {
     display: block;
-    padding: 14px 18px;
+    padding: 10px 12px;
     background: white;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 6px;
     text-decoration: none;
     color: var(--primary);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     transition: all 0.2s;
   }
 
@@ -360,30 +360,31 @@ export function cvExample4Template(dto: CreateCVDto): string {
   .link-label {
     font-weight: 600;
     color: var(--accent);
+    font-size: 12px;
   }
 
   .link-url {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-light);
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
   /* FOOTER */
   .footer {
     background: var(--bg-accent);
-    padding: 25px 70px;
+    padding: 14px 35px;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
     color: var(--text-light);
     border-top: 1px solid var(--border);
   }
 
   @media print {
     .content-area {
-      padding: 30px 60px;
+      padding: 16px 30px;
     }
     .profile-section {
-      padding: 40px 60px 30px;
+      padding: 24px 32px 16px;
     }
   }
 </style>

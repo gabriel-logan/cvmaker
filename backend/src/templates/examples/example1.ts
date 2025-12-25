@@ -33,6 +33,8 @@ export function cvExample1Template(dto: CreateCVDto): string {
     margin: 0;
     padding: 0;
     background: white;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .cv {
@@ -46,91 +48,91 @@ export function cvExample1Template(dto: CreateCVDto): string {
   .sidebar {
     background: var(--primary);
     color: #e5e7eb;
-    padding: 40px 28px;
+    padding: 20px 18px;
   }
 
   .avatar {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 
   .name {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 700;
   }
 
   .nickname {
-    font-size: 14px;
+    font-size: 12px;
     color: #9ca3af;
   }
 
   .side-section {
-    margin-top: 28px;
+    margin-top: 16px;
   }
 
   .side-section h3 {
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #93c5fd;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .side-section p,
   .side-section li,
   .side-section a {
-    font-size: 14px;
+    font-size: 12px;
     color: #e5e7eb;
-    margin: 4px 0;
+    margin: 2px 0;
     text-decoration: none;
   }
 
   /* CONTENT */
   .content {
-    padding: 48px 56px;
+    padding: 24px 28px;
     color: var(--primary);
   }
 
   section {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   h2 {
-    font-size: 22px;
-    margin-bottom: 16px;
+    font-size: 18px;
+    margin-bottom: 10px;
     border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 6px;
+    padding-bottom: 4px;
   }
 
   .item {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .item-title {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .item-subtitle {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--secondary);
   }
 
   .dates {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--muted);
   }
 
   .tags span {
     display: inline-block;
-    padding: 6px 10px;
+    padding: 4px 8px;
     background: var(--bg-soft);
     border-radius: 999px;
-    font-size: 13px;
-    margin: 4px 6px 0 0;
+    font-size: 11px;
+    margin: 2px 4px 0 0;
   }
 
   a {
@@ -138,11 +140,11 @@ export function cvExample1Template(dto: CreateCVDto): string {
   }
 
   footer {
-    font-size: 12px;
+    font-size: 10px;
     color: var(--muted);
-    margin-top: 60px;
+    margin-top: 20px;
     border-top: 1px solid #e5e7eb;
-    padding-top: 12px;
+    padding-top: 8px;
   }
 </style>
 </head>

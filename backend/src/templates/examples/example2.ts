@@ -35,43 +35,45 @@ export function cvExample2Template(dto: CreateCVDto): string {
     padding: 0;
     background: white;
     color: var(--text);
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .cv-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 60px 80px;
+    padding: 30px 40px;
   }
 
   /* HEADER */
   .header {
     text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     border-bottom: 3px solid var(--accent);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .header-name {
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 700;
     color: var(--primary);
-    margin: 0 0 8px 0;
+    margin: 0 0 4px 0;
     letter-spacing: -0.5px;
   }
 
   .header-nickname {
-    font-size: 18px;
+    font-size: 15px;
     color: var(--text-light);
     font-style: italic;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .header-contacts {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text);
   }
 
@@ -81,34 +83,34 @@ export function cvExample2Template(dto: CreateCVDto): string {
 
   .header-contacts span:not(:last-child)::after {
     content: "•";
-    margin-left: 20px;
+    margin-left: 15px;
     color: var(--text-light);
   }
 
   /* SECTIONS */
   section {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .section-title {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
     border-bottom: 2px solid var(--border);
   }
 
   .section-content {
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.5;
     color: var(--text);
   }
 
   .item {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     page-break-inside: avoid;
   }
 
@@ -116,48 +118,48 @@ export function cvExample2Template(dto: CreateCVDto): string {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 6px;
-    gap: 20px;
+    margin-bottom: 4px;
+    gap: 15px;
   }
 
   .item-title {
     font-weight: 700;
-    font-size: 17px;
+    font-size: 14px;
     color: var(--primary);
   }
 
   .item-subtitle {
-    font-size: 15px;
+    font-size: 13px;
     color: var(--text);
     font-style: italic;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .item-date {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text-light);
     white-space: nowrap;
   }
 
   .item-location {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text-light);
   }
 
   .item-description {
-    margin-top: 8px;
-    line-height: 1.6;
+    margin-top: 4px;
+    line-height: 1.4;
   }
 
   /* GRID LAYOUTS */
   .two-column {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 20px;
   }
 
   .skill-item, .language-item {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .skill-name, .language-name {
@@ -167,7 +169,7 @@ export function cvExample2Template(dto: CreateCVDto): string {
 
   .skill-level, .language-level {
     color: var(--text-light);
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .links-list {
@@ -177,7 +179,7 @@ export function cvExample2Template(dto: CreateCVDto): string {
   }
 
   .links-list li {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .links-list a {
@@ -192,17 +194,17 @@ export function cvExample2Template(dto: CreateCVDto): string {
   }
 
   footer {
-    margin-top: 60px;
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-top: 12px;
     border-top: 1px solid var(--border);
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-light);
     text-align: center;
   }
 
   @media print {
     .cv-container {
-      padding: 40px 60px;
+      padding: 20px 30px;
     }
   }
 </style>

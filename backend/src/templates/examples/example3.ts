@@ -37,8 +37,8 @@ export function cvExample3Template(dto: CreateCVDto): string {
     padding: 0;
     background: white;
     color: var(--text);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 12px;
+    line-height: 1.4;
   }
 
   .container {
@@ -51,14 +51,14 @@ export function cvExample3Template(dto: CreateCVDto): string {
   .header-banner {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: white;
-    padding: 50px 60px;
+    padding: 30px 40px;
     position: relative;
   }
 
   .header-content {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
   }
 
@@ -67,44 +67,44 @@ export function cvExample3Template(dto: CreateCVDto): string {
   }
 
   .avatar {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3);
   }
 
   .header-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
   .full-name {
-    font-size: 38px;
+    font-size: 30px;
     font-weight: 700;
     margin: 0;
     letter-spacing: 1px;
   }
 
   .nickname-header {
-    font-size: 16px;
+    font-size: 14px;
     opacity: 0.9;
     font-style: italic;
   }
 
   .contact-info {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     flex-wrap: wrap;
-    margin-top: 12px;
-    font-size: 14px;
+    margin-top: 8px;
+    font-size: 12px;
   }
 
   .contact-item {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     opacity: 0.95;
   }
 
@@ -115,32 +115,32 @@ export function cvExample3Template(dto: CreateCVDto): string {
 
   /* MAIN CONTENT */
   .main-content {
-    padding: 40px 60px;
+    padding: 20px 30px;
   }
 
   .section {
-    margin-bottom: 35px;
+    margin-bottom: 18px;
     page-break-inside: avoid;
   }
 
   .section-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
     border-bottom: 2px solid var(--accent);
   }
 
   .section-icon {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background: var(--highlight);
     border-radius: 50%;
   }
 
   .section-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;
@@ -149,8 +149,8 @@ export function cvExample3Template(dto: CreateCVDto): string {
   }
 
   .entry {
-    margin-bottom: 22px;
-    padding-left: 20px;
+    margin-bottom: 12px;
+    padding-left: 14px;
     border-left: 3px solid var(--bg-light);
   }
 
@@ -162,64 +162,65 @@ export function cvExample3Template(dto: CreateCVDto): string {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 6px;
-    gap: 15px;
+    margin-bottom: 4px;
+    gap: 10px;
   }
 
   .entry-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--primary);
   }
 
   .entry-period {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-muted);
     white-space: nowrap;
     font-style: italic;
   }
 
   .entry-subtitle {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--accent);
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .entry-location {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-muted);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .entry-description {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.4;
   }
 
   /* SKILLS GRID */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
   }
 
   .skill-card {
     background: var(--bg-light);
-    padding: 12px 16px;
+    padding: 8px 12px;
     border-radius: 6px;
-    border-left: 4px solid var(--accent);
+    border-left: 3px solid var(--accent);
   }
 
   .skill-name {
     font-weight: 700;
     color: var(--primary);
     display: block;
+    font-size: 12px;
   }
 
   .skill-level {
-    font-size: 12px;
+    font-size: 10px;
     color: var(--text-muted);
   }
 
@@ -227,15 +228,15 @@ export function cvExample3Template(dto: CreateCVDto): string {
   .languages-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
   }
 
   .language-badge {
     background: var(--accent);
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 11px;
     font-weight: 600;
   }
 
@@ -247,18 +248,19 @@ export function cvExample3Template(dto: CreateCVDto): string {
   /* LINKS */
   .links-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
   }
 
   .link-item {
     color: var(--accent);
     text-decoration: none;
-    padding: 8px 12px;
+    padding: 6px 10px;
     background: var(--bg-light);
     border-radius: 4px;
     display: block;
     transition: all 0.2s;
+    font-size: 12px;
   }
 
   .link-item:hover {
@@ -270,55 +272,55 @@ export function cvExample3Template(dto: CreateCVDto): string {
   .hobbies-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .hobby-tag {
     background: var(--bg-light);
     color: var(--text);
-    padding: 6px 14px;
-    border-radius: 16px;
-    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
     border: 1px solid var(--border);
   }
 
   /* REFERENCES */
   .reference-card {
     background: var(--bg-light);
-    padding: 15px 20px;
+    padding: 10px 14px;
     border-radius: 6px;
-    margin-bottom: 12px;
-    border-left: 4px solid var(--highlight);
+    margin-bottom: 8px;
+    border-left: 3px solid var(--highlight);
   }
 
   .reference-name {
     font-weight: 700;
     color: var(--primary);
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .reference-details {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-muted);
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   /* FOOTER */
   .footer {
     background: var(--bg-light);
-    padding: 20px 60px;
+    padding: 12px 30px;
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-muted);
-    border-top: 3px solid var(--accent);
+    border-top: 2px solid var(--accent);
   }
 
   @media print {
     .main-content {
-      padding: 30px 50px;
+      padding: 16px 26px;
     }
     .header-banner {
-      padding: 40px 50px;
+      padding: 24px 32px;
     }
   }
 </style>

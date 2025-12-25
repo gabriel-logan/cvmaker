@@ -1,19 +1,19 @@
 import type { CreateCvDto } from "src/cvs/dto/create-cv.dto";
 
 export function cvExample1Template(data: CreateCvDto): string {
-  const skills = data.skills;
-  const languages = data.languages;
-  const experience = data.experience;
-  const education = data.education;
-  const projects = data.projects;
-  const contacts = data.contacts;
+  const skills = data.skills ?? [];
+  const languages = data.languages ?? [];
+  const experience = data.experience ?? [];
+  const education = data.education ?? [];
+  const projects = data.projects ?? [];
+  const contacts = data.contacts ?? {};
 
   return `
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>${data.cVName}</title>
+  <title>${data.cVName ?? "Currículo"}</title>
 
   <style>
     * {
@@ -155,8 +155,8 @@ export function cvExample1Template(data: CreateCvDto): string {
 
     <!-- HEADER -->
     <header class="header">
-      <h1>${data.firstName} ${data.lastName}</h1>
-      <h2>${data.cVName}</h2>
+      <h1>${data.firstName ?? ""} ${data.lastName ?? ""}</h1>
+      <h2>${data.cVName ?? ""}</h2>
 
       <div class="contacts">
         ${contacts.email ? `<span>📧 ${contacts.email}</span>` : ""}

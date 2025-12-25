@@ -16,7 +16,7 @@ export class CvsService {
   ): Promise<Uint8Array<ArrayBufferLike>> {
     const html = cvExample1Template(createCvDto);
 
-    await new Promise((resolve) => setTimeout(() => resolve(html), 1000));
+    await new Promise((resolve) => setTimeout(() => resolve(html), 100));
 
     const pdfBuffer = new Uint8Array(); // Placeholder for PDF generation logic
 

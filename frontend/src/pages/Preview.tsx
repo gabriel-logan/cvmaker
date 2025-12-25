@@ -29,8 +29,6 @@ export default function PreviewPage() {
   async function handleSubmitPdf() {
     if (!selectedCV) return;
 
-    console.log(html);
-
     try {
       const response = await apiInstance.post("/cvs/pdf", {
         templateId: selectedCV.id,
@@ -89,13 +87,11 @@ export default function PreviewPage() {
         </button>
       </div>
 
-      {/**
- *       <iframe
+      <iframe
         title="CV Preview"
         srcDoc={html}
         className="mt-6 h-[80vh] w-full rounded-lg border border-zinc-800 bg-white p-4 shadow-lg"
       ></iframe>
- */}
     </main>
   );
 }

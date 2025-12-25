@@ -34,8 +34,8 @@ export default function CreateCVPage() {
     otherExperiences: [],
     references: [],
     links: [],
-    createdAt: "",
-    updatedAt: "",
+    createdAt: 0,
+    updatedAt: 0,
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -43,7 +43,7 @@ export default function CreateCVPage() {
 
     const id = generateTimeBasedId();
 
-    const now = Date.now().toString();
+    const now = Date.now();
 
     createCV({
       id,

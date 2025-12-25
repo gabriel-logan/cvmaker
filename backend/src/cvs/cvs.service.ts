@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { cvExample1Template } from "src/templates/examples/example1";
 
 import { CreateCvDto } from "./dto/create-cv.dto";
@@ -19,6 +19,7 @@ export class CvsService {
 
     const browser = await puppeteer.launch({
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      channel: "chrome",
     });
 
     const page = await browser.newPage();

@@ -12,15 +12,14 @@ export default function PreviewPage() {
   const [selectedTemplateId, setSelectedTemplateId] =
     useState<TemplateIds | null>(null);
 
-  const [isPreviewLoading, setIsPreviewLoading] = useState(false);
-  const [isPdfLoading, setIsPdfLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { cVs } = useCVsStore();
 
   async function handleSubmitPreview(selectedCV: CV | null) {
     if (!selectedCV || !selectedTemplateId) return;
 
-    setIsPreviewLoading(true);
+    setIsLoading(true);
 
     setHtml("");
 
@@ -35,7 +34,7 @@ export default function PreviewPage() {
       console.error("Error generating CV preview:", error);
       toast.error("Failed to generate CV preview. Please try again.");
     } finally {
-      setIsPreviewLoading(false);
+      setIsLoading(false);
     }
   }
 
@@ -44,7 +43,7 @@ export default function PreviewPage() {
       return toast.error("Please select a CV and a template.");
     }
 
-    setIsPdfLoading(true);
+    setIsLoading(true);
 
     try {
       const response = await apiInstance.post<Blob>(
@@ -76,11 +75,9 @@ export default function PreviewPage() {
       console.error("Error generating CV pdf:", error);
       toast.error("Failed to generate CV PDF. Please try again.");
     } finally {
-      setIsPdfLoading(false);
+      setIsLoading(false);
     }
   }
-
-  const isAnyLoading = isPreviewLoading || isPdfLoading;
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-950 px-6 py-10 text-zinc-100">
@@ -130,19 +127,19 @@ export default function PreviewPage() {
         <button
           className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
           onClick={handleSubmitPdf}
-          disabled={!selectedCV || isAnyLoading}
+          disabled={!selectedCV || isLoading}
         >
-          {isPdfLoading ? "Generating PDF..." : "Download PDF"}
+          {isLoading ? "Generating PDF..." : "Download PDF"}
         </button>
       </div>
 
       <div className="relative mt-6 h-[80vh] w-full sm:max-w-4/5">
-        {(isPreviewLoading || !html) && (
+        {(isLoading || !html) && (
           <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-zinc-900/80">
             <div className="flex flex-col items-center gap-3">
               <div className="h-10 w-10 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent" />
               <span className="text-sm text-zinc-300">
-                {isPreviewLoading
+                {isLoading
                   ? "Generating preview..."
                   : "Preview will appear here"}
               </span>

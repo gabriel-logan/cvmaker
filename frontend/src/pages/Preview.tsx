@@ -35,7 +35,14 @@ export default function PreviewPage() {
         ...selectedCV,
       });
 
-      setHtml(response.data);
+      // Create a blob from the PDF buffer
+      const pdfBlob = new Blob([response.data], { type: "application/pdf" });
+
+      // Create a link to download the PDF
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(pdfBlob);
+      link.download = `${selectedCV.cVName || "cv"}.pdf`;
+      link.click();
     } catch (error) {
       console.error("Error generating CV preview:", error);
     }

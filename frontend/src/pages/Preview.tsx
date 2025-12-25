@@ -70,15 +70,15 @@ export default function PreviewPage() {
         >
           Preview CV
         </button>
-      </div>
 
-      <button
-        className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
-        onClick={handleSubmitPdf}
-        disabled={!selectedCVId}
-      >
-        Download PDF
-      </button>
+        <button
+          className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+          onClick={handleSubmitPdf}
+          disabled={!selectedCVId}
+        >
+          Download PDF
+        </button>
+      </div>
 
       <iframe
         title="CV Preview"

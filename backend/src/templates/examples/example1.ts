@@ -1,12 +1,19 @@
 import type { CreateCvDto } from "src/cvs/dto/create-cv.dto";
 
 export function cvExample1Template(data: CreateCvDto): string {
+  const skills = data.skills ?? [];
+  const languages = data.languages ?? [];
+  const experience = data.experience ?? [];
+  const education = data.education ?? [];
+  const projects = data.projects ?? [];
+  const contacts = data.contacts ?? {};
+
   return `
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>${data.cVName}</title>
+  <title>${data.cVName ?? "Currículo"}</title>
 
   <style>
     * {
@@ -148,12 +155,12 @@ export function cvExample1Template(data: CreateCvDto): string {
 
     <!-- HEADER -->
     <header class="header">
-      <h1>${data.firstName} ${data.lastName}</h1>
-      <h2>${data.cVName}</h2>
+      <h1>${data.firstName ?? ""} ${data.lastName ?? ""}</h1>
+      <h2>${data.cVName ?? ""}</h2>
 
       <div class="contacts">
-        ${data.contacts.email ? `<span>📧 ${data.contacts.email}</span>` : ""}
-        ${data.contacts.phone ? `<span>📞 ${data.contacts.phone}</span>` : ""}
+        ${contacts.email ? `<span>📧 ${contacts.email}</span>` : ""}
+        ${contacts.phone ? `<span>📞 ${contacts.phone}</span>` : ""}
         ${data.address ? `<span>📍 ${data.address}</span>` : ""}
       </div>
     </header>
@@ -176,12 +183,12 @@ export function cvExample1Template(data: CreateCvDto): string {
         }
 
         ${
-          data.skills.length
+          skills.length
             ? `
         <div class="section">
           <div class="section-title">Skills</div>
           <ul>
-            ${data.skills
+            ${skills
               .map((s) => `<li>${s.name}${s.level ? ` — ${s.level}` : ""}</li>`)
               .join("")}
           </ul>
@@ -191,12 +198,12 @@ export function cvExample1Template(data: CreateCvDto): string {
         }
 
         ${
-          data.languages.length
+          languages.length
             ? `
         <div class="section">
           <div class="section-title">Idiomas</div>
           <ul>
-            ${data.languages
+            ${languages
               .map((l) => `<li>${l.name} — ${l.proficiency}</li>`)
               .join("")}
           </ul>
@@ -211,11 +218,11 @@ export function cvExample1Template(data: CreateCvDto): string {
       <main class="main">
 
         ${
-          data.experience.length
+          experience.length
             ? `
         <div class="section">
           <div class="section-title">Experiência</div>
-          ${data.experience
+          ${experience
             .map(
               (exp) => `
             <div class="item">
@@ -232,11 +239,11 @@ export function cvExample1Template(data: CreateCvDto): string {
         }
 
         ${
-          data.education.length
+          education.length
             ? `
         <div class="section">
           <div class="section-title">Educação</div>
-          ${data.education
+          ${education
             .map(
               (edu) => `
             <div class="item">
@@ -253,11 +260,11 @@ export function cvExample1Template(data: CreateCvDto): string {
         }
 
         ${
-          data.projects.length
+          projects.length
             ? `
         <div class="section">
           <div class="section-title">Projetos</div>
-          ${data.projects
+          ${projects
             .map(
               (proj) => `
             <div class="item">

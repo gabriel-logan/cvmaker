@@ -23,6 +23,10 @@ async function bootstrap(): Promise<void> {
     app.use(helmet());
 
     app.set("trust proxy", true);
+  } else {
+    app.enableCors({
+      origin: "*",
+    });
   }
 
   app.useStaticAssets(clientDistPath);

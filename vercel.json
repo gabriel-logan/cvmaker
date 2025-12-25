@@ -11,6 +11,5 @@
             "src": "/(.*)",
             "dest": "backend/dist/main.js"
         }
-    ],
-    "buildCommand": "npx puppeteer browsers install chrome"
+    ]
 }

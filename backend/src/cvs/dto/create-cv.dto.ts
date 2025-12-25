@@ -29,7 +29,7 @@ export class CreateCvDto {
     description: string | null;
     location: string | null;
   }>;
-  public pexperience: Array<{
+  public experience: Array<{
     company: string;
     position: string;
     startDate: string;

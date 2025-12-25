@@ -1,30 +1,32 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import apiInstance from "../lib/apiInstance";
 import { useCVsStore } from "../stores/cVsStore";
-import type { CV } from "../types";
+import type { CV, TemplateIds } from "../types";
 
 export default function PreviewPage() {
   const [html, setHtml] = useState<string>("");
 
   const [selectedCV, setSelectedCV] = useState<CV | null>(null);
+  const [selectedTemplateId, setSelectedTemplateId] =
+    useState<TemplateIds | null>(null);
 
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
   const [isPdfLoading, setIsPdfLoading] = useState(false);
 
-  const isAnyLoading = isPreviewLoading || isPdfLoading;
-
   const { cVs } = useCVsStore();
 
-  async function handleSubmitPreview() {
-    if (!selectedCV) return;
+  async function handleSubmitPreview(selectedCV: CV | null) {
+    if (!selectedCV || !selectedTemplateId) return;
 
     setIsPreviewLoading(true);
+
     setHtml("");
 
     try {
       const response = await apiInstance.post("/cvs/preview", {
-        templateId: selectedCV.id,
+        templateId: selectedTemplateId,
         ...selectedCV,
       });
 
@@ -37,7 +39,9 @@ export default function PreviewPage() {
   }
 
   async function handleSubmitPdf() {
-    if (!selectedCV) return;
+    if (!selectedCV || !selectedTemplateId) {
+      return toast.error("Please select a CV and a template.");
+    }
 
     setIsPdfLoading(true);
 
@@ -45,7 +49,7 @@ export default function PreviewPage() {
       const response = await apiInstance.post<Blob>(
         "/cvs/pdf",
         {
-          templateId: selectedCV.id,
+          templateId: selectedTemplateId,
           ...selectedCV,
         },
         {
@@ -74,6 +78,8 @@ export default function PreviewPage() {
     }
   }
 
+  const isAnyLoading = isPreviewLoading || isPdfLoading;
+
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-950 px-6 py-10 text-zinc-100">
       <title>Preview - CV Maker</title>
@@ -87,6 +93,8 @@ export default function PreviewPage() {
           onChange={(e) => {
             const cv = cVs.find((cv) => cv.id === e.target.value) || null;
             setSelectedCV(cv);
+
+            handleSubmitPreview(cv);
           }}
         >
           <option value="" disabled>
@@ -99,13 +107,23 @@ export default function PreviewPage() {
           ))}
         </select>
 
-        <button
-          className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
-          onClick={handleSubmitPreview}
-          disabled={!selectedCV || isAnyLoading}
+        <select
+          className="w-full rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-zinc-100 focus:border-indigo-500 focus:outline-none"
+          value={selectedTemplateId ?? ""}
+          onChange={(e) => {
+            const templateId = e.target.value as TemplateIds;
+            setSelectedTemplateId(templateId);
+
+            handleSubmitPreview(selectedCV);
+          }}
         >
-          {isPreviewLoading ? "Generating preview..." : "Preview CV"}
-        </button>
+          <option value="" disabled>
+            Select a template
+          </option>
+          <option value="template1">Template 1</option>
+          <option value="template2">Template 2</option>
+          <option value="template3">Template 3</option>
+        </select>
 
         <button
           className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"

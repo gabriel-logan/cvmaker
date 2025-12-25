@@ -81,4 +81,4 @@ export interface CV {
   updatedAt: number;
 }
 
-export type TemplateIds = "template1" | "template2" | "template3";
+export type TemplateIds = "template1" | "template2" | "template3" | "template4";

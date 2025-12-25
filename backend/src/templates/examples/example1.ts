@@ -1,4 +1,4 @@
-import type { CreateCvDto } from "src/cvs/dto/create-cv.dto";
+import type { CreateCvDto } from "src/cvs-module/dto/create-cv.dto";
 
 export function cvExample1Template(data: CreateCvDto): string {
   const skills = data.skills ?? [];

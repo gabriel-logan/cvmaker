@@ -5,7 +5,7 @@ import { join } from "path";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import envGlobal from "./configs/env.global";
-import { CvsModule } from "./cvs/cvs.module";
+import { CvsModule } from "./cvs-module/cvs.module";
 
 @Module({
   imports: [

@@ -344,7 +344,6 @@ export class CreateCVDto {
   @IsOptional()
   public nickname: string | null;
 
-  /*
   @ApiProperty({
     type: String,
     nullable: true,
@@ -353,7 +352,6 @@ export class CreateCVDto {
   @IsNotBlankString()
   @IsOptional()
   public avatar: string | null;
-  */ // Temporarily removed avatar field
 
   @ApiProperty()
   @ValidateNested()

@@ -332,6 +332,14 @@ export function cvExample3Template(dto: CreateCVDto): string {
 <!-- HEADER BANNER -->
 <div class="header-banner">
   <div class="header-content">
+    ${
+      dto.avatar
+        ? `
+    <div class="avatar-section">
+      <img src="${dto.avatar}" class="avatar" alt="${fullName}" />
+    </div>`
+        : ""
+    }
     <div class="header-info">
       <h1 class="full-name">${fullName}</h1>
       ${dto.nickname ? `<div class="nickname-header">"${dto.nickname}"</div>` : ""}

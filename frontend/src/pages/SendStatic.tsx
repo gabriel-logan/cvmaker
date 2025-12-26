@@ -37,13 +37,11 @@ export default function SendStaticPage() {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "cv.pdf");
+      link.setAttribute("download", "resume.pdf");
       document.body.appendChild(link);
       link.click();
       link.parentNode?.removeChild(link);
       window.URL.revokeObjectURL(url);
-
-      setFile(null);
 
       toast.success("PDF generated successfully from static HTML template!");
     } catch (error) {
@@ -92,7 +90,7 @@ export default function SendStaticPage() {
             className="mt-4 rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700"
             disabled={isLoading}
           >
-            Download PDF
+            {isLoading ? "Generating PDF..." : "Download PDF"}
           </button>
         </form>
       </div>

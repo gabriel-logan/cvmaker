@@ -60,7 +60,6 @@ export class CvsController {
     @UploadedFile(
       new ParseFilePipeBuilder()
         .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 }) // 5 MB
-        .addFileTypeValidator({ fileType: /(html|htm)$/ })
         .build({
           fileIsRequired: true,
         }),

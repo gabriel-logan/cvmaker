@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 
@@ -5,6 +6,8 @@ import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
 
 export default function HomePage() {
+  const { t } = useTranslation();
+
   const { cVs, deleteCV } = useCVsStore();
 
   function handleDelete(cVId: CV["id"]) {
@@ -19,7 +22,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">
-      <title>Home - CV Maker</title>
+      <title>{t("Home")} - CV Maker</title>
 
       <div className="mx-auto max-w-2xl space-y-8">
         <div className="rounded-lg border border-indigo-500/40 bg-indigo-500/10 px-4 py-3 text-sm font-medium text-indigo-300">
@@ -46,7 +49,7 @@ export default function HomePage() {
 
         <div className="space-y-6 rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-semibold">Your CVs</h1>
+            <h1 className="text-2xl font-semibold">{t("YourCV's")}</h1>
 
             <Link
               to="/create"

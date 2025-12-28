@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import FormSection from "../components/FormSection";
 import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
-import { generateTimeBasedId } from "../utils";
+import { generateTimeBasedId } from "../utils/generals";
 
 export default function CreateCVPage() {
   const { t } = useTranslation();

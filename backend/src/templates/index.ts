@@ -4,25 +4,8 @@ import { cvExample1Template } from "./examples/example1";
 import { cvExample2Template } from "./examples/example2";
 import { cvExample3Template } from "./examples/example3";
 import { cvExample4Template } from "./examples/example4";
-
-export default function cvTemplates(dto: CreateCVDto): string {
-  switch (dto.templateId) {
-    case "template1":
-      return cvExample1Template(dto);
-
-    case "template2":
-      return cvExample2Template(dto);
-
-    case "template3":
-      return cvExample3Template(dto);
-
-    case "template4":
-      return cvExample4Template(dto);
-
-    default:
-      return defaultHtml;
-  }
-}
+import type { Locale, LocaleContent } from "./locales";
+import getTranslationsByLocale from "./locales";
 
 const defaultHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -37,3 +20,24 @@ const defaultHtml = `<!DOCTYPE html>
   </body>
 </html>
 `;
+
+export default function cvTemplates(dto: CreateCVDto, locale: Locale): string {
+  const localizedContent: LocaleContent = getTranslationsByLocale(locale);
+
+  switch (dto.templateId) {
+    case "template1":
+      return cvExample1Template(dto, localizedContent);
+
+    case "template2":
+      return cvExample2Template(dto, localizedContent);
+
+    case "template3":
+      return cvExample3Template(dto, localizedContent);
+
+    case "template4":
+      return cvExample4Template(dto, localizedContent);
+
+    default:
+      return defaultHtml;
+  }
+}

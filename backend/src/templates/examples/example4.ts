@@ -1,6 +1,11 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 
-export function cvExample4Template(dto: CreateCVDto): string {
+import type { LocaleContent } from "../locales";
+
+export function cvExample4Template(
+  dto: CreateCVDto,
+  localeContent: LocaleContent,
+): string {
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
     .join(" ");
@@ -453,7 +458,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Sobre</h2>
+    <h2>${localeContent.About}</h2>
   </div>
   <div class="text-block">${dto.summary}</div>
 </div>`
@@ -466,7 +471,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Objetivos</h2>
+    <h2>${localeContent.Objectives}</h2>
   </div>
   <div class="text-block">${dto.objectives}</div>
 </div>`
@@ -479,7 +484,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Experiência</h2>
+    <h2>${localeContent.Experience}</h2>
   </div>
   <div class="timeline">
     ${dto.experience
@@ -511,7 +516,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Educação</h2>
+    <h2>${localeContent.Education}</h2>
   </div>
   <div class="timeline">
     ${dto.education
@@ -544,7 +549,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Habilidades</h2>
+    <h2>${localeContent.Skills}</h2>
   </div>
   <div class="card-grid">
     ${dto.skills
@@ -567,7 +572,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Idiomas</h2>
+    <h2>${localeContent.Languages}</h2>
   </div>
   <div class="badge-container">
     ${dto.languages
@@ -590,7 +595,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Projetos</h2>
+    <h2>${localeContent.Projects}</h2>
   </div>
   <div class="timeline">
     ${dto.projects
@@ -622,7 +627,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Certificações</h2>
+    <h2>${localeContent.Certifications}</h2>
   </div>
   <div class="timeline">
     ${dto.certifications
@@ -654,7 +659,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Outras Experiências</h2>
+    <h2>${localeContent.OtherExperiences}</h2>
   </div>
   <div class="timeline">
     ${dto.otherExperiences
@@ -685,7 +690,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Hobbies</h2>
+    <h2>${localeContent.Hobbies}</h2>
   </div>
   <div class="badge-container">
     ${dto.hobbies
@@ -708,7 +713,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Links</h2>
+    <h2>${localeContent.Links}</h2>
   </div>
   ${dto.links
     .map(
@@ -729,7 +734,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Referências</h2>
+    <h2>${localeContent.References}</h2>
   </div>
   ${dto.references
     .map(
@@ -750,7 +755,7 @@ ${
     ? `
 <div class="content-section">
   <div class="section-heading">
-    <h2>Informações Adicionais</h2>
+    <h2>${localeContent.AdditionalInformation}</h2>
   </div>
   <div class="text-block">${dto.additionalInfo}</div>
 </div>`
@@ -761,7 +766,7 @@ ${
 
 <!-- FOOTER -->
 <div class="footer">
-  CV ID: ${dto.id} • Criado em: ${date(dto.createdAt)} • Atualizado em: ${date(dto.updatedAt)}
+  CV ID: ${dto.id} • ${localeContent.CreatedAt}: ${date(dto.createdAt)} • ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
 </div>
 
 </div>

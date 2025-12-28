@@ -1,6 +1,11 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 
-export function cvExample2Template(dto: CreateCVDto): string {
+import type { LocaleContent } from "../locales";
+
+export function cvExample2Template(
+  dto: CreateCVDto,
+  localeContent: LocaleContent,
+): string {
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
     .join(" ");
@@ -230,7 +235,7 @@ ${
   dto.summary
     ? `
 <section>
-  <h2 class="section-title">Resumo Profissional</h2>
+  <h2 class="section-title">${localeContent.Summary}</h2>
   <div class="section-content">${dto.summary}</div>
 </section>`
     : ""
@@ -241,7 +246,7 @@ ${
   dto.objectives
     ? `
 <section>
-  <h2 class="section-title">Objetivos</h2>
+  <h2 class="section-title">${localeContent.Objectives}</h2>
   <div class="section-content">${dto.objectives}</div>
 </section>`
     : ""
@@ -252,7 +257,7 @@ ${
   dto.experience.length
     ? `
 <section>
-  <h2 class="section-title">Experiência Profissional</h2>
+  <h2 class="section-title">${localeContent.Experience}</h2>
   ${dto.experience
     .map(
       (e) => `
@@ -278,7 +283,7 @@ ${
   dto.education.length
     ? `
 <section>
-  <h2 class="section-title">Formação Acadêmica</h2>
+  <h2 class="section-title">${localeContent.Education}</h2>
   ${dto.education
     .map(
       (e) => `
@@ -305,7 +310,7 @@ ${
   dto.skills.length || dto.languages.length
     ? `
 <section>
-  <h2 class="section-title">Habilidades e Idiomas</h2>
+  <h2 class="section-title">${localeContent.SkillsAndLanguages}</h2>
   <div class="two-column">
     ${
       dto.skills.length
@@ -351,7 +356,7 @@ ${
   dto.projects.length
     ? `
 <section>
-  <h2 class="section-title">Projetos</h2>
+  <h2 class="section-title">${localeContent.Projects}</h2>
   ${dto.projects
     .map(
       (p) => `
@@ -377,7 +382,7 @@ ${
   dto.certifications.length
     ? `
 <section>
-  <h2 class="section-title">Certificações</h2>
+  <h2 class="section-title">${localeContent.Certifications}</h2>
   ${dto.certifications
     .map(
       (c) => `
@@ -403,7 +408,7 @@ ${
   dto.otherExperiences.length
     ? `
 <section>
-  <h2 class="section-title">Outras Experiências</h2>
+  <h2 class="section-title">${localeContent.OtherExperiences}</h2>
   ${dto.otherExperiences
     .map(
       (o) => `
@@ -428,7 +433,7 @@ ${
   dto.hobbies.length
     ? `
 <section>
-  <h2 class="section-title">Hobbies e Interesses</h2>
+  <h2 class="section-title">${localeContent.Hobbies}</h2>
   <div class="section-content">
     ${dto.hobbies.map((h) => h.description).join(" • ")}
   </div>
@@ -441,7 +446,7 @@ ${
   dto.links.length
     ? `
 <section>
-  <h2 class="section-title">Links</h2>
+  <h2 class="section-title">${localeContent.Links}</h2>
   <ul class="links-list">
     ${dto.links.map((l) => `<li><a href="${l.url}">${l.label}</a></li>`).join("")}
   </ul>
@@ -454,7 +459,7 @@ ${
   dto.references.length
     ? `
 <section>
-  <h2 class="section-title">Referências</h2>
+  <h2 class="section-title">${localeContent.References}</h2>
   ${dto.references
     .map(
       (r) => `
@@ -474,14 +479,14 @@ ${
   dto.additionalInfo
     ? `
 <section>
-  <h2 class="section-title">Informações Adicionais</h2>
+  <h2 class="section-title">${localeContent.AdditionalInformation}</h2>
   <div class="section-content">${dto.additionalInfo}</div>
 </section>`
     : ""
 }
 
 <footer>
-  CV ID: ${dto.id} | Criado em: ${date(dto.createdAt)} | Atualizado em: ${date(dto.updatedAt)}
+  CV ID: ${dto.id} | ${localeContent.CreatedAt}: ${date(dto.createdAt)} | ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
 </footer>
 
 </div>

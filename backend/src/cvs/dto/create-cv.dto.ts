@@ -311,6 +311,12 @@ export class CreateCVDto {
   public templateId: TemplateIds;
 
   @ApiProperty()
+  @IsNotBlankString({
+    message: 'Locale must be a valid string like "en" or "pt"',
+  })
+  public locale: string;
+
+  @ApiProperty()
   @IsNotBlankString()
   public id: string;
 

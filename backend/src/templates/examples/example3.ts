@@ -1,6 +1,11 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 
-export function cvExample3Template(dto: CreateCVDto): string {
+import type { LocaleContent } from "../locales";
+
+export function cvExample3Template(
+  dto: CreateCVDto,
+  localeContent: LocaleContent,
+): string {
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
     .join(" ");
@@ -362,7 +367,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Resumo</h2>
+    <h2 class="section-title">${localeContent.Summary}</h2>
   </div>
   <div class="entry-description">${dto.summary}</div>
 </div>`
@@ -376,7 +381,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Objetivos</h2>
+    <h2 class="section-title">${localeContent.Objectives}</h2>
   </div>
   <div class="entry-description">${dto.objectives}</div>
 </div>`
@@ -390,7 +395,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Experiência</h2>
+    <h2 class="section-title">${localeContent.Experience}</h2>
   </div>
   ${dto.experience
     .map(
@@ -419,7 +424,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Educação</h2>
+    <h2 class="section-title">${localeContent.Education}</h2>
   </div>
   ${dto.education
     .map(
@@ -449,7 +454,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Habilidades</h2>
+    <h2 class="section-title">${localeContent.Skills}</h2>
   </div>
   <div class="skills-grid">
     ${dto.skills
@@ -473,7 +478,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Idiomas</h2>
+    <h2 class="section-title">${localeContent.Languages}</h2>
   </div>
   <div class="languages-list">
     ${dto.languages
@@ -496,7 +501,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Projetos</h2>
+    <h2 class="section-title">${localeContent.Projects}</h2>
   </div>
   ${dto.projects
     .map(
@@ -525,7 +530,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Certificações</h2>
+    <h2 class="section-title">${localeContent.Certifications}</h2>
   </div>
   ${dto.certifications
     .map(
@@ -554,7 +559,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Outras Experiências</h2>
+    <h2 class="section-title">${localeContent.OtherExperiences}</h2>
   </div>
   ${dto.otherExperiences
     .map(
@@ -582,7 +587,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Hobbies</h2>
+    <h2 class="section-title">${localeContent.Hobbies}</h2>
   </div>
   <div class="hobbies-list">
     ${dto.hobbies.map((h) => `<div class="hobby-tag">${h.description}</div>`).join("")}
@@ -598,7 +603,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Links</h2>
+    <h2 class="section-title">${localeContent.Links}</h2>
   </div>
   <div class="links-grid">
     ${dto.links.map((l) => `<a href="${l.url}" class="link-item">${l.label}</a>`).join("")}
@@ -614,7 +619,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Referências</h2>
+    <h2 class="section-title">${localeContent.References}</h2>
   </div>
   ${dto.references
     .map(
@@ -639,7 +644,7 @@ ${
 <div class="section">
   <div class="section-header">
     <div class="section-icon"></div>
-    <h2 class="section-title">Informações Adicionais</h2>
+    <h2 class="section-title">${localeContent.AdditionalInformation}</h2>
   </div>
   <div class="entry-description">${dto.additionalInfo}</div>
 </div>`
@@ -650,7 +655,7 @@ ${
 
 <!-- FOOTER -->
 <div class="footer">
-  CV ID: ${dto.id} | Criado: ${date(dto.createdAt)} | Atualizado: ${date(dto.updatedAt)}
+  CV ID: ${dto.id} | ${localeContent.CreatedAt}: ${date(dto.createdAt)} | ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
 </div>
 
 </div>

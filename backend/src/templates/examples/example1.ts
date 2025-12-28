@@ -1,6 +1,11 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 
-export function cvExample1Template(dto: CreateCVDto): string {
+import type { LocaleContent } from "../locales";
+
+export function cvExample1Template(
+  dto: CreateCVDto,
+  localeContent: LocaleContent,
+): string {
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
     .join(" ");
@@ -160,7 +165,7 @@ export function cvExample1Template(dto: CreateCVDto): string {
   ${dto.nickname ? `<div class="nickname">${dto.nickname}</div>` : ""}
 
   <div class="side-section">
-    <h3>Contato</h3>
+    <h3>${localeContent.Contacts}</h3>
     ${dto.contacts.email ? `<p>${dto.contacts.email}</p>` : ""}
     ${dto.contacts.phone ? `<p>${dto.contacts.phone}</p>` : ""}
     ${dto.address ? `<p>${dto.address}</p>` : ""}
@@ -170,7 +175,7 @@ export function cvExample1Template(dto: CreateCVDto): string {
     dto.skills.length
       ? `
     <div class="side-section">
-      <h3>Habilidades</h3>
+      <h3>${localeContent.Skills}</h3>
       ${dto.skills
         .map((s) => `<p>${s.name}${s.level ? ` • ${s.level}` : ""}</p>`)
         .join("")}
@@ -182,7 +187,7 @@ export function cvExample1Template(dto: CreateCVDto): string {
     dto.languages.length
       ? `
     <div class="side-section">
-      <h3>Idiomas</h3>
+      <h3>${localeContent.Languages}</h3>
       ${dto.languages
         .map((l) => `<p>${l.name} • ${l.proficiency}</p>`)
         .join("")}
@@ -194,7 +199,7 @@ export function cvExample1Template(dto: CreateCVDto): string {
     dto.hobbies.length
       ? `
     <div class="side-section">
-      <h3>Hobbies</h3>
+      <h3>${localeContent.Hobbies}</h3>
       ${dto.hobbies.map((h) => `<p>${h.description}</p>`).join("")}
     </div>`
       : ""
@@ -204,7 +209,7 @@ export function cvExample1Template(dto: CreateCVDto): string {
     dto.links.length
       ? `
     <div class="side-section">
-      <h3>Links</h3>
+      <h3>${localeContent.Links}</h3>
       ${dto.links.map((l) => `<a href="${l.url}">${l.label}</a>`).join("<br/>")}
     </div>`
       : ""
@@ -218,7 +223,7 @@ ${
   dto.summary
     ? `
 <section>
-  <h2>Resumo</h2>
+  <h2>${localeContent.Summary}</h2>
   <p>${dto.summary}</p>
 </section>`
     : ""
@@ -228,7 +233,7 @@ ${
   dto.objectives
     ? `
 <section>
-  <h2>Objetivos</h2>
+  <h2>${localeContent.Objectives}</h2>
   <p>${dto.objectives}</p>
 </section>`
     : ""
@@ -238,7 +243,7 @@ ${
   dto.experience.length
     ? `
 <section>
-  <h2>Experiência Profissional</h2>
+  <h2>${localeContent.Experience}</h2>
   ${dto.experience
     .map(
       (e) => `
@@ -260,7 +265,7 @@ ${
   dto.education.length
     ? `
 <section>
-  <h2>Formação Acadêmica</h2>
+  <h2>${localeContent.Education}</h2>
   ${dto.education
     .map(
       (e) => `
@@ -271,7 +276,7 @@ ${
         ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
         ${e.location ? ` | ${e.location}` : ""}
       </div>
-      ${e.grade ? `<p>Nota: ${e.grade}</p>` : ""}
+      ${e.grade ? `<p>${localeContent.Grade}: ${e.grade}</p>` : ""}
       ${e.description ? `<p>${e.description}</p>` : ""}
     </div>`,
     )
@@ -284,7 +289,7 @@ ${
   dto.projects.length
     ? `
 <section>
-  <h2>Projetos</h2>
+  <h2>${localeContent.Projects}</h2>
   ${dto.projects
     .map(
       (p) => `
@@ -307,7 +312,7 @@ ${
   dto.certifications.length
     ? `
 <section>
-  <h2>Certificações</h2>
+  <h2>${localeContent.Certifications}</h2>
   ${dto.certifications
     .map(
       (c) => `
@@ -331,7 +336,7 @@ ${
   dto.otherExperiences.length
     ? `
 <section>
-  <h2>Outras Experiências</h2>
+  <h2>${localeContent.OtherExperiences}</h2>
   ${dto.otherExperiences
     .map(
       (o) => `
@@ -353,7 +358,7 @@ ${
   dto.references.length
     ? `
 <section>
-  <h2>Referências</h2>
+  <h2>${localeContent.References}</h2>
   ${dto.references
     .map(
       (r) => `
@@ -372,7 +377,7 @@ ${
   dto.additionalInfo
     ? `
 <section>
-  <h2>Informações Adicionais</h2>
+  <h2>${localeContent.AdditionalInformation}</h2>
   <p>${dto.additionalInfo}</p>
 </section>`
     : ""
@@ -380,7 +385,7 @@ ${
 
 <footer>
   CV ID: ${dto.id} <br/>
-  Criado em: ${date(dto.createdAt)} | Atualizado em: ${date(dto.updatedAt)}
+  ${localeContent.CreatedAt}: ${date(dto.createdAt)} | ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
 </footer>
 
 </main>

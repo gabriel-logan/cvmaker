@@ -34,26 +34,32 @@ export function cvExample1Template(
     font-family: "Inter", Arial, sans-serif;
   }
 
+  html,
   body {
     margin: 0;
     padding: 0;
     background: white;
     font-size: 13px;
     line-height: 1.4;
+    height: auto;
   }
 
   .cv {
-    display: grid;
-    grid-template-columns: 300px 1fr;
+    display: flex;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
   }
 
-  /* SIDEBAR */
   .sidebar {
+    width: 300px;
     background: var(--primary);
     color: #e5e7eb;
     padding: 20px 18px;
+    align-self: stretch;
+  }
+
+  .sidebar * {
+    break-inside: avoid;
   }
 
   .avatar {
@@ -95,10 +101,16 @@ export function cvExample1Template(
     text-decoration: none;
   }
 
-  /* CONTENT */
   .content {
+    flex: 1;
     padding: 24px 28px;
     color: var(--primary);
+    background: white;
+  }
+
+  section,
+  .item {
+    break-inside: avoid;
   }
 
   section {
@@ -110,6 +122,7 @@ export function cvExample1Template(
     margin-bottom: 10px;
     border-bottom: 2px solid #e5e7eb;
     padding-bottom: 4px;
+    break-after: avoid;
   }
 
   .item {
@@ -150,6 +163,11 @@ export function cvExample1Template(
     margin-top: 20px;
     border-top: 1px solid #e5e7eb;
     padding-top: 8px;
+    break-inside: avoid;
+  }
+
+  @page {
+    margin: 0;
   }
 </style>
 </head>
@@ -247,14 +265,14 @@ ${
   ${dto.experience
     .map(
       (e) => `
-    <div class="item">
-      <div class="item-title">${e.position} — ${e.company}</div>
-      <div class="dates">
-        ${e.startDate} ${e.endDate ? `– ${e.endDate}` : "– Atual"}
-        ${e.location ? ` | ${e.location}` : ""}
-      </div>
-      ${e.responsibilities ? `<p>${e.responsibilities}</p>` : ""}
-    </div>`,
+  <div class="item">
+    <div class="item-title">${e.position} — ${e.company}</div>
+    <div class="dates">
+      ${e.startDate} ${e.endDate ? `– ${e.endDate}` : "– Atual"}
+      ${e.location ? ` | ${e.location}` : ""}
+    </div>
+    ${e.responsibilities ? `<p>${e.responsibilities}</p>` : ""}
+  </div>`,
     )
     .join("")}
 </section>`
@@ -269,16 +287,16 @@ ${
   ${dto.education
     .map(
       (e) => `
-    <div class="item">
-      <div class="item-title">${e.degree} em ${e.fieldOfStudy}</div>
-      <div class="item-subtitle">${e.institution}</div>
-      <div class="dates">
-        ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
-        ${e.location ? ` | ${e.location}` : ""}
-      </div>
-      ${e.grade ? `<p>${localeContent.Grade}: ${e.grade}</p>` : ""}
-      ${e.description ? `<p>${e.description}</p>` : ""}
-    </div>`,
+  <div class="item">
+    <div class="item-title">${e.degree} em ${e.fieldOfStudy}</div>
+    <div class="item-subtitle">${e.institution}</div>
+    <div class="dates">
+      ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
+      ${e.location ? ` | ${e.location}` : ""}
+    </div>
+    ${e.grade ? `<p>${localeContent.Grade}: ${e.grade}</p>` : ""}
+    ${e.description ? `<p>${e.description}</p>` : ""}
+  </div>`,
     )
     .join("")}
 </section>`
@@ -384,8 +402,9 @@ ${
 }
 
 <footer>
-  CV ID: ${dto.id} <br/>
-  ${localeContent.CreatedAt}: ${date(dto.createdAt)} | ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
+  CV ID: ${dto.id}<br/>
+  ${localeContent.CreatedAt}: ${date(dto.createdAt)} |
+  ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
 </footer>
 
 </main>

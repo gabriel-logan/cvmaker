@@ -7,3 +7,7 @@ button {
 a {
   cursor: pointer;
 }
+
+select {
+  cursor: pointer;
+}

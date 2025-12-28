@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 
@@ -7,6 +8,8 @@ import { useCVsStore } from "../stores/cVsStore";
 import type { CV, TemplateIds } from "../types";
 
 export default function PreviewPage() {
+  const { t } = useTranslation();
+
   const [html, setHtml] = useState<string>("");
 
   const [selectedCV, setSelectedCV] = useState<CV | null>(null);
@@ -39,10 +42,10 @@ export default function PreviewPage() {
       console.error("Error generating CV preview:", error);
       if (error instanceof AxiosError) {
         toast.error(
-          error.response?.data.message || "Failed to generate CV preview.",
+          error.response?.data.message || t("FailedToGeneratePreview"),
         );
       } else {
-        toast.error("Failed to generate CV preview. Please try again.");
+        toast.error(t("FailedToGeneratePreview"));
       }
     } finally {
       setIsLoading(false);
@@ -51,7 +54,7 @@ export default function PreviewPage() {
 
   async function handleSubmitPdf() {
     if (!selectedCV || !selectedTemplateId) {
-      return toast.error("Please select a CV and a template.");
+      return toast.error(t("PleaseSelectACVAndTemplate"));
     }
 
     setIsLoading(true);
@@ -95,11 +98,9 @@ export default function PreviewPage() {
     } catch (error) {
       console.error("Error generating CV pdf:", error);
       if (error instanceof AxiosError) {
-        toast.error(
-          error.response?.data.message || "Failed to generate CV PDF.",
-        );
+        toast.error(error.response?.data.message || t("FailedToGeneratePDF"));
       } else {
-        toast.error("Failed to generate CV PDF. Please try again.");
+        toast.error(t("FailedToGeneratePDF"));
       }
     } finally {
       setIsLoading(false);
@@ -109,12 +110,12 @@ export default function PreviewPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-950 px-6 py-10 text-zinc-100">
-      <title>Preview - CV Maker</title>
+      <title>{t("PreviewPageTitle")} - CV Maker</title>
 
       {isLoading && downloadProgress > 0 && (
         <div className="z-50 mt-2 w-full">
           <div className="mb-1 flex justify-between text-xs text-zinc-400">
-            <span>Downloading PDF</span>
+            <span>{t("DownloadingPDF")}</span>
             <span>{downloadProgress}%</span>
           </div>
 
@@ -127,7 +128,8 @@ export default function PreviewPage() {
         </div>
       )}
 
-      <h1 className="text-3xl font-semibold">Preview Page</h1>
+      <h1 className="text-3xl font-semibold">{t("PreviewPageTitle")}</h1>
+      <p className="mt-2 text-zinc-400">{t("PreviewPageDescription")}</p>
 
       <div className="mt-6 flex w-full max-w-md flex-col gap-4">
         <select
@@ -141,7 +143,7 @@ export default function PreviewPage() {
           }}
         >
           <option value="" disabled>
-            Select a CV to preview
+            {t("SelectACVToPreview")}
           </option>
           {cVs.map((cv) => (
             <option key={cv.id} value={cv.id}>
@@ -161,7 +163,7 @@ export default function PreviewPage() {
           }}
         >
           <option value="" disabled>
-            Select a template
+            {t("SelectATemplate")}
           </option>
           <option value="template1">Template 1</option>
           <option value="template2">Template 2</option>
@@ -174,7 +176,7 @@ export default function PreviewPage() {
           onClick={handleSubmitPdf}
           disabled={!selectedCV || isLoading}
         >
-          {isLoading ? "Generating PDF..." : "Download PDF"}
+          {isLoading ? t("GeneratingPDFDotDotDot") : t("DownloadPDF")}
         </button>
       </div>
 
@@ -186,12 +188,12 @@ export default function PreviewPage() {
                 <>
                   <div className="h-10 w-10 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent" />
                   <span className="text-sm text-zinc-300">
-                    Generating preview...
+                    {t("GeneratingPreviewDotDotDot")}
                   </span>
                 </>
               ) : (
                 <span className="text-sm text-zinc-300">
-                  Preview will appear here
+                  {t("PreviewWillAppearHere")}
                 </span>
               )}
             </div>

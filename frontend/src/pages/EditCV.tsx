@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 
@@ -8,6 +9,8 @@ import type { CV } from "../types";
 import NotFoundPage from "./NotFound";
 
 export default function EditCVPage() {
+  const { t } = useTranslation();
+
   const { id } = useParams<{ id: string }>();
   const { cVs, updateCV, deleteCV } = useCVsStore();
 
@@ -72,34 +75,34 @@ export default function EditCVPage() {
       updatedAt: Date.now(),
     });
 
-    toast.success("CV updated successfully.");
+    toast.success(t("CVUpdatedSuccessfully"));
   }
 
   function handleDelete(cvFindedId: CV["id"]) {
-    if (confirm("Are you sure you want to delete this CV?")) {
+    if (confirm(t("DeleteCVConfirmation", { cvName: cV.cVName }))) {
       deleteCV(cvFindedId);
 
-      toast.success("CV deleted successfully.");
+      toast.success(t("DeleteCVSuccess"));
 
       navigate("/");
     } else {
-      toast.info("CV deletion cancelled.", { autoClose: 1000 });
+      toast.info(t("DeleteCVCancelled"), { autoClose: 1000 });
     }
   }
 
   if (!cVFinded) {
     return (
       <NotFoundPage
-        title="CV Not Found"
-        subtitle="CV does not exist"
-        description="The CV you are trying to edit does not exist."
+        title={t("CVNotFound")}
+        subtitle={t("CVDoesNotExist")}
+        description={t("TheCVYouAreLookingForDoesNotExist")}
       />
     );
   }
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">
-      <title>Edit CV - CV Maker</title>
+      <title>{t("EditCV")} - CV Maker</title>
 
       <div className="mx-auto max-w-2xl space-y-8 sm:max-w-5xl">
         <div className="rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm font-medium text-yellow-300">
@@ -110,12 +113,12 @@ export default function EditCVPage() {
         <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">
           <div>
             <div className="mb-6 flex items-center justify-between">
-              <h1 className="text-2xl font-semibold">Edit CV</h1>
+              <h1 className="text-2xl font-semibold">{t("EditCV")}</h1>
               <button
                 onClick={() => handleDelete(cVFinded.id)}
                 className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-500"
               >
-                Delete CV
+                {t("DeleteCV")}
               </button>
             </div>
           </div>
@@ -124,7 +127,7 @@ export default function EditCVPage() {
             cV={cV}
             setCV={setCV}
             handleSubmit={(e) => handleSubmit(e, cVFinded.id)}
-            buttonTitle="Update CV Data"
+            buttonTitle={t("UpdateCVData")}
           />
         </div>
       </div>

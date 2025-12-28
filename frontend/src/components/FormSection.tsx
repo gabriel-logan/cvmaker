@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import type { CV, locale } from "../types";
 import RepeatableSection from "./RepeatableSection";
 
@@ -14,10 +16,12 @@ export default function FormSection({
   handleSubmit,
   buttonTitle = "Submit",
 }: FormSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="text-lg font-semibold text-zinc-200">
-        <label>CV Language</label>
+        <label>{t("CVLanguage")}</label>
         <select
           value={cV.locale}
           onChange={(e) => setCV({ ...cV, locale: e.target.value as locale })}
@@ -30,7 +34,7 @@ export default function FormSection({
 
       <div>
         <label className="mb-1 block text-sm text-zinc-400">
-          CV name <span className="text-red-500">*</span>
+          {t("CVName")} <span className="text-red-500">*</span>
         </label>
         <input
           value={cV.cVName}
@@ -44,7 +48,7 @@ export default function FormSection({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="mb-1 block text-sm text-zinc-400">
-            First name <span className="text-red-500">*</span>
+            {t("FirstName")} <span className="text-red-500">*</span>
           </label>
           <input
             value={cV.firstName}
@@ -57,7 +61,7 @@ export default function FormSection({
 
         <div>
           <label className="mb-1 block text-sm text-zinc-400">
-            Last name <span className="text-red-500">*</span>
+            {t("LastName")} <span className="text-red-500">*</span>
           </label>
           <input
             value={cV.lastName}
@@ -70,7 +74,9 @@ export default function FormSection({
       </div>
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">Middle name</label>
+        <label className="mb-1 block text-sm text-zinc-400">
+          {t("MiddleName")}
+        </label>
         <input
           value={cV.middleName || ""}
           onChange={(e) => setCV({ ...cV, middleName: e.target.value || null })}
@@ -80,7 +86,9 @@ export default function FormSection({
       </div>
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">Nickname</label>
+        <label className="mb-1 block text-sm text-zinc-400">
+          {t("Nickname")}
+        </label>
         <input
           value={cV.nickname || ""}
           onChange={(e) => setCV({ ...cV, nickname: e.target.value || null })}
@@ -133,9 +141,7 @@ export default function FormSection({
       */}
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">
-          Contact Email
-        </label>
+        <label className="mb-1 block text-sm text-zinc-400">{t("Email")}</label>
         <input
           type="email"
           value={cV.contacts.email || ""}
@@ -151,9 +157,7 @@ export default function FormSection({
       </div>
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">
-          Contact Phone
-        </label>
+        <label className="mb-1 block text-sm text-zinc-400">{t("Phone")}</label>
         <input
           type="tel"
           value={cV.contacts.phone || ""}
@@ -169,7 +173,9 @@ export default function FormSection({
       </div>
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">Address</label>
+        <label className="mb-1 block text-sm text-zinc-400">
+          {t("Address")}
+        </label>
         <input
           value={cV.address || ""}
           onChange={(e) => setCV({ ...cV, address: e.target.value || null })}
@@ -179,7 +185,9 @@ export default function FormSection({
       </div>
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">Summary</label>
+        <label className="mb-1 block text-sm text-zinc-400">
+          {t("Summary")}
+        </label>
         <textarea
           value={cV.summary || ""}
           onChange={(e) => setCV({ ...cV, summary: e.target.value || null })}
@@ -189,7 +197,9 @@ export default function FormSection({
       </div>
 
       <div>
-        <label className="mb-1 block text-sm text-zinc-400">Objectives</label>
+        <label className="mb-1 block text-sm text-zinc-400">
+          {t("Objectives")}
+        </label>
         <textarea
           value={cV.objectives || ""}
           onChange={(e) => setCV({ ...cV, objectives: e.target.value || null })}
@@ -203,7 +213,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["education"][number]>
-        title="Education"
+        title={t("Education")}
         items={cV.education}
         onChange={(education) => setCV({ ...cV, education })}
         emptyItem={{
@@ -282,7 +292,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["experience"][number]>
-        title="Experience"
+        title={t("Experience")}
         items={cV.experience}
         onChange={(experience) => setCV({ ...cV, experience })}
         emptyItem={{
@@ -345,7 +355,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["skills"][number]>
-        title="Skills"
+        title={t("Skills")}
         items={cV.skills}
         onChange={(skills) => setCV({ ...cV, skills })}
         emptyItem={{ name: "", level: null }}
@@ -372,7 +382,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["projects"][number]>
-        title="Projects"
+        title={t("Projects")}
         items={cV.projects}
         onChange={(projects) => setCV({ ...cV, projects })}
         emptyItem={{
@@ -435,7 +445,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["certifications"][number]>
-        title="Certifications"
+        title={t("Certifications")}
         items={cV.certifications}
         onChange={(certifications) => setCV({ ...cV, certifications })}
         emptyItem={{
@@ -497,7 +507,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["languages"][number]>
-        title="Languages"
+        title={t("Languages")}
         items={cV.languages}
         onChange={(languages) => setCV({ ...cV, languages })}
         emptyItem={{ name: "", proficiency: "" }}
@@ -524,7 +534,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["hobbies"][number]>
-        title="Hobbies"
+        title={t("Hobbies")}
         items={cV.hobbies}
         onChange={(hobbies) => setCV({ ...cV, hobbies })}
         emptyItem={{ description: "" }}
@@ -545,14 +555,14 @@ export default function FormSection({
 
       <div>
         <label className="mb-1 block text-sm text-zinc-400">
-          Additional Information
+          {t("AdditionalInfo")}
         </label>
         <textarea
           value={cV.additionalInfo || ""}
           onChange={(e) =>
             setCV({ ...cV, additionalInfo: e.target.value || null })
           }
-          placeholder="Any additional information"
+          placeholder={t("AnyAdditionalInfo")}
           className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2"
         />
       </div>
@@ -562,7 +572,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["otherExperiences"][number]>
-        title="Other Experiences"
+        title={t("OtherExperiences")}
         items={cV.otherExperiences}
         onChange={(otherExperiences) => setCV({ ...cV, otherExperiences })}
         emptyItem={{
@@ -617,7 +627,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["references"][number]>
-        title="References"
+        title={t("References")}
         items={cV.references}
         onChange={(references) => setCV({ ...cV, references })}
         emptyItem={{ name: "", relationship: "", contactInfo: "" }}
@@ -651,7 +661,7 @@ export default function FormSection({
       </div>
 
       <RepeatableSection<CV["links"][number]>
-        title="Links"
+        title={t("Links")}
         items={cV.links}
         onChange={(links) => setCV({ ...cV, links })}
         emptyItem={{ label: "", url: "" }}

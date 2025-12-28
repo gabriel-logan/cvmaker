@@ -1,12 +1,14 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
-const navLinks = [
-  { to: "/send-static", label: "Send Static" },
-  { to: "/create", label: "Create CV" },
-  { to: "/settings", label: "Settings" },
-];
-
 export function Header() {
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { to: "/send-static", label: t("SendStatic") },
+    { to: "/create", label: t("CreateCV") },
+    { to: "/settings", label: t("Settings") },
+  ];
   return (
     <header className="border-b border-zinc-800 bg-zinc-950">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">

@@ -11,12 +11,18 @@ export default function HomePage() {
   const { cVs, deleteCV } = useCVsStore();
 
   function handleDelete(cVId: CV["id"]) {
-    if (confirm("Are you sure you want to delete this CV?")) {
+    if (
+      confirm(
+        t("DeleteCVConfirmation", {
+          cvName: cVs.find((cV) => cV.id === cVId)?.cVName || "",
+        }),
+      )
+    ) {
       deleteCV(cVId);
 
-      toast.success("CV deleted successfully.");
+      toast.success(t("DeleteCVSuccess"));
     } else {
-      toast.info("CV deletion cancelled.", { autoClose: 1500 });
+      toast.info(t("DeleteCVCancelled"), { autoClose: 1500 });
     }
   }
 
@@ -26,16 +32,11 @@ export default function HomePage() {
 
       <div className="mx-auto max-w-2xl space-y-8">
         <div className="rounded-lg border border-indigo-500/40 bg-indigo-500/10 px-4 py-3 text-sm font-medium text-indigo-300">
-          Welcome back. You have{" "}
-          <strong>
-            {cVs.length} CV{cVs.length !== 1 ? "s" : ""}
-          </strong>{" "}
-          saved.
+          {t("WelcomeBackMsg", { count: cVs.length })}
         </div>
 
         <div className="rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm font-medium text-yellow-300">
-          New: You can now preview your CVs before downloading them! Click on
-          the "See Preview's" button.
+          {t("PreviewButtonMsg")}
         </div>
 
         <div className="text-center">
@@ -43,19 +44,19 @@ export default function HomePage() {
             to="/preview"
             className="rounded-md bg-yellow-500 px-4 py-2 text-sm font-medium text-yellow-900 transition hover:bg-yellow-400"
           >
-            See Preview's
+            {t("SeePreviews")}
           </Link>
         </div>
 
         <div className="space-y-6 rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-semibold">{t("YourCV's")}</h1>
+            <h1 className="text-2xl font-semibold">{t("YourCVs")}</h1>
 
             <Link
               to="/create"
               className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
             >
-              Create CV
+              {t("CreateCV")}
             </Link>
           </div>
 
@@ -69,10 +70,11 @@ export default function HomePage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <h2 className="font-medium text-zinc-100">
-                        Name: {cV.cVName}
+                        {t("NameColonSpace")}
+                        {cV.cVName}
                       </h2>
                       <p className="text-sm text-zinc-400">
-                        Created At:{" "}
+                        {t("CreatedAtColonSpace")}
                         {new Date(cV.createdAt).toLocaleDateString(
                           window.navigator.language,
                           {
@@ -85,7 +87,7 @@ export default function HomePage() {
                         )}
                       </p>
                       <p className="text-sm text-zinc-400">
-                        Updated At:{" "}
+                        {t("UpdatedAtColonSpace")}
                         {new Date(cV.updatedAt).toLocaleDateString(
                           window.navigator.language,
                           {
@@ -104,13 +106,13 @@ export default function HomePage() {
                         to={`/edit/${cV.id}`}
                         className="text-sm font-medium text-indigo-400 hover:underline"
                       >
-                        Edit
+                        {t("Edit")}
                       </Link>
                       <button
                         onClick={() => handleDelete(cV.id)}
                         className="text-sm font-medium text-red-500 hover:underline"
                       >
-                        Delete
+                        {t("Delete")}
                       </button>
                     </div>
                   </div>

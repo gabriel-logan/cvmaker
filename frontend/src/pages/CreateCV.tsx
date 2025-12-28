@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
@@ -8,6 +9,8 @@ import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils";
 
 export default function CreateCVPage() {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const { createCV } = useCVsStore();
 
@@ -74,28 +77,27 @@ export default function CreateCVPage() {
       updatedAt: now,
     });
 
-    toast.success("CV created successfully.");
+    toast.success(t("CVCreatedSuccessfully"));
 
     navigate(`/edit/${id}`);
   }
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">
-      <title>Create CV - CV Maker</title>
+      <title>{t("CreateCV")} - CV Maker</title>
 
       <div className="mx-auto max-w-2xl space-y-8 sm:max-w-5xl">
         <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-300">
-          🆕 You are <strong>creating a new CV</strong>
+          🆕 You are <strong>{t("CreatingANewCV")}</strong>
         </div>
 
         <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">
-          <h1 className="mb-6 text-2xl font-semibold">Create CV</h1>
-
+          <h1 className="mb-6 text-2xl font-semibold">{t("CreateCV")}</h1>
           <FormSection
             cV={cV}
             setCV={setCV}
             handleSubmit={handleSubmit}
-            buttonTitle="Create CV Data"
+            buttonTitle={t("CreateCVData")}
           />
         </div>
       </div>

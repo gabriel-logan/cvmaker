@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 
 import apiInstance from "../lib/apiInstance";
 
 export default function SendStaticPage() {
+  const { t } = useTranslation();
+
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,9 +15,7 @@ export default function SendStaticPage() {
     event.preventDefault();
 
     if (!file) {
-      toast.info(
-        "Please upload a static HTML template file before submitting.",
-      );
+      toast.info(t("UploadStaticHtmlTemplateWarning"));
       return;
     }
 
@@ -64,9 +65,11 @@ export default function SendStaticPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-950 px-6 py-10 text-zinc-100">
-      <h1 className="mb-6 text-3xl font-semibold">Send Static Page</h1>
-      <p>This is the Send Static page.</p>
-      <p>Here you can send static html template file to generate your PDF cv</p>
+      <h1 className="mb-6 text-3xl font-semibold">
+        {t("SendStaticPageTitle")}
+      </h1>
+      <p>{t("SendStaticPageDescription")}</p>
+      <p>{t("SendStaticPageDescription2")}</p>
       <div className="mt-6 w-full max-w-md rounded-md border-2 border-dashed border-zinc-700 p-6 text-center">
         <form
           className="flex flex-col items-center"
@@ -77,7 +80,7 @@ export default function SendStaticPage() {
             htmlFor="file-upload"
             className="cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
           >
-            Upload Static HTML Template
+            {t("UploadStaticHtmlTemplate")}
             <input
               id="file-upload"
               type="file"
@@ -90,7 +93,10 @@ export default function SendStaticPage() {
             />
           </label>
           {file && (
-            <p className="mt-4 text-zinc-300">Selected file: {file.name}</p>
+            <p className="mt-4 text-zinc-300">
+              {t("SelectedFileColonSpace")}
+              {file.name}
+            </p>
           )}
 
           <button
@@ -98,7 +104,7 @@ export default function SendStaticPage() {
             className="mt-4 rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700"
             disabled={isLoading}
           >
-            {isLoading ? "Generating PDF..." : "Download PDF"}
+            {isLoading ? t("GeneratingPDFDotDotDot") : t("DownloadPDF")}
           </button>
         </form>
       </div>

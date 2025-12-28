@@ -1,6 +1,10 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
+import { sortByStartDateAsc } from "src/shared/utils";
 
 import type { LocaleContent } from "../locales";
+
+const date = (v?: string | number | null): string =>
+  v ? new Date(v).toLocaleDateString() : "";
 
 export function cvExample1Template(
   dto: CreateCVDto,
@@ -9,9 +13,6 @@ export function cvExample1Template(
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
     .join(" ");
-
-  const date = (v?: string | number | null): string =>
-    v ? new Date(v).toLocaleDateString() : "";
 
   return `
 <!DOCTYPE html>
@@ -271,9 +272,9 @@ ${
     ? `
 <section>
   <h2>${localeContent.Experience}</h2>
-  ${dto.experience
-    .map(
-      (e) => `
+${sortByStartDateAsc(dto.experience)
+  .map(
+    (e) => `
   <div class="item">
     <div class="item-title">${e.position} — ${e.company}</div>
     <div class="dates">
@@ -282,8 +283,8 @@ ${
     </div>
     ${e.responsibilities ? `<p>${e.responsibilities}</p>` : ""}
   </div>`,
-    )
-    .join("")}
+  )
+  .join("")}
 </section>`
     : ""
 }
@@ -317,9 +318,9 @@ ${
     ? `
 <section>
   <h2>${localeContent.Projects}</h2>
-  ${dto.projects
-    .map(
-      (p) => `
+${sortByStartDateAsc(dto.projects)
+  .map(
+    (p) => `
     <div class="item">
       <div class="item-title">${p.name}</div>
       <div class="dates">
@@ -329,8 +330,8 @@ ${
       <p>${p.description}</p>
       ${p.link ? `<a href="${p.link}">${p.link}</a>` : ""}
     </div>`,
-    )
-    .join("")}
+  )
+  .join("")}
 </section>`
     : ""
 }

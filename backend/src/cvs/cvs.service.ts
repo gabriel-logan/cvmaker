@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import puppeteer from "puppeteer";
+import { maxTimeoutMs } from "src/shared/constants";
 import cvTemplates from "src/templates";
 import type { Locale, Locales } from "src/templates/locales";
 
@@ -44,11 +45,14 @@ export class CvsService {
   async createPDFfromStatic(
     content: string,
   ): Promise<Uint8Array<ArrayBufferLike>> {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      timeout: maxTimeoutMs, // 60 seconds
+    });
     const page = await browser.newPage();
 
     await page.setContent(content, {
       waitUntil: "networkidle0",
+      timeout: maxTimeoutMs, // 60 seconds
     });
 
     const pdfBuffer = await page.pdf({ format: "A4", printBackground: true });

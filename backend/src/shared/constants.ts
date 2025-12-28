@@ -10,3 +10,5 @@ export const clientDistPath = join(
   "frontend",
   "dist",
 );
+
+export const maxTimeoutMs = 60000; // 60 seconds

@@ -8,6 +8,7 @@ on:
     branches: ["main"]
     paths:
       - "backend/src/**"
+      - "backend/test/**"
       - "backend/tsconfig.json"
       - "backend/eslint.config.*"
       - "backend/nest-cli.json"
@@ -18,6 +19,7 @@ on:
     branches: ["main"]
     paths:
       - "backend/src/**"
+      - "backend/test/**"
       - "backend/tsconfig.json"
       - "backend/eslint.config.*"
       - "backend/nest-cli.json"

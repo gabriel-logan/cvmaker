@@ -7,6 +7,7 @@ import FormSection from "../components/FormSection";
 import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
+import { validateCVFormSubmit } from "../utils/validations";
 
 export default function CreateCVPage() {
   const { t } = useTranslation();
@@ -45,6 +46,15 @@ export default function CreateCVPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    const validation = validateCVFormSubmit(cV);
+
+    if (!validation.valid) {
+      validation.errors.forEach((error) => {
+        toast.error(error);
+      });
+      return;
+    }
 
     const id = generateTimeBasedId();
 

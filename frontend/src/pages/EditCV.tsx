@@ -7,6 +7,7 @@ import FormSection from "../components/FormSection";
 import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
+import { validateCVFormSubmit } from "../utils/validations";
 import NotFoundPage from "./NotFound";
 
 export default function EditCVPage() {
@@ -49,6 +50,15 @@ export default function EditCVPage() {
 
   function handleSubmit(e: React.FormEvent, cVFindedId: CV["id"]) {
     e.preventDefault();
+
+    const validation = validateCVFormSubmit(cV);
+
+    if (!validation.valid) {
+      validation.errors.forEach((error) => {
+        toast.error(error);
+      });
+      return;
+    }
 
     updateCV(cVFindedId, {
       cVName: cV.cVName,

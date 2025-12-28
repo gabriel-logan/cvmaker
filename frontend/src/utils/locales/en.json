@@ -3,6 +3,9 @@
   "Settings": "Settings",
   "SendStatic": "Send Static",
 
+  "YouAre'Singular'": "You are",
+  "YouAre'Plural'": "You are",
+
   "YourCVs": "Your CV's",
   "NOTEColonSpace": "NOTE: ",
   "WelcomeBackMsg": "Welcome back. You have {{count}} CV's saved.",

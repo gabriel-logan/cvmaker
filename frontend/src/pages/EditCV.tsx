@@ -106,7 +106,7 @@ export default function EditCVPage() {
 
       <div className="mx-auto max-w-2xl space-y-8 sm:max-w-5xl">
         <div className="rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm font-medium text-yellow-300">
-          ✏️ You are <strong>editing</strong> the CV:
+          ✏️ {t("YouAre'Singular'")} <strong>editing</strong> the CV:
           <span className="ml-1 underline">{cV.cVName}</span>
         </div>
 

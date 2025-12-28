@@ -1,5 +1,5 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
-import { sortByStartDateAsc } from "src/shared/utils";
+import { sortByDate } from "src/shared/utils";
 
 import type { LocaleContent } from "../locales";
 
@@ -272,7 +272,7 @@ ${
     ? `
 <section>
   <h2>${localeContent.Experience}</h2>
-${sortByStartDateAsc(dto.experience)
+${sortByDate(dto.experience, (e) => e.startDate, "desc")
   .map(
     (e) => `
   <div class="item">
@@ -294,9 +294,9 @@ ${
     ? `
 <section>
   <h2>${localeContent.Education}</h2>
-  ${dto.education
-    .map(
-      (e) => `
+${sortByDate(dto.education, (e) => e.startDate, "desc")
+  .map(
+    (e) => `
   <div class="item">
     <div class="item-title">${e.degree} em ${e.fieldOfStudy}</div>
     <div class="item-subtitle">${e.institution}</div>
@@ -307,8 +307,8 @@ ${
     ${e.grade ? `<p>${localeContent.Grade}: ${e.grade}</p>` : ""}
     ${e.description ? `<p>${e.description}</p>` : ""}
   </div>`,
-    )
-    .join("")}
+  )
+  .join("")}
 </section>`
     : ""
 }
@@ -318,18 +318,18 @@ ${
     ? `
 <section>
   <h2>${localeContent.Projects}</h2>
-${sortByStartDateAsc(dto.projects)
+${sortByDate(dto.projects, (p) => p.startDate, "desc")
   .map(
     (p) => `
-    <div class="item">
-      <div class="item-title">${p.name}</div>
-      <div class="dates">
-        ${p.startDate} ${p.endDate ? `– ${p.endDate}` : ""}
-        ${p.location ? ` | ${p.location}` : ""}
-      </div>
-      <p>${p.description}</p>
-      ${p.link ? `<a href="${p.link}">${p.link}</a>` : ""}
-    </div>`,
+  <div class="item">
+    <div class="item-title">${p.name}</div>
+    <div class="dates">
+      ${p.startDate} ${p.endDate ? `– ${p.endDate}` : ""}
+      ${p.location ? ` | ${p.location}` : ""}
+    </div>
+    <p>${p.description}</p>
+    ${p.link ? `<a href="${p.link}">${p.link}</a>` : ""}
+  </div>`,
   )
   .join("")}
 </section>`
@@ -341,21 +341,21 @@ ${
     ? `
 <section>
   <h2>${localeContent.Certifications}</h2>
-  ${dto.certifications
-    .map(
-      (c) => `
-    <div class="item">
-      <div class="item-title">${c.name}</div>
-      <div class="item-subtitle">${c.issuingOrganization}</div>
-      <div class="dates">
-        ${c.issueDate}
-        ${c.expirationDate ? `– ${c.expirationDate}` : ""}
-      </div>
-      ${c.credentialID ? `<p>ID: ${c.credentialID}</p>` : ""}
-      ${c.credentialURL ? `<a href="${c.credentialURL}">${c.credentialURL}</a>` : ""}
-    </div>`,
-    )
-    .join("")}
+${sortByDate(dto.certifications, (c) => c.issueDate, "desc")
+  .map(
+    (c) => `
+  <div class="item">
+    <div class="item-title">${c.name}</div>
+    <div class="item-subtitle">${c.issuingOrganization}</div>
+    <div class="dates">
+      ${c.issueDate}
+      ${c.expirationDate ? `– ${c.expirationDate}` : ""}
+    </div>
+    ${c.credentialID ? `<p>ID: ${c.credentialID}</p>` : ""}
+    ${c.credentialURL ? `<a href="${c.credentialURL}">${c.credentialURL}</a>` : ""}
+  </div>`,
+  )
+  .join("")}
 </section>`
     : ""
 }
@@ -365,19 +365,19 @@ ${
     ? `
 <section>
   <h2>${localeContent.OtherExperiences}</h2>
-  ${dto.otherExperiences
-    .map(
-      (o) => `
-    <div class="item">
-      <div class="item-title">${o.title}</div>
-      <div class="dates">
-        ${o.startDate ?? ""} ${o.endDate ? `– ${o.endDate}` : ""}
-        ${o.location ? ` | ${o.location}` : ""}
-      </div>
-      <p>${o.description}</p>
-    </div>`,
-    )
-    .join("")}
+${sortByDate(dto.otherExperiences, (o) => o.startDate, "desc")
+  .map(
+    (o) => `
+  <div class="item">
+    <div class="item-title">${o.title}</div>
+    <div class="dates">
+      ${o.startDate ?? ""} ${o.endDate ? `– ${o.endDate}` : ""}
+      ${o.location ? ` | ${o.location}` : ""}
+    </div>
+    <p>${o.description}</p>
+  </div>`,
+  )
+  .join("")}
 </section>`
     : ""
 }

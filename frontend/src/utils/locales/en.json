@@ -3,8 +3,10 @@
   "Settings": "Settings",
   "SendStatic": "Send Static",
 
-  "YouAre'Singular'": "You are",
-  "YouAre'Plural'": "You are",
+  "YouAre'SingularState'": "You are",
+  "YouAre'SingularBeing'": "You are",
+  "YouAre'PluralState'": "You are",
+  "YouAre'PluralBeing'": "You are",
 
   "YourCVs": "Your CV's",
   "NOTEColonSpace": "NOTE: ",

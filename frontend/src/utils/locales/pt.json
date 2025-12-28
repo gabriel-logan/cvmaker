@@ -3,8 +3,10 @@
   "Settings": "Configurações",
   "SendStatic": "Enviar Estático",
 
-  "YouAre'Singular'": "Você é",
-  "YouAre'Plural'": "Vocês são",
+  "YouAre'SingularState'": "Você está",
+  "YouAre'SingularBeing'": "Você é",
+  "YouAre'PluralState'": "Vocês estão",
+  "YouAre'PluralBeing'": "Vocês são",
 
   "YourCVs": "Seus Currículos",
   "NOTEColonSpace": "OBS: ",

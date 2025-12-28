@@ -88,7 +88,7 @@ export default function CreateCVPage() {
 
       <div className="mx-auto max-w-2xl space-y-8 sm:max-w-5xl">
         <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-300">
-          🆕 {t("YouAre'Singular'")} <strong>{t("CreatingANewCV")}</strong>
+          🆕 {t("YouAre'SingularState'")} <strong>{t("CreatingANewCV")}</strong>
         </div>
 
         <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 shadow">

@@ -7,11 +7,15 @@ export type Locales = Locale[];
 
 export type LocaleContent = typeof en;
 
+const translations = {
+  en,
+  pt,
+} satisfies Record<Locale, LocaleContent>;
+
+export function isLocale(value: string): value is Locale {
+  return value in translations;
+}
+
 export default function getTranslationsByLocale(locale: Locale): LocaleContent {
-  switch (locale) {
-    case "pt":
-      return pt;
-    default:
-      return en;
-  }
+  return isLocale(locale) ? translations[locale] : en;
 }

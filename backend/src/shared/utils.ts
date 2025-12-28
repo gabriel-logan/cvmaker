@@ -17,12 +17,6 @@ export function sortByDate<T>(
 const window = new JSDOM("").window;
 const purify = DOMPurify(window);
 
-purify.addHook("uponSanitizeAttribute", (node, data) => {
-  if (data.attrName === "style") {
-    data.keepAttr = true;
-  }
-});
-
 export function sanitizeHtmlString(input: string): string {
   input = input.trim();
 

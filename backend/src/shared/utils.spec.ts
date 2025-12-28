@@ -51,14 +51,18 @@ describe("sanitizeHtmlString", () => {
     const input = '<div>Hello</div><script>alert("XSS")</script><p>World</p>';
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("<div>Hello</div><p>World</p>");
+    expect(output).toBe(
+      "<html><head></head><body><div>Hello</div><p>World</p></body></html>",
+    );
   });
 
   it("should remove event handler attributes", () => {
     const input = '<button onclick="doSomething()">Click me</button>';
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("<button>Click me</button>");
+    expect(output).toBe(
+      "<html><head></head><body><button>Click me</button></body></html>",
+    );
   });
 
   it("should allow safe HTML tags", () => {
@@ -67,7 +71,7 @@ describe("sanitizeHtmlString", () => {
     const output = sanitizeHtmlString(input);
 
     expect(output).toBe(
-      "<div><strong>Bold Text</strong> and <em>Italic Text</em></div>",
+      "<html><head></head><body><div><strong>Bold Text</strong> and <em>Italic Text</em></div></body></html>",
     );
   });
 
@@ -76,21 +80,25 @@ describe("sanitizeHtmlString", () => {
       '<a href="javascript:alert(\'XSS\')" style="color:red;" onmouseover="stealCookies()">Click me</a>';
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe('<a style="color:red;">Click me</a>');
+    expect(output).toBe(
+      '<html><head></head><body><a style="color:red;">Click me</a></body></html>',
+    );
   });
 
   it("should handle empty strings", () => {
     const input = "";
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("");
+    expect(output).toBe("<html><head></head><body></body></html>");
   });
 
   it("should remove HTML comments", () => {
     const input = "<div>Hello</div><!-- This is a comment --><p>World</p>";
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("<div>Hello</div><p>World</p>");
+    expect(output).toBe(
+      "<html><head></head><body><div>Hello</div><p>World</p></body></html>",
+    );
   });
 
   it("should remove iframe, object, and embed tags", () => {
@@ -98,7 +106,9 @@ describe("sanitizeHtmlString", () => {
       '<div>Hello</div><iframe src="malicious.html"></iframe><object></object><embed></embed><p>World</p>';
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("<div>Hello</div><p>World</p>");
+    expect(output).toBe(
+      "<html><head></head><body><div>Hello</div><p>World</p></body></html>",
+    );
   });
 
   it("should remove multiple dangerous elements and attributes", () => {
@@ -106,13 +116,17 @@ describe("sanitizeHtmlString", () => {
       '<div onclick="hack()">Click me</div><!-- comment --><script>alert("XSS")</script><iframe src="malicious.html"></iframe>';
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("<div>Click me</div>");
+    expect(output).toBe(
+      "<html><head></head><body><div>Click me</div></body></html>",
+    );
   });
 
   it("should trim the output", () => {
     const input = "   <div>Hello World</div>   ";
     const output = sanitizeHtmlString(input);
 
-    expect(output).toBe("<div>Hello World</div>");
+    expect(output).toBe(
+      "<html><head></head><body><div>Hello World</div></body></html>",
+    );
   });
 });

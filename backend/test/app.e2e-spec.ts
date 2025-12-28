@@ -9,6 +9,11 @@ import { AppModule } from "./../src/app.module";
 describe("AppController (e2e)", () => {
   let app: INestApplication<App>;
 
+  beforeAll(() => {
+    process.env.NODE_ENV = "test";
+    process.env.PORT = "3001";
+  });
+
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],

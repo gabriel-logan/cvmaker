@@ -33,6 +33,7 @@ export default function SettingsPage() {
               >
                 <option value="en">English</option>
                 <option value="pt">Português</option>
+                <option value="de">Deutsch</option>
               </select>
               <p className="mt-2 text-sm text-zinc-400">
                 {t("SelectYourPreferredLanguage")}

@@ -2,6 +2,7 @@ import { initReactI18next } from "react-i18next";
 import i18next from "i18next";
 
 import { useUserStore } from "../stores/userStore";
+import de from "./locales/de.json";
 import en from "./locales/en.json";
 import pt from "./locales/pt.json";
 
@@ -11,6 +12,9 @@ export const resources = {
   },
   pt: {
     translation: pt,
+  },
+  de: {
+    translation: de,
   },
 } as const;
 

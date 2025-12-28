@@ -29,6 +29,7 @@ export default function FormSection({
         >
           <option value="en">{t("English")}</option>
           <option value="pt">{t("Portuguese")}</option>
+          <option value="de">{t("German")}</option>
         </select>
       </div>
 

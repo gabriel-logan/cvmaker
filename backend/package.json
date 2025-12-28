@@ -86,7 +86,8 @@
       "src/main.ts",
       "\\.module\\.ts$",
       "\\.decorator\\.ts$",
-      "\\.schema\\.ts$"
+      "\\.schema\\.ts$",
+      "\\.dto\\.ts$"
     ]
   }
 }

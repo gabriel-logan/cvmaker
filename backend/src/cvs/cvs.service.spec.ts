@@ -4,6 +4,8 @@ import { Test } from "@nestjs/testing";
 import { CvsService } from "./cvs.service";
 import type { CreateCVDto } from "./dto/create-cv.dto";
 
+jest.mock("puppeteer");
+
 const cvDefaultMockData: CreateCVDto = {
   id: "1",
   templateId: "template1",

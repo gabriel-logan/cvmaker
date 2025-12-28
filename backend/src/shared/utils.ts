@@ -1,3 +1,6 @@
+import DOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
+
 export function sortByDate<T>(
   items: T[],
   getDate: (item: T) => string | number | null | undefined,
@@ -11,31 +14,11 @@ export function sortByDate<T>(
   });
 }
 
+const window = new JSDOM("").window;
+const purify = DOMPurify(window);
+
 export function sanitizeHtmlString(input: string): string {
-  if (!input) return "";
+  input = input.trim();
 
-  let prev: string;
-  let output = input;
-
-  do {
-    prev = output;
-
-    output = output.replace(/<!--[\s\S]*?-->/g, "");
-
-    output = output.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
-
-    output = output.replace(
-      /<\s*(iframe|object|embed)\b[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi,
-      "",
-    );
-
-    output = output.replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
-
-    output = output.replace(
-      /\s(href|src)\s*=\s*(?:"\s*(javascript:|vbscript:|data:)[^"]*"|\s*'\s*(javascript:|vbscript:|data:)[^']*'|\s*(javascript:|vbscript:|data:)[^\s>]+)/gi,
-      "",
-    );
-  } while (output !== prev);
-
-  return output.trim();
+  return purify.sanitize(input);
 }

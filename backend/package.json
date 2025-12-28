@@ -31,7 +31,9 @@
     "@nestjs/swagger": "^11.2.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.3",
+    "dompurify": "^3.3.1",
     "helmet": "^8.1.0",
+    "jsdom": "^27.4.0",
     "puppeteer": "^24.34.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
@@ -44,6 +46,7 @@
     "@nestjs/testing": "^11.0.1",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
+    "@types/jsdom": "^27.0.0",
     "@types/multer": "^2.0.0",
     "@types/node": "^22.10.7",
     "@types/supertest": "^6.0.2",
@@ -88,6 +91,9 @@
       "\\.decorator\\.ts$",
       "\\.schema\\.ts$",
       "\\.dto\\.ts$"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!jsdom|dompurify)/"
     ]
   }
 }

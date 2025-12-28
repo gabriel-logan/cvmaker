@@ -130,5 +130,8 @@
   "TheCVYouAreLookingForDoesNotExist": "O currículo que você está tentando editar não existe.",
 
   "AllRightsReserved": "Todos os direitos reservados.",
-  "ProjectSourceCodeAvailableOnColonSpace": "Código-fonte do projeto disponível em: "
+  "ProjectSourceCodeAvailableOnColonSpace": "Código-fonte do projeto disponível em: ",
+
+  "English": "Inglês",
+  "Portuguese": "Português"
 }

@@ -27,8 +27,8 @@ export default function FormSection({
           onChange={(e) => setCV({ ...cV, locale: e.target.value as locale })}
           className="ml-4 rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2 outline-none focus:border-indigo-500"
         >
-          <option value="en">English</option>
-          <option value="pt">Português</option>
+          <option value="en">{t("English")}</option>
+          <option value="pt">{t("Portuguese")}</option>
         </select>
       </div>
 

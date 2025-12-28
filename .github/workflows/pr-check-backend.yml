@@ -60,6 +60,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Create .env file for tests
+        run: |
+          cat <<EOF > ../.env
+          NODE_ENV=test
+          SERVER_PORT=3001
+          EOF
+
       - name: Install puppeteer dependencies
         run: npx puppeteer browsers install chrome
 

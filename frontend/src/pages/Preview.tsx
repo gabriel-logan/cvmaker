@@ -5,14 +5,14 @@ import { AxiosError } from "axios";
 
 import apiInstance from "../lib/apiInstance";
 import { useCVsStore } from "../stores/cVsStore";
-import { useUserStore } from "../stores/userStore";
 import type { CV, TemplateIds } from "../types";
 
 export default function PreviewPage() {
   const { t } = useTranslation();
 
-  const { isLoading, setIsLoading } = useUserStore();
   const { cVs } = useCVsStore();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [html, setHtml] = useState<string>("");
 

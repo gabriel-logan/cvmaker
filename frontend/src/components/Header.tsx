@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { FiFileText, FiMenu, FiSend, FiSettings, FiX } from "react-icons/fi";
 import { Link } from "react-router";
 
+import logo from "/vite.svg";
+
 export function Header() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -28,11 +30,9 @@ export function Header() {
   return (
     <header className="border-b border-zinc-800 bg-zinc-950">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-        <Link
-          to="/"
-          className="text-lg font-semibold text-zinc-100 hover:text-indigo-400"
-        >
-          CV Maker
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logo} alt="Logo" className="h-6 w-6" />
+          <span className="text-xl font-semibold text-zinc-200">CV Maker</span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

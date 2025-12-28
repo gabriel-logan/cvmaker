@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
+import ReactLogo from "../assets/react.svg";
+
 export function Footer() {
   const { t } = useTranslation();
 
@@ -20,6 +22,16 @@ export function Footer() {
           GitHub
         </Link>
         .
+      </div>
+
+      <div className="mx-auto flex max-w-4xl items-center px-6 pb-4 text-xs text-zinc-500">
+        <span className="mr-2">Built with </span>
+        <img
+          src={ReactLogo}
+          alt="React Logo"
+          className="h-4 w-4 animate-spin"
+          id="react-logo"
+        />
       </div>
     </footer>
   );

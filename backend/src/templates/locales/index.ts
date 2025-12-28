@@ -2,7 +2,9 @@ import de from "./de.json";
 import en from "./en.json";
 import pt from "./pt.json";
 
-export type Locale = "en" | "pt" | "de";
+export const locales = ["en", "pt", "de"] as const;
+
+export type Locale = (typeof locales)[number];
 
 export type Locales = Locale[];
 

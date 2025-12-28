@@ -2,20 +2,18 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import puppeteer from "puppeteer";
 import { maxTimeoutMs } from "src/shared/constants";
 import cvTemplates from "src/templates";
-import type { Locale, Locales } from "src/templates/locales";
+import { type Locale, locales } from "src/templates/locales";
 
 import { CreateCVDto } from "./dto/create-cv.dto";
 
 @Injectable()
 export class CvsService {
   private validateLocale(locale: string): void {
-    const supportedLocales: Locales = ["en", "pt"];
-
-    const isValid = supportedLocales.includes(locale as Locale);
+    const isValid = locales.includes(locale as Locale);
 
     if (!isValid) {
       throw new BadRequestException(
-        `Unsupported locale: ${locale}. Supported locales are "en" and "pt".`,
+        `Unsupported locale: ${locale}. Supported locales are ${locales.join(", ")}.`,
       );
     }
   }

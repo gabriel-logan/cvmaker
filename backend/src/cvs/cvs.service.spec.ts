@@ -1,5 +1,6 @@
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
+import { locales } from "src/templates/locales";
 
 import { CvsService } from "./cvs.service";
 import type { CreateCVDto } from "./dto/create-cv.dto";
@@ -60,7 +61,9 @@ describe("CvsService", () => {
       expect(() => {
         service.createCVPreview(invalidLocaleData);
       }).toThrow(
-        /Unsupported locale: fr. Supported locales are "en" and "pt"./,
+        new RegExp(
+          `Unsupported locale: fr. Supported locales are ${locales.join(", ")}.`,
+        ),
       );
     });
   });

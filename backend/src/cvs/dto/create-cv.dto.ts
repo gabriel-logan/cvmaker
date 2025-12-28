@@ -3,6 +3,7 @@ import { Type } from "class-transformer";
 import { IsArray, IsObject, IsOptional, ValidateNested } from "class-validator";
 import { IsNotBlankString } from "src/common/decorators/validation/IsNotBlankString";
 import { IsTimestamp } from "src/common/decorators/validation/IsTimestamp";
+import { locales } from "src/templates/locales";
 
 class CreateCVContactsDto {
   @ApiProperty({
@@ -312,10 +313,10 @@ export class CreateCVDto {
 
   @ApiProperty({
     type: String,
-    examples: ["en", "pt"],
+    examples: locales,
   })
   @IsNotBlankString({
-    message: 'Locale must be a valid string like "en" or "pt"',
+    message: `Locale must be a valid string like ${locales.join(", ")}`,
   })
   public locale: string;
 

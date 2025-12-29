@@ -1,0 +1,18 @@
+version: "1"
+services:
+- type: web
+  name: glcvmaker
+  runtime: node
+  repo: https://github.com/gabriel-logan/cvmaker
+  plan: free
+  envVars:
+  - key: .env
+    sync: false
+  region: virginia
+  buildCommand: cd ./frontend && pnpm install && pnpm build && cd ../backend && pnpm
+    install && pnpm build
+  startCommand: cd backend/ && npx puppeteer browsers install chrome && pnpm start
+  healthCheckPath: /api
+  autoDeployTrigger: commit
+  previews:
+    generation: automatic

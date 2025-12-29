@@ -1,10 +1,11 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 
-import type { LocaleContent } from "../locales";
+import type { Locale, LocaleContent } from "../locales";
 
 export function cvExample4Template(
   dto: CreateCVDto,
   localeContent: LocaleContent,
+  locale: Locale,
 ): string {
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
@@ -15,7 +16,7 @@ export function cvExample4Template(
 
   return `
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="${locale}">
 <head>
 <meta charset="UTF-8" />
 <title>${dto.cVName}</title>

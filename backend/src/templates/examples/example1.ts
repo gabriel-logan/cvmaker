@@ -1,7 +1,7 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 import { sortByDate } from "src/shared/utils";
 
-import type { LocaleContent } from "../locales";
+import type { Locale, LocaleContent } from "../locales";
 
 const date = (v?: string | number | null): string =>
   v ? new Date(v).toLocaleDateString() : "";
@@ -9,6 +9,7 @@ const date = (v?: string | number | null): string =>
 export function cvExample1Template(
   dto: CreateCVDto,
   localeContent: LocaleContent,
+  locale: Locale,
 ): string {
   const fullName = [dto.firstName, dto.middleName, dto.lastName]
     .filter(Boolean)
@@ -16,7 +17,7 @@ export function cvExample1Template(
 
   return `
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="${locale}">
 
 <head>
     <meta charset="UTF-8" />

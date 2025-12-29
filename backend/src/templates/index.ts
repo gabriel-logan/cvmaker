@@ -26,16 +26,16 @@ export default function cvTemplates(dto: CreateCVDto, locale: Locale): string {
 
   switch (dto.templateId) {
     case "template1":
-      return cvExample1Template(dto, localizedContent);
+      return cvExample1Template(dto, localizedContent, locale);
 
     case "template2":
-      return cvExample2Template(dto, localizedContent);
+      return cvExample2Template(dto, localizedContent, locale);
 
     case "template3":
-      return cvExample3Template(dto, localizedContent);
+      return cvExample3Template(dto, localizedContent, locale);
 
     case "template4":
-      return cvExample4Template(dto, localizedContent);
+      return cvExample4Template(dto, localizedContent, locale);
 
     default:
       return defaultHtml;

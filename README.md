@@ -36,3 +36,10 @@ cp .env.example .env
 Render Build: cd ./frontend && pnpm install && pnpm build && cd ../backend && pnpm install && pnpm build
 
 Render Start: cd backend/ && npx puppeteer browsers install chrome && pnpm start
+
+## Render URL
+
+The application will be accessible at: `https://glcvmaker.onrender.com`
+
+NOTE: It may take a few minutes for the server to start after deployment.
+NOTE2: This is a free tier server, so it may be slow to respond at times and it may be not work, try to run it locally if so.

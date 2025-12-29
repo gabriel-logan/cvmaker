@@ -356,6 +356,7 @@ export class CreateCVDto {
 
   @ApiProperty({
     type: String,
+    format: "binary",
     nullable: true,
     required: false,
   })

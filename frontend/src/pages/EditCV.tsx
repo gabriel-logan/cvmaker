@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 import FormSection from "../components/FormSection";
 import { useCVsStore } from "../stores/cVsStore";
-import type { CV } from "../types";
+import { type CV, emptyCV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
 import { validateCVFormSubmit } from "../utils/validations";
 import NotFoundPage from "./NotFound";
@@ -21,52 +21,27 @@ export default function EditCVPage() {
 
   const cVFinded = cVs.find((cV) => cV.id === id);
 
-  const [cV, setCV] = useState<CV>({
-    id: cVFinded?.id || "",
-    cVName: cVFinded?.cVName || "",
-    locale: cVFinded?.locale || "en",
-    firstName: cVFinded?.firstName || "",
-    lastName: cVFinded?.lastName || "",
-    middleName: cVFinded?.middleName || null,
-    nickname: cVFinded?.nickname || null,
-    avatar: cVFinded?.avatar || null,
-    contacts: cVFinded?.contacts || { email: null, phone: null },
-    address: cVFinded?.address || null,
-    summary: cVFinded?.summary || null,
-    objectives: cVFinded?.objectives || null,
-    education: cVFinded?.education || [],
-    experience: cVFinded?.experience || [],
-    skills: cVFinded?.skills || [],
-    projects: cVFinded?.projects || [],
-    certifications: cVFinded?.certifications || [],
-    languages: cVFinded?.languages || [],
-    hobbies: cVFinded?.hobbies || [],
-    additionalInfo: cVFinded?.additionalInfo || null,
-    otherExperiences: cVFinded?.otherExperiences || [],
-    references: cVFinded?.references || [],
-    links: cVFinded?.links || [],
-    createdAt: cVFinded?.createdAt || 0,
-    updatedAt: cVFinded?.updatedAt || 0,
-  });
+  const [cV, setCV] = useState<CV>(emptyCV);
 
   function handleSubmit(e: React.FormEvent, cVFindedId: CV["id"]) {
     e.preventDefault();
 
-    const validation = validateCVFormSubmit(cV);
+    try {
+      const validation = validateCVFormSubmit(cV);
 
-    if (!validation.valid) {
-      validation.errors.forEach((error) => {
-        toast.error(error);
-      });
-      return;
+      if (!validation.valid) {
+        validation.errors.forEach((error) => {
+          toast.error(error);
+        });
+        return;
+      }
+
+      updateCV(cVFindedId, { ...cV, updatedAt: Date.now() });
+
+      toast.success(t("CVUpdatedSuccessfully"));
+    } catch {
+      toast.error("Error updating CV");
     }
-
-    updateCV(cVFindedId, {
-      ...cV,
-      updatedAt: Date.now(),
-    });
-
-    toast.success(t("CVUpdatedSuccessfully"));
   }
 
   function handleDelete(cvFindedId: CV["id"]) {
@@ -80,6 +55,28 @@ export default function EditCVPage() {
       toast.info(t("DeleteCVCancelled"), { autoClose: 1000 });
     }
   }
+
+  const handleCloneCV = () => {
+    try {
+      const newId = generateTimeBasedId();
+
+      createCV({
+        ...cV,
+        id: newId,
+        cVName: `${cV.cVName} (Clone)`,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
+
+      toast.success(t("CloneCVSuccess"));
+      navigate(`/edit/${newId}`);
+
+      // Reload to ensure the cloned CV data is fully loaded
+      setTimeout(() => window.location.reload(), 750);
+    } catch {
+      toast.error("Error cling CV");
+    }
+  };
 
   if (!cVFinded) {
     return (
@@ -124,23 +121,7 @@ export default function EditCVPage() {
               </button>
 
               <button
-                onClick={() => {
-                  const newId = generateTimeBasedId();
-
-                  createCV({
-                    ...cV,
-                    id: newId,
-                    cVName: `${cV.cVName} (Clone)`,
-                    createdAt: Date.now(),
-                    updatedAt: Date.now(),
-                  });
-
-                  toast.success(t("CloneCVSuccess"));
-                  navigate(`/edit/${newId}`);
-
-                  // Reload to ensure the cloned CV data is fully loaded
-                  setTimeout(() => window.location.reload(), 750);
-                }}
+                onClick={handleCloneCV}
                 className="inline-flex w-full items-center justify-center rounded-lg border border-zinc-700 bg-zinc-800 px-5 py-2.5 text-sm font-medium text-zinc-200 transition hover:bg-zinc-700 active:scale-[0.98] sm:w-auto"
               >
                 {t("CloneCV")}

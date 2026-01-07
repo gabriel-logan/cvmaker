@@ -17,13 +17,11 @@ export default function NotFoundPage({
   redirectTo = "/",
 }: NotFoundPageProps) {
   const { t } = useTranslation();
-
-  const localTitle = title ? title : t("PageNotFound");
-  const localSubtitle = subtitle ? subtitle : t("ThisPageDoesNotExist");
-  const localDescription = description
-    ? description
-    : t("TheURLYouTriedToAccessDoesNotExist");
-  const localRedirectLabel = redirectLabel ? redirectLabel : t("GoBackHome");
+  const localTitle = title || t("PageNotFound");
+  const localSubtitle = subtitle || t("ThisPageDoesNotExist");
+  const localDescription =
+    description || t("TheURLYouTriedToAccessDoesNotExist");
+  const localRedirectLabel = redirectLabel || t("GoBackHome");
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">

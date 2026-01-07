@@ -9,9 +9,7 @@ import type { CV } from "../types";
 
 export default function HomePage() {
   const { t } = useTranslation();
-
   const { locale } = useUserStore();
-
   const { cVs, deleteCV } = useCVsStore();
 
   function handleDelete(cVId: CV["id"]) {

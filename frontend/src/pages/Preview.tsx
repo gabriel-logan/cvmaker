@@ -9,18 +9,13 @@ import type { CV, TemplateIds } from "../types";
 
 export default function PreviewPage() {
   const { t } = useTranslation();
-
   const { cVs } = useCVsStore();
-
-  const [isLoading, setIsLoading] = useState(false);
-
   const [html, setHtml] = useState<string>("");
-
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedCV, setSelectedCV] = useState<CV | null>(null);
+  const [downloadProgress, setDownloadProgress] = useState<number>(0);
   const [selectedTemplateId, setSelectedTemplateId] =
     useState<TemplateIds | null>(null);
-
-  const [downloadProgress, setDownloadProgress] = useState<number>(0);
 
   async function handleSubmitPreview(
     selectedCV: CV | null,
@@ -29,13 +24,12 @@ export default function PreviewPage() {
     if (!selectedCV || !selectedTemplateId) return;
 
     setIsLoading(true);
-
     setHtml("");
 
     try {
       const response = await apiInstance.post("/cvs/preview", {
-        templateId: selectedTemplateId,
         ...selectedCV,
+        templateId: selectedTemplateId,
       });
 
       setHtml(response.data);

@@ -8,9 +8,38 @@ import type { CV, locale } from "../types";
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation();
-
   const { cVs, createCV, updateCV, deleteCV, deleteAllCVs } = useCVsStore();
   const { setLocale } = useUserStore();
+
+  const handleImportCVs = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const inputRaw = document.getElementById("cv-backup");
+
+    if (!inputRaw) return;
+
+    const input = inputRaw as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      const text = await file.text();
+
+      try {
+        const importedCVs: CV[] = JSON.parse(text);
+
+        importedCVs.forEach((cv) => {
+          const exists = cVs.find((existing) => existing.id === cv.id);
+
+          if (exists) updateCV(cv.id, cv);
+          else createCV(cv);
+        });
+
+        toast.success(t("CVsImportedSuccessfully"));
+      } catch (error) {
+        console.error(error);
+        toast.error(t("ErrorImportingCVs"));
+      }
+    }
+  };
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-100">
@@ -91,40 +120,7 @@ export default function SettingsPage() {
           <form
             id="upload-cv-backup-form"
             className="mb-6 flex flex-col gap-2"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const inputRaw = document.getElementById("cv-backup");
-
-              if (!inputRaw) return;
-
-              const input = inputRaw as HTMLInputElement;
-
-              if (input.files && input.files.length > 0) {
-                const file = input.files[0];
-                const text = await file.text();
-
-                try {
-                  const importedCVs: CV[] = JSON.parse(text);
-
-                  importedCVs.forEach((cv) => {
-                    const exists = cVs.find(
-                      (existing) => existing.id === cv.id,
-                    );
-
-                    if (exists) {
-                      updateCV(cv.id, cv);
-                    } else {
-                      createCV(cv);
-                    }
-                  });
-
-                  toast.success(t("CVsImportedSuccessfully"));
-                } catch (error) {
-                  console.error(error);
-                  toast.error(t("ErrorImportingCVs"));
-                }
-              }
-            }}
+            onSubmit={async (e) => handleImportCVs(e)}
           >
             <label className="mb-1 block font-medium" htmlFor="cv-backup">
               {t("UploadCVsBackup")}

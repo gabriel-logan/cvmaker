@@ -10,21 +10,9 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
-    {
-      to: "/send-static",
-      label: t("SendStatic"),
-      icon: <FiSend />,
-    },
-    {
-      to: "/create",
-      label: t("CreateCV"),
-      icon: <FiFileText />,
-    },
-    {
-      to: "/settings",
-      label: t("Settings"),
-      icon: <FiSettings />,
-    },
+    { to: "/send-static", label: t("SendStatic"), icon: <FiSend /> },
+    { to: "/create", label: t("CreateCV"), icon: <FiFileText /> },
+    { to: "/settings", label: t("Settings"), icon: <FiSettings /> },
   ];
 
   return (

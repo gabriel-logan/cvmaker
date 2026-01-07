@@ -2,6 +2,34 @@ export type locale = "en" | "pt" | "de";
 
 export type locales = locale[];
 
+export const emptyCV: CV = {
+  id: "",
+  cVName: "",
+  locale: "en",
+  firstName: "",
+  lastName: "",
+  middleName: null,
+  nickname: null,
+  avatar: null,
+  contacts: { email: null, phone: null },
+  address: null,
+  summary: null,
+  objectives: null,
+  education: [],
+  experience: [],
+  skills: [],
+  projects: [],
+  certifications: [],
+  languages: [],
+  hobbies: [],
+  additionalInfo: null,
+  otherExperiences: [],
+  references: [],
+  links: [],
+  createdAt: 0,
+  updatedAt: 0,
+};
+
 export interface CV {
   id: string;
   cVName: string;

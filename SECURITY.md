@@ -5,7 +5,7 @@
 We actively maintain the following versions of this project:
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.0.4   | :white_check_mark: |
+| 1.0.4 > | :white_check_mark: |
 | < 1.0.4 | :x:                |
 
 ## Reporting a Vulnerability    

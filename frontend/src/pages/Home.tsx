@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { FiCalendar, FiEdit2, FiEye, FiPlus, FiTrash2 } from "react-icons/fi";
+import { FiCalendar, FiEdit2, FiPlus, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 
+import BtnSeePreviews from "../components/BtnSeePreviews";
 import { useCVsStore } from "../stores/cVsStore";
 import { useUserStore } from "../stores/userStore";
 import type { CV } from "../types";
@@ -44,13 +45,7 @@ export default function HomePage() {
         </div>
 
         <div className="flex justify-center">
-          <Link
-            to="/preview"
-            className="inline-flex items-center gap-2 rounded-md bg-yellow-500 px-5 py-2 text-sm font-medium text-yellow-900 transition hover:bg-yellow-400"
-          >
-            <FiEye />
-            {t("SeePreviews")}
-          </Link>
+          <BtnSeePreviews />
         </div>
 
         <section className="space-y-6 rounded-xl border border-zinc-800 bg-zinc-900 p-5 shadow">

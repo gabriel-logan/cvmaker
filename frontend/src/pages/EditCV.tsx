@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 
+import BtnSeePreviews from "../components/BtnSeePreviews";
 import FormSection from "../components/FormSection";
 import { emptyCV } from "../constants";
 import { useCVsStore } from "../stores/cVsStore";
@@ -104,7 +105,7 @@ export default function EditCVPage() {
         </div>
 
         <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-4 shadow sm:p-6">
-          <div className="mb-4 border-b border-zinc-800 pb-4">
+          <div className="mb-4 flex items-center justify-between border-b border-zinc-800 pb-4">
             <button
               onClick={() => navigate("/")}
               className="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-zinc-200"
@@ -112,6 +113,8 @@ export default function EditCVPage() {
               <span className="text-lg">←</span>
               {t("GoBackHome")}
             </button>
+
+            <BtnSeePreviews />
           </div>
 
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 import FormSection from "../components/FormSection";
+import { emptyCV } from "../constants";
 import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
@@ -16,81 +17,31 @@ export default function CreateCVPage() {
 
   const { createCV } = useCVsStore();
 
-  const [cV, setCV] = useState<CV>({
-    id: "",
-    cVName: "",
-    locale: "en",
-    firstName: "",
-    lastName: "",
-    middleName: null,
-    nickname: null,
-    avatar: null,
-    contacts: { email: null, phone: null },
-    address: null,
-    summary: null,
-    objectives: null,
-    education: [],
-    experience: [],
-    skills: [],
-    projects: [],
-    certifications: [],
-    languages: [],
-    hobbies: [],
-    additionalInfo: null,
-    otherExperiences: [],
-    references: [],
-    links: [],
-    createdAt: 0,
-    updatedAt: 0,
-  });
+  const [cV, setCV] = useState<CV>(emptyCV);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    try {
+      const validation = validateCVFormSubmit(cV);
 
-    const validation = validateCVFormSubmit(cV);
+      if (!validation.valid) {
+        validation.errors.forEach((error) => {
+          toast.error(error);
+        });
+        return;
+      }
 
-    if (!validation.valid) {
-      validation.errors.forEach((error) => {
-        toast.error(error);
-      });
-      return;
+      const id = generateTimeBasedId();
+
+      const now = Date.now();
+
+      createCV({ ...cV, id, createdAt: now, updatedAt: now });
+
+      toast.success(t("CVCreatedSuccessfully"));
+      navigate(`/edit/${id}`);
+    } catch {
+      toast.error("Error Creating CV");
     }
-
-    const id = generateTimeBasedId();
-
-    const now = Date.now();
-
-    createCV({
-      id,
-      cVName: cV.cVName,
-      locale: cV.locale,
-      firstName: cV.firstName,
-      lastName: cV.lastName,
-      middleName: cV.middleName,
-      nickname: cV.nickname,
-      avatar: cV.avatar,
-      contacts: cV.contacts,
-      address: cV.address,
-      summary: cV.summary,
-      objectives: cV.objectives,
-      education: cV.education,
-      experience: cV.experience,
-      skills: cV.skills,
-      projects: cV.projects,
-      certifications: cV.certifications,
-      languages: cV.languages,
-      hobbies: cV.hobbies,
-      additionalInfo: cV.additionalInfo,
-      otherExperiences: cV.otherExperiences,
-      references: cV.references,
-      links: cV.links,
-      createdAt: now,
-      updatedAt: now,
-    });
-
-    toast.success(t("CVCreatedSuccessfully"));
-
-    navigate(`/edit/${id}`);
   }
 
   return (

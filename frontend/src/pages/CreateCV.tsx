@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 import FormSection from "../components/FormSection";
 import { useCVsStore } from "../stores/cVsStore";
-import { type CV } from "../types";
+import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
 import { validateCVFormSubmit } from "../utils/validations";
 import { emptyCV } from "../constants";

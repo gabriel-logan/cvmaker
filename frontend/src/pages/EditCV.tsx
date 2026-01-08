@@ -63,12 +63,14 @@ export default function EditCVPage() {
     try {
       const newId = generateTimeBasedId();
 
+      const now = Date.now();
+
       createCV({
         ...cV,
         id: newId,
         cVName: `${cV.cVName} (Clone)`,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
+        createdAt: now,
+        updatedAt: now,
       });
 
       toast.success(t("CloneCVSuccess"));

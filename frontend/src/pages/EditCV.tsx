@@ -4,12 +4,12 @@ import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 
 import FormSection from "../components/FormSection";
+import { emptyCV } from "../constants";
 import { useCVsStore } from "../stores/cVsStore";
-import { type CV } from "../types";
+import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
 import { validateCVFormSubmit } from "../utils/validations";
 import NotFoundPage from "./NotFound";
-import { emptyCV } from "../constants";
 
 export default function EditCVPage() {
   const { t } = useTranslation();
@@ -22,7 +22,9 @@ export default function EditCVPage() {
 
   const cVFinded = cVs.find((cV) => cV.id === id);
 
-  const [cV, setCV] = useState<CV>(emptyCV);
+  const [cV, setCV] = useState<CV>({
+    ...(cVFinded || emptyCV),
+  });
 
   function handleSubmit(e: React.FormEvent, cVFindedId: CV["id"]) {
     e.preventDefault();

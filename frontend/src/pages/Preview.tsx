@@ -9,7 +9,9 @@ import type { CV, TemplateIds } from "../types";
 
 export default function PreviewPage() {
   const { t } = useTranslation();
+
   const { cVs } = useCVsStore();
+
   const [html, setHtml] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCV, setSelectedCV] = useState<CV | null>(null);

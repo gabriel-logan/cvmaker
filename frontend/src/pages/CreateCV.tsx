@@ -4,15 +4,17 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 import FormSection from "../components/FormSection";
+import { emptyCV } from "../constants";
 import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
 import { generateTimeBasedId } from "../utils/generals";
 import { validateCVFormSubmit } from "../utils/validations";
-import { emptyCV } from "../constants";
 
 export default function CreateCVPage() {
   const { t } = useTranslation();
+
   const navigate = useNavigate();
+
   const { createCV } = useCVsStore();
 
   const [cV, setCV] = useState<CV>(emptyCV);
@@ -30,6 +32,7 @@ export default function CreateCVPage() {
       }
 
       const id = generateTimeBasedId();
+
       const now = Date.now();
 
       createCV({ ...cV, id, createdAt: now, updatedAt: now });

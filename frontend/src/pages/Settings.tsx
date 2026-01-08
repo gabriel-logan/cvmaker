@@ -8,6 +8,7 @@ import type { CV, locale } from "../types";
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation();
+
   const { cVs, createCV, updateCV, deleteCV, deleteAllCVs } = useCVsStore();
   const { setLocale } = useUserStore();
 

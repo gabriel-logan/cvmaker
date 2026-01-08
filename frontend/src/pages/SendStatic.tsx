@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
-import getAxiosErrorMessage from "../helpers/getAxiosErrorMessage";
 import apiInstance from "../lib/apiInstance";
+import getAxiosErrorMessage from "../utils/getAxiosErrorMessage";
 
 export default function SendStaticPage() {
   const { t } = useTranslation();

@@ -44,9 +44,7 @@ export class CvsService {
 
     const html = cvTemplates(createCVDto, createCVDto.locale as Locale);
 
-    const pdfBuffer = await this.createPDFfromStatic(html);
-
-    return pdfBuffer;
+    return await this.createPDFfromStatic(html);
   }
 
   async createPDFfromStatic(
@@ -77,6 +75,7 @@ export class CvsService {
       preferCSSPageSize: true,
     });
 
+    await page.close();
     await browser.close();
 
     return pdfBuffer;

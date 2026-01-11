@@ -1,20 +1,13 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
-import { sortByDate } from "src/shared/utils";
+import { formatDate, joinFullName, sortByDate } from "src/shared/utils";
 
 import type { Locale, LocaleContent } from "../locales";
-
-const date = (v?: string | number | null): string =>
-  v ? new Date(v).toLocaleDateString() : "";
 
 export function cvExample1Template(
   dto: CreateCVDto,
   localeContent: LocaleContent,
   locale: Locale,
 ): string {
-  const fullName = [dto.firstName, dto.middleName, dto.lastName]
-    .filter(Boolean)
-    .join(" ");
-
   return `
 <!DOCTYPE html>
 <html lang="${locale}">
@@ -176,7 +169,7 @@ export function cvExample1Template(
   <aside class="sidebar">
       ${dto.avatar ? `<img src="${dto.avatar}" class="avatar" />` : ""}
 
-      <div class="name">${fullName}</div>
+      <div class="name">${joinFullName(dto.firstName, dto.middleName, dto.lastName)}</div>
       ${dto.nickname ? `<div class="nickname">${dto.nickname}</div>` : ""}
 
       <div class="side-section">
@@ -400,8 +393,8 @@ export function cvExample1Template(
 
       <footer>
           CV ID: ${dto.id}<br />
-          ${localeContent.CreatedAt}: ${date(dto.createdAt)} |
-          ${localeContent.UpdatedAt}: ${date(dto.updatedAt)}
+          ${localeContent.CreatedAt}: ${formatDate(dto.createdAt)} |
+          ${localeContent.UpdatedAt}: ${formatDate(dto.updatedAt)}
       </footer>
 
   </main>

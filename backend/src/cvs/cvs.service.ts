@@ -75,7 +75,6 @@ export class CvsService {
       preferCSSPageSize: true,
     });
 
-    await page.close();
     await browser.close();
 
     return pdfBuffer;

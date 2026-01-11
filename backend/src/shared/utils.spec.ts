@@ -1,4 +1,9 @@
-import { sanitizeHtmlString, sortByDate } from "./utils";
+import {
+  formatDate,
+  joinFullName,
+  sanitizeHtmlString,
+  sortByDate,
+} from "./utils";
 
 describe("sortByDate", () => {
   const items = [
@@ -162,5 +167,54 @@ describe("sanitizeHtmlString", () => {
     expect(output.result).toBe(
       "<!DOCTYPE html><html><head></head><body><div><p>Valid Content</p></div></body></html>",
     );
+  });
+});
+
+describe("joinFullName", () => {
+  it("joins multiple valid name parts", () => {
+    expect(joinFullName("John", "Doe")).toBe("John Doe");
+  });
+
+  it("trims whitespace from each part", () => {
+    expect(joinFullName(" John ", " Doe")).toBe("John Doe");
+  });
+
+  it("ignores null, undefined values", () => {
+    expect(joinFullName("John", null, undefined, "Doe")).toBe("John Doe");
+  });
+
+  it("ignores empty strings", () => {
+    const result = joinFullName("John", "", "Doe");
+    expect(result).toBe("John Doe");
+  });
+
+  it("returns empty string if all parts are invalid", () => {
+    const result = joinFullName(null, undefined, "");
+    expect(result).toBe("");
+  });
+});
+
+describe("formatDate()", () => {
+  it("formats a valid date string", () => {
+    const result = formatDate("2024-01-01");
+    expect(result).not.toBe("");
+  });
+
+  it("formats a valid timestamp", () => {
+    const timestamp = new Date("2024-01-01").getTime();
+    const result = formatDate(timestamp);
+    expect(result).not.toBe("");
+  });
+
+  it("returns empty string for null", () => {
+    expect(formatDate(null)).toBe("");
+  });
+
+  it("returns empty string for undefined", () => {
+    expect(formatDate(undefined)).toBe("");
+  });
+
+  it("returns empty string for empty input", () => {
+    expect(formatDate("")).toBe("");
   });
 });

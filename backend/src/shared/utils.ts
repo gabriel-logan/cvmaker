@@ -14,6 +14,18 @@ export function sortByDate<T>(
   });
 }
 
+export const joinFullName = (
+  ...parts: Array<string | null | undefined>
+): string => {
+  return parts
+    .map((p) => p?.trim())
+    .filter((p): p is string => Boolean(p))
+    .join(" ");
+};
+
+export const formatDate = (v?: string | number | null): string =>
+  v ? new Date(v).toLocaleDateString() : "";
+
 const window = new JSDOM("").window;
 const purify = DOMPurify(window);
 

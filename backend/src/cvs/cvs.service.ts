@@ -44,7 +44,9 @@ export class CvsService {
 
     const html = cvTemplates(createCVDto, createCVDto.locale as Locale);
 
-    return await this.createPDFfromStatic(html);
+    const pdfBuffer = await this.createPDFfromStatic(html);
+
+    return pdfBuffer;
   }
 
   async createPDFfromStatic(

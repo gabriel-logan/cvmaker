@@ -1,7 +1,7 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
+import { formatDate, joinFullName } from "src/shared/utils";
 
 import type { Locale, LocaleContent } from "../locales";
-import { formatDate, joinFullName } from "src/shared/utils";
 
 export function cvExample3Template(
   dto: CreateCVDto,

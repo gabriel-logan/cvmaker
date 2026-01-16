@@ -258,7 +258,7 @@ export function cvExample1Template(
           <div class="item">
               <div class="item-title">${e.position} — ${e.company}</div>
               <div class="dates">
-                  ${e.startDate} ${e.endDate ? `– ${e.endDate}` : "– Atual"}
+                  ${e.startDate} ${e.endDate ? `– ${e.endDate}` : `– ${localeContent.Current}`}
                   ${e.location ? ` | ${e.location}` : ""}
               </div>
               ${e.responsibilities ? `<p>${e.responsibilities}</p>` : ""}

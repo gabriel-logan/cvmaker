@@ -490,7 +490,7 @@ ${
         <div class="timeline-header">
           <div class="timeline-title">${e.position}</div>
           <div class="timeline-date">
-            ${e.startDate} ${e.endDate ? `– ${e.endDate}` : "– Atual"}
+            ${e.startDate} ${e.endDate ? `– ${e.endDate}` : `– ${localeContent.Current}`}
           </div>
         </div>
         <div class="timeline-subtitle">${e.company}</div>

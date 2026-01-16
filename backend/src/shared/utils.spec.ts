@@ -148,7 +148,7 @@ describe("sanitizeHtmlString", () => {
     });
   });
 
-  /*
+  /* nosonar
   it("should handle input with emoji characters", () => {
     const input = "<div>Hello 😊</div>";
     const output = sanitizeHtmlString(input);
@@ -211,7 +211,7 @@ describe("formatDate()", () => {
   });
 
   it("returns empty string for undefined", () => {
-    expect(formatDate(undefined)).toBe("");
+    expect(formatDate(undefined /** nosonar */)).toBe("");
   });
 
   it("returns empty string for empty input", () => {

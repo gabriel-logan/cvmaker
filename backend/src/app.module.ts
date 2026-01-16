@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
-import { join } from "path";
+import { join } from "node:path";
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";

@@ -14,7 +14,7 @@ describe("isTimestamp", () => {
   });
 
   it("should return false for NaN and non-integers", () => {
-    expect(isTimestamp(NaN)).toBe(false);
+    expect(isTimestamp(Number.NaN)).toBe(false);
     expect(isTimestamp(1700000000000.5)).toBe(false);
     expect(isTimestamp(0.1)).toBe(false);
   });

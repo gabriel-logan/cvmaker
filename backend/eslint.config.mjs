@@ -17,7 +17,7 @@ export default tseslint.config(
       "simple-import-sort/imports": [
         "warn",
         {
-          groups: [["^\\u0000"], ["^@?\\w"], ["^@company/"], ["^"], ["^\\."]],
+          groups: [[String.raw`^\u0000`], [String.raw`^@?\w`], ["^@company/"], ["^"], [String.raw`^\.`]],
         },
       ],
     },

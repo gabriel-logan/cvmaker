@@ -19,7 +19,7 @@ export const joinFullName = (
 ): string => {
   return parts
     .map((p) => p?.trim())
-    .filter((p): p is string => Boolean(p))
+    .filter(Boolean)
     .join(" ");
 };
 
@@ -40,7 +40,7 @@ export function sanitizeHtmlString(input: string): {
     };
   }
 
-  /*
+  /* nosonar
   const emojiRegex = /(\p{Emoji_Presentation}|\p{Extended_Pictographic})/gu;
 
   if (emojiRegex.test(input)) {

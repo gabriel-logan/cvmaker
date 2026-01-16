@@ -10,7 +10,7 @@ export function isTimestamp(value: unknown): boolean {
 
   // Check if the number is an integer and represents a valid timestamp
   const date = new Date(value);
-  return Number.isInteger(value) && !isNaN(date.getTime());
+  return Number.isInteger(value) && !Number.isNaN(date.getTime());
 }
 
 export function IsTimestamp(

@@ -5,7 +5,7 @@ export interface EnvGlobalConfig {
   };
 }
 
-export default (): EnvGlobalConfig => {
+export default function envGlobal(): EnvGlobalConfig {
   const nodeEnv = process.env.NODE_ENV;
   const port = process.env.SERVER_PORT;
 
@@ -16,7 +16,7 @@ export default (): EnvGlobalConfig => {
   return {
     server: {
       nodeEnv: nodeEnv as EnvGlobalConfig["server"]["nodeEnv"],
-      port: parseInt(port, 10),
+      port: Number.parseInt(port, 10),
     },
   };
-};
+}

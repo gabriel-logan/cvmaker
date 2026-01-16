@@ -15,7 +15,7 @@ export default function NotFoundPage({
   description,
   redirectLabel,
   redirectTo = "/",
-}: NotFoundPageProps) {
+}: Readonly<NotFoundPageProps>) {
   const { t } = useTranslation();
 
   const localTitle = title || t("PageNotFound");

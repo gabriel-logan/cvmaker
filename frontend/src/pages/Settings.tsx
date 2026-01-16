@@ -88,7 +88,7 @@ export default function SettingsPage() {
             <button
               className="rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700"
               onClick={() => {
-                if (window.confirm(t("ConfirmDeleteAllCVsMessage"))) {
+                if (globalThis.confirm(t("ConfirmDeleteAllCVsMessage"))) {
                   deleteAllCVs();
                   toast.success(t("AllCVsDeletedSuccessfully"));
                 }
@@ -169,7 +169,7 @@ export default function SettingsPage() {
                       className="rounded-md bg-red-600 px-3 py-1 text-white hover:bg-red-700"
                       onClick={() => {
                         if (
-                          window.confirm(
+                          globalThis.confirm(
                             t("ConfirmDeleteCVMessage", { cvName: cv.cVName }),
                           )
                         ) {

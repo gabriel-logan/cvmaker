@@ -25,7 +25,7 @@ export default function RepeatableSection<T extends Record<string, unknown>>({
   onChange,
   emptyItem,
   fields,
-}: RepeatableSectionProps<T>) {
+}: Readonly<RepeatableSectionProps<T>>) {
   function addItem() {
     onChange([...items, structuredClone(emptyItem)]);
 
@@ -70,7 +70,7 @@ export default function RepeatableSection<T extends Record<string, unknown>>({
 
       {items.map((item, index) => (
         <div
-          key={index}
+          key={index /** nosonar */}
           className="mt-6 space-y-4 rounded-lg border border-zinc-800 bg-zinc-950 p-4"
         >
           <div className="flex items-center justify-between">

@@ -81,7 +81,7 @@ export default function PreviewPage() {
         type: "application/pdf",
       });
 
-      const url = window.URL.createObjectURL(blob);
+      const url = globalThis.URL.createObjectURL(blob);
 
       const link = document.createElement("a");
       link.href = url;
@@ -90,7 +90,7 @@ export default function PreviewPage() {
       link.click();
 
       link.remove();
-      window.URL.revokeObjectURL(url);
+      globalThis.URL.revokeObjectURL(url);
     } catch (error) {
       const errorMessage = getAxiosErrorMessage(
         error,

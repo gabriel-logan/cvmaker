@@ -78,7 +78,7 @@ export default function EditCVPage() {
       navigate(`/edit/${newId}`);
 
       // Reload to ensure the cloned CV data is fully loaded
-      setTimeout(() => window.location.reload(), 750);
+      setTimeout(() => globalThis.location.reload(), 750);
     } catch {
       toast.error("Error cling CV");
     }

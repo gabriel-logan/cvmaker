@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { FiFileText, FiMenu, FiSend, FiSettings, FiX } from "react-icons/fi";
 import { Link } from "react-router";
 
-import logo from "/vite.svg";
+import logo from "/vite.svg"; // nosonar
 
 export function Header() {
   const { t } = useTranslation();

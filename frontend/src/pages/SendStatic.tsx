@@ -37,14 +37,14 @@ export default function SendStaticPage() {
         },
       );
 
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const url = globalThis.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
       link.setAttribute("download", "resume.pdf");
       document.body.appendChild(link);
       link.click();
-      link.parentNode?.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      link.remove();
+      globalThis.URL.revokeObjectURL(url);
 
       toast.success("PDF generated successfully from static HTML template!");
     } catch (error) {
@@ -69,11 +69,7 @@ export default function SendStaticPage() {
       <p>{t("SendStaticPageDescription")}</p>
       <p>{t("SendStaticPageDescription2")}</p>
       <div className="mt-6 w-full max-w-md rounded-md border-2 border-dashed border-zinc-700 p-6 text-center">
-        <form
-          className="flex flex-col items-center"
-          onSubmit={handleSubmit}
-          aria-disabled={isLoading}
-        >
+        <form className="flex flex-col items-center" onSubmit={handleSubmit}>
           <label
             htmlFor="file-upload"
             className="cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"

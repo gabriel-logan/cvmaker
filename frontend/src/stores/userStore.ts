@@ -15,7 +15,7 @@ interface UserStore {
 export const useUserStore = create<UserStore>()(
   persist(
     (set) => ({
-      locale: (window.navigator.language as locale) || "en",
+      locale: (globalThis.navigator.language as locale) || "en",
       isLoading: false,
 
       setLocale: (locale) =>

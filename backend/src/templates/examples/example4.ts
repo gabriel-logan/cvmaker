@@ -522,7 +522,7 @@ ${
         <div class="timeline-header">
           <div class="timeline-title">${e.degree} em ${e.fieldOfStudy}</div>
           <div class="timeline-date">
-            ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
+            ${e.startDate ?? ""} ${e.endDate ? `– ${e.endDate}` : ""}
           </div>
         </div>
         <div class="timeline-subtitle">${e.institution}</div>

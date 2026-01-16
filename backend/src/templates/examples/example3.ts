@@ -428,7 +428,7 @@ ${
     <div class="entry-header">
       <div class="entry-title">${e.degree} em ${e.fieldOfStudy}</div>
       <div class="entry-period">
-        ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
+        ${e.startDate ?? ""} ${e.endDate ? `– ${e.endDate}` : ""}
       </div>
     </div>
     <div class="entry-subtitle">${e.institution}</div>

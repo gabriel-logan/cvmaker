@@ -281,7 +281,7 @@ export function cvExample1Template(
               <div class="item-title">${e.degree} em ${e.fieldOfStudy}</div>
               <div class="item-subtitle">${e.institution}</div>
               <div class="dates">
-                  ${e.startDate} ${e.endDate ? `– ${e.endDate}` : ""}
+                  ${e.startDate ?? ""} ${e.endDate ? `– ${e.endDate}` : ""}
                   ${e.location ? ` | ${e.location}` : ""}
               </div>
               ${e.grade ? `<p>${localeContent.Grade}: ${e.grade}</p>` : ""}

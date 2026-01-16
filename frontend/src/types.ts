@@ -24,7 +24,7 @@ export interface CV {
     institution: string;
     degree: string;
     fieldOfStudy: string;
-    startDate: string;
+    startDate: string | null;
     endDate: string | null;
     grade: string | null;
     description: string | null;

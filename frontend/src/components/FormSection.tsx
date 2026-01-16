@@ -15,7 +15,7 @@ export default function FormSection({
   setCV,
   handleSubmit,
   buttonTitle = "Submit",
-}: FormSectionProps) {
+}: Readonly<FormSectionProps>) {
   const { t } = useTranslation();
 
   return (
@@ -221,7 +221,7 @@ export default function FormSection({
           institution: "",
           degree: "",
           fieldOfStudy: "",
-          startDate: "",
+          startDate: null,
           endDate: null,
           grade: null,
           location: null,

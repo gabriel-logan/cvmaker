@@ -261,7 +261,7 @@ export default function FormSection({
             name: "startDate",
             label: "Start date",
             type: "month",
-            required: true,
+            required: false,
             placeholder: "e.g. 2020-09",
           },
           {

@@ -38,9 +38,14 @@ class CreateCVEducationDto {
   @IsNotBlankString()
   public fieldOfStudy: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+    nullable: true,
+    required: false,
+  })
   @IsNotBlankString()
-  public startDate: string;
+  @IsOptional()
+  public startDate: string | null;
 
   @ApiProperty({
     type: String,

@@ -3,11 +3,16 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-export default tseslint.config(
-  {
-    ignores: ["eslint.config.*", "dist", "coverage", ".github", "node_modules"],
-  },
+export default defineConfig(
+  globalIgnores([
+    "eslint.config.*",
+    "dist",
+    "coverage",
+    ".github",
+    "node_modules",
+  ]),
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   eslintPluginPrettierRecommended,

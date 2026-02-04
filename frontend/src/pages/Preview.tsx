@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
+import { templatesOptions } from "../constants";
 import apiInstance from "../lib/apiInstance";
 import { useCVsStore } from "../stores/cVsStore";
 import type { CV, TemplateIds } from "../types";
@@ -161,10 +162,11 @@ export default function PreviewPage() {
           <option value="" disabled>
             {t("SelectATemplate")}
           </option>
-          <option value="template1">Template 1</option>
-          <option value="template2">Template 2</option>
-          <option value="template3">Template 3</option>
-          <option value="template4">Template 4</option>
+          {templatesOptions.map((template) => (
+            <option key={template.id} value={template.id}>
+              {template.name}
+            </option>
+          ))}
         </select>
 
         <button

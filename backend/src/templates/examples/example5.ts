@@ -60,6 +60,10 @@ export function cvExample5Template(
     margin: 3px 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .header {
     margin-bottom: 8px;
   }
@@ -89,6 +93,25 @@ export function cvExample5Template(
   .muted {
     color: #666;
     font-size: 9.6px;
+  }
+
+  .contact-link {
+    font-weight: 600;
+    color: #222;
+  }
+
+  .side-link {
+    font-size: 9.6px;
+    color: #444;
+    border-left: 2px solid #ccc;
+    padding-left: 6px;
+    display: inline-block;
+  }
+
+  .project-link {
+    font-size: 9.6px;
+    color: #1a5fb4;
+    font-weight: 600;
   }
 
   .skills {
@@ -121,8 +144,16 @@ export function cvExample5Template(
     <div class="left">
 
       <h2>Contacts</h2>
-      ${dto.contacts.email ? `<p>${dto.contacts.email}</p>` : ""}
-      ${dto.contacts.phone ? `<p>${dto.contacts.phone}</p>` : ""}
+      ${
+        dto.contacts.email
+          ? `<p><a class="contact-link" href="mailto:${dto.contacts.email}">${dto.contacts.email}</a></p>`
+          : ""
+      }
+      ${
+        dto.contacts.phone
+          ? `<p><a class="contact-link" href="tel:${dto.contacts.phone}">${dto.contacts.phone}</a></p>`
+          : ""
+      }
       ${dto.address ? `<p class="muted">${dto.address}</p>` : ""}
 
       <h2>Skills</h2>
@@ -148,7 +179,7 @@ export function cvExample5Template(
           (l) => `
           <p class="link">
             <strong>${l.label}</strong><br/>
-            <span class="muted">${l.url}</span>
+            <a class="side-link" href="${l.url}">${l.url}</a>
           </p>
         `,
         )
@@ -257,7 +288,11 @@ export function cvExample5Template(
               }
             </div>
             <p>${p.description}</p>
-            ${p.link ? `<p class="muted">${p.link}</p>` : ""}
+            ${
+              p.link
+                ? `<p><a class="project-link" href="${p.link}">${p.link}</a></p>`
+                : ""
+            }
           </div>
         `,
         )

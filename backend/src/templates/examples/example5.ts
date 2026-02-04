@@ -2,7 +2,6 @@ import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 import { formatDate, joinFullName } from "src/shared/utils";
 
 import type { Locale, LocaleContent } from "../locales";
-
 export function cvExample5Template(
   dto: CreateCVDto,
   localeContent: LocaleContent,
@@ -30,7 +29,7 @@ export function cvExample5Template(
   body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10.3px;
+    font-size: 10.2px;
     line-height: 1.35;
     color: #222;
   }
@@ -42,7 +41,7 @@ export function cvExample5Template(
   }
 
   h2 {
-    font-size: 10.5px;
+    font-size: 10.4px;
     margin: 14px 0 5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -51,7 +50,7 @@ export function cvExample5Template(
   }
 
   h3 {
-    font-size: 10.3px;
+    font-size: 10.2px;
     margin: 0;
     font-weight: 600;
   }
@@ -65,7 +64,7 @@ export function cvExample5Template(
   }
 
   .nickname {
-    font-size: 10.5px;
+    font-size: 10.4px;
     color: #666;
   }
 
@@ -75,11 +74,11 @@ export function cvExample5Template(
   }
 
   .left {
-    width: 32%;
+    width: 33%;
   }
 
   .right {
-    width: 68%;
+    width: 67%;
   }
 
   .item {
@@ -88,7 +87,7 @@ export function cvExample5Template(
 
   .muted {
     color: #666;
-    font-size: 9.3px;
+    font-size: 9.2px;
   }
 
   .skills {
@@ -101,7 +100,7 @@ export function cvExample5Template(
     background: #f1f1f1;
     padding: 2px 5px;
     border-radius: 3px;
-    font-size: 9.2px;
+    font-size: 9.1px;
   }
 
   .link {
@@ -159,6 +158,30 @@ export function cvExample5Template(
           ? `
         <h2>Objectives</h2>
         <p>${dto.objectives}</p>
+      `
+          : ""
+      }
+
+      ${
+        dto.education.length
+          ? `
+        <h2>Education</h2>
+        ${dto.education
+          .map(
+            (e) => `
+            <div class="item">
+              <h3>${e.degree}</h3>
+              <div class="muted">
+                ${e.institution}<br/>
+                ${e.startDate ? formatDate(e.startDate) : ""} ${
+                  e.endDate ? `- ${formatDate(e.endDate)}` : ""
+                }
+              </div>
+              ${e.fieldOfStudy ? `<p>${e.fieldOfStudy}</p>` : ""}
+            </div>
+          `,
+          )
+          .join("")}
       `
           : ""
       }

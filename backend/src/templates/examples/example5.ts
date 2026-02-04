@@ -30,20 +30,20 @@ export function cvExample5Template(
   body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10.5px;
-    line-height: 1.4;
+    font-size: 10.3px;
+    line-height: 1.35;
     color: #222;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 21px;
     margin: 0;
     font-weight: 700;
   }
 
   h2 {
-    font-size: 11px;
-    margin: 18px 0 6px;
+    font-size: 10.5px;
+    margin: 14px 0 5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-bottom: 1px solid #ddd;
@@ -51,66 +51,57 @@ export function cvExample5Template(
   }
 
   h3 {
-    font-size: 10.5px;
+    font-size: 10.3px;
     margin: 0;
     font-weight: 600;
   }
 
   p {
-    margin: 4px 0;
+    margin: 3px 0;
   }
 
   .header {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .nickname {
-    font-size: 11px;
+    font-size: 10.5px;
     color: #666;
   }
 
   .container {
     display: flex;
-    gap: 14px;
+    gap: 12px;
   }
 
   .left {
-    width: 30%;
+    width: 32%;
   }
 
   .right {
-    width: 70%;
+    width: 68%;
   }
 
   .item {
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
 
   .muted {
     color: #666;
-    font-size: 9.5px;
-  }
-
-  ul {
-    margin: 4px 0 0;
-    padding-left: 14px;
-  }
-
-  li {
-    margin-bottom: 2px;
+    font-size: 9.3px;
   }
 
   .skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 6px;
+    gap: 4px 5px;
   }
 
   .skill {
     background: #f1f1f1;
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 3px;
-    font-size: 9.5px;
+    font-size: 9.2px;
   }
 
   .link {
@@ -136,18 +127,16 @@ export function cvExample5Template(
 
       <h2>Skills</h2>
       <div class="skills">
-        ${dto.skills
-          .map((skill) => `<div class="skill">${skill.name}</div>`)
-          .join("")}
+        ${dto.skills.map((s) => `<div class="skill">${s.name}</div>`).join("")}
       </div>
 
       <h2>Languages</h2>
       ${dto.languages
         .map(
-          (lang) => `
+          (l) => `
           <p>
-            <strong>${lang.name}</strong><br/>
-            <span class="muted">${lang.proficiency}</span>
+            <strong>${l.name}</strong><br/>
+            <span class="muted">${l.proficiency}</span>
           </p>
         `,
         )
@@ -156,14 +145,46 @@ export function cvExample5Template(
       <h2>Links</h2>
       ${dto.links
         .map(
-          (link) => `
+          (l) => `
           <p class="link">
-            <strong>${link.label}:</strong><br/>
-            <span class="muted">${link.url}</span>
+            <strong>${l.label}</strong><br/>
+            <span class="muted">${l.url}</span>
           </p>
         `,
         )
         .join("")}
+
+      ${
+        dto.objectives
+          ? `
+        <h2>Objectives</h2>
+        <p>${dto.objectives}</p>
+      `
+          : ""
+      }
+
+      ${
+        dto.otherExperiences.length
+          ? `
+        <h2>Other Experiences</h2>
+        ${dto.otherExperiences
+          .map(
+            (o) => `
+            <div class="item">
+              <h3>${o.title}</h3>
+              <div class="muted">
+                ${o.startDate ? formatDate(o.startDate) : ""} ${
+                  o.endDate ? `- ${formatDate(o.endDate)}` : ""
+                }
+              </div>
+              <p>${o.description}</p>
+            </div>
+          `,
+          )
+          .join("")}
+      `
+          : ""
+      }
     </div>
 
     <!-- RIGHT -->
@@ -178,28 +199,19 @@ export function cvExample5Template(
           : ""
       }
 
-      ${
-        dto.objectives
-          ? `
-        <h2>Objectives</h2>
-        <p>${dto.objectives}</p>
-      `
-          : ""
-      }
-
       <h2>Experience</h2>
       ${dto.experience
         .map(
-          (exp) => `
+          (e) => `
           <div class="item">
-            <h3>${exp.position} — ${exp.company}</h3>
+            <h3>${e.position} — ${e.company}</h3>
             <div class="muted">
-              ${formatDate(exp.startDate)} ${
-                exp.endDate ? `- ${formatDate(exp.endDate)}` : "- Present"
+              ${formatDate(e.startDate)} ${
+                e.endDate ? `- ${formatDate(e.endDate)}` : "- Present"
               }
-              ${exp.location ? ` • ${exp.location}` : ""}
+              ${e.location ? ` • ${e.location}` : ""}
             </div>
-            ${exp.responsibilities ? `<p>${exp.responsibilities}</p>` : ""}
+            ${e.responsibilities ? `<p>${e.responsibilities}</p>` : ""}
           </div>
         `,
         )
@@ -208,43 +220,20 @@ export function cvExample5Template(
       <h2>Projects</h2>
       ${dto.projects
         .map(
-          (project) => `
+          (p) => `
           <div class="item">
-            <h3>${project.name}</h3>
+            <h3>${p.name}</h3>
             <div class="muted">
-              ${formatDate(project.startDate)} ${
-                project.endDate ? `- ${formatDate(project.endDate)}` : ""
+              ${formatDate(p.startDate)} ${
+                p.endDate ? `- ${formatDate(p.endDate)}` : ""
               }
             </div>
-            <p>${project.description}</p>
-            ${project.link ? `<p class="muted">${project.link}</p>` : ""}
+            <p>${p.description}</p>
+            ${p.link ? `<p class="muted">${p.link}</p>` : ""}
           </div>
         `,
         )
         .join("")}
-
-      ${
-        dto.otherExperiences.length
-          ? `
-        <h2>Other Experiences</h2>
-        ${dto.otherExperiences
-          .map(
-            (other) => `
-            <div class="item">
-              <h3>${other.title}</h3>
-              <div class="muted">
-                ${other.startDate ? formatDate(other.startDate) : ""} ${
-                  other.endDate ? `- ${formatDate(other.endDate)}` : ""
-                }
-              </div>
-              <p>${other.description}</p>
-            </div>
-          `,
-          )
-          .join("")}
-      `
-          : ""
-      }
     </div>
   </div>
 </body>

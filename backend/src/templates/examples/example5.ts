@@ -140,10 +140,9 @@ export function cvExample5Template(
   </div>
 
   <div class="container">
-    <!-- LEFT -->
     <div class="left">
 
-      <h2>Contacts</h2>
+      <h2>${localeContent.Contacts}</h2>
       ${
         dto.contacts.email
           ? `<p><a class="contact-link" href="mailto:${dto.contacts.email}">${dto.contacts.email}</a></p>`
@@ -156,12 +155,12 @@ export function cvExample5Template(
       }
       ${dto.address ? `<p class="muted">${dto.address}</p>` : ""}
 
-      <h2>Skills</h2>
+      <h2>${localeContent.Skills}</h2>
       <div class="skills">
         ${dto.skills.map((s) => `<div class="skill">${s.name}</div>`).join("")}
       </div>
 
-      <h2>Languages</h2>
+      <h2>${localeContent.Languages}</h2>
       ${dto.languages
         .map(
           (l) => `
@@ -173,7 +172,7 @@ export function cvExample5Template(
         )
         .join("")}
 
-      <h2>Links</h2>
+      <h2>${localeContent.Links}</h2>
       ${dto.links
         .map(
           (l) => `
@@ -188,7 +187,7 @@ export function cvExample5Template(
       ${
         dto.objectives
           ? `
-        <h2>Objectives</h2>
+        <h2>${localeContent.Objectives}</h2>
         <p>${dto.objectives}</p>
       `
           : ""
@@ -197,7 +196,7 @@ export function cvExample5Template(
       ${
         dto.education.length
           ? `
-        <h2>Education</h2>
+        <h2>${localeContent.Education}</h2>
         ${sortByDate(dto.education, (e) => e.endDate ?? e.startDate, "desc")
           .map(
             (e) => `
@@ -221,7 +220,7 @@ export function cvExample5Template(
       ${
         dto.otherExperiences.length
           ? `
-        <h2>Other Experiences</h2>
+        <h2>${localeContent.OtherExperiences}</h2>
         ${sortByDate(
           dto.otherExperiences,
           (o) => o.endDate ?? o.startDate,
@@ -246,19 +245,18 @@ export function cvExample5Template(
       }
     </div>
 
-    <!-- RIGHT -->
     <div class="right">
 
       ${
         dto.summary
           ? `
-        <h2>Summary</h2>
+        <h2>${localeContent.Summary}</h2>
         <p>${dto.summary}</p>
       `
           : ""
       }
 
-      <h2>Experience</h2>
+      <h2>${localeContent.Experience}</h2>
       ${sortByDate(dto.experience, (e) => e.endDate ?? e.startDate, "desc")
         .map(
           (e) => `
@@ -276,7 +274,7 @@ export function cvExample5Template(
         )
         .join("")}
 
-      <h2>Projects</h2>
+      <h2>${localeContent.Projects}</h2>
       ${sortByDate(dto.projects, (p) => p.endDate ?? p.startDate, "desc")
         .map(
           (p) => `

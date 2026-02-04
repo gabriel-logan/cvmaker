@@ -1,5 +1,5 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
-import { formatDate, joinFullName } from "src/shared/utils";
+import { formatDate, joinFullName, sortByDate } from "src/shared/utils";
 
 import type { Locale, LocaleContent } from "../locales";
 
@@ -167,7 +167,7 @@ export function cvExample5Template(
         dto.education.length
           ? `
         <h2>Education</h2>
-        ${dto.education
+        ${sortByDate(dto.education, (e) => e.endDate ?? e.startDate, "desc")
           .map(
             (e) => `
             <div class="item">
@@ -191,7 +191,11 @@ export function cvExample5Template(
         dto.otherExperiences.length
           ? `
         <h2>Other Experiences</h2>
-        ${dto.otherExperiences
+        ${sortByDate(
+          dto.otherExperiences,
+          (o) => o.endDate ?? o.startDate,
+          "desc",
+        )
           .map(
             (o) => `
             <div class="item">
@@ -224,7 +228,7 @@ export function cvExample5Template(
       }
 
       <h2>Experience</h2>
-      ${dto.experience
+      ${sortByDate(dto.experience, (e) => e.endDate ?? e.startDate, "desc")
         .map(
           (e) => `
           <div class="item">
@@ -242,7 +246,7 @@ export function cvExample5Template(
         .join("")}
 
       <h2>Projects</h2>
-      ${dto.projects
+      ${sortByDate(dto.projects, (p) => p.endDate ?? p.startDate, "desc")
         .map(
           (p) => `
           <div class="item">

@@ -6,7 +6,7 @@ import RepeatableSection from "./RepeatableSection";
 interface FormSectionProps {
   cV: CV;
   setCV: React.Dispatch<React.SetStateAction<CV>>;
-  handleSubmit: (e: React.FormEvent) => void;
+  handleSubmit: (e: React.SubmitEvent) => void;
   buttonTitle?: string;
 }
 

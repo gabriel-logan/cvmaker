@@ -27,7 +27,10 @@ export default function EditCVPage() {
     ...(cVFinded || emptyCV),
   });
 
-  function handleSubmit(e: React.FormEvent, cVFindedId: CV["id"]) {
+  function handleSubmit(
+    e: React.SubmitEvent | React.MouseEvent,
+    cVFindedId: CV["id"],
+  ) {
     e.preventDefault();
 
     try {

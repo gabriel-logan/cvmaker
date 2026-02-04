@@ -12,7 +12,7 @@ export default function SendStaticPage() {
 
   const [file, setFile] = useState<File | null>(null);
 
-  async function handleSubmit(event: React.FormEvent) {
+  async function handleSubmit(event: React.SubmitEvent) {
     event.preventDefault();
 
     if (!file) {

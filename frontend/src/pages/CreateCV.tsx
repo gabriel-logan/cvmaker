@@ -19,7 +19,7 @@ export default function CreateCVPage() {
 
   const [cV, setCV] = useState<CV>(emptyCV);
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.SubmitEvent | React.MouseEvent) {
     e.preventDefault();
 
     try {

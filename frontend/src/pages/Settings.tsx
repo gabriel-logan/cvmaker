@@ -12,7 +12,7 @@ export default function SettingsPage() {
   const { cVs, createCV, updateCV, deleteCV, deleteAllCVs } = useCVsStore();
   const { setLocale } = useUserStore();
 
-  async function handleImportCVs(e: React.FormEvent) {
+  async function handleImportCVs(e: React.SubmitEvent) {
     e.preventDefault();
 
     const inputRaw = document.getElementById("cv-backup");

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import type { CV, locale } from "../types";
+import type { CV, Locale } from "../types";
 import RepeatableSection from "./RepeatableSection";
 
 interface FormSectionProps {
@@ -24,7 +24,7 @@ export default function FormSection({
         <label>{t("CVLanguage")}</label>
         <select
           value={cV.locale}
-          onChange={(e) => setCV({ ...cV, locale: e.target.value as locale })}
+          onChange={(e) => setCV({ ...cV, locale: e.target.value as Locale })}
           className="ml-4 rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2 outline-none focus:border-indigo-500"
         >
           <option value="en">{t("English")}</option>

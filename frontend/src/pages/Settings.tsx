@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import { useCVsStore } from "../stores/cVsStore";
 import { useUserStore } from "../stores/userStore";
-import type { CV, locale } from "../types";
+import type { CV, Locale } from "../types";
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation();
@@ -63,7 +63,7 @@ export default function SettingsPage() {
                 value={i18n.language}
                 onChange={(e) => {
                   i18n.changeLanguage(e.target.value);
-                  setLocale(e.target.value as locale);
+                  setLocale(e.target.value as Locale);
                 }}
               >
                 <option value="en">English</option>

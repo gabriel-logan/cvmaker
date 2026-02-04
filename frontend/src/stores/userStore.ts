@@ -2,17 +2,17 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { userStorageKey } from "../constants";
-import type { locale } from "../types";
+import type { Locale } from "../types";
 
-function safeLocale(locale: string): locale {
-  return locale.split("-")[0] as locale;
+function safeLocale(locale: string): Locale {
+  return locale.split("-")[0] as Locale;
 }
 
 interface UserStore {
-  locale: locale;
+  locale: Locale;
   isLoading: boolean;
 
-  setLocale: (locale: locale) => void;
+  setLocale: (locale: Locale) => void;
   setIsLoading: (isLoading: boolean) => void;
 }
 

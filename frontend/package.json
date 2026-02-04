@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write **/*.{js,ts,tsx,json,css,md,yml}",
     "format:check": "prettier --check **/*.{js,ts,tsx,json,css,md,yml}",
+    "pre-pr": "pnpm format && pnpm lint:fix && pnpm build",
     "preview": "vite preview"
   },
   "dependencies": {

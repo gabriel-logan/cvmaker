@@ -1,12 +1,12 @@
-export type locale = "en" | "pt" | "de";
+export type Locale = "en" | "pt" | "de";
 
-export type locales = locale[];
+export type Locales = Locale[];
 
 export interface CV {
   id: string;
   cVName: string;
 
-  locale: locale;
+  locale: Locale;
 
   firstName: string;
   middleName: string | null;

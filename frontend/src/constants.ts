@@ -53,6 +53,6 @@ export const templatesOptions: Array<{ id: TemplateIds; name: string }> = [
   },
   {
     id: "template5",
-    name: "Template 5",
+    name: "Template 5 - Gabriel Logan",
   },
 ];

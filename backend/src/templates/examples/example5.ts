@@ -2,6 +2,7 @@ import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
 import { formatDate, joinFullName } from "src/shared/utils";
 
 import type { Locale, LocaleContent } from "../locales";
+
 export function cvExample5Template(
   dto: CreateCVDto,
   localeContent: LocaleContent,
@@ -29,19 +30,19 @@ export function cvExample5Template(
   body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10.2px;
+    font-size: 10.7px;
     line-height: 1.35;
     color: #222;
   }
 
   h1 {
-    font-size: 21px;
+    font-size: 22px;
     margin: 0;
     font-weight: 700;
   }
 
   h2 {
-    font-size: 10.4px;
+    font-size: 10.9px;
     margin: 14px 0 5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -50,7 +51,7 @@ export function cvExample5Template(
   }
 
   h3 {
-    font-size: 10.2px;
+    font-size: 10.6px;
     margin: 0;
     font-weight: 600;
   }
@@ -64,7 +65,7 @@ export function cvExample5Template(
   }
 
   .nickname {
-    font-size: 10.4px;
+    font-size: 10.8px;
     color: #666;
   }
 
@@ -87,7 +88,7 @@ export function cvExample5Template(
 
   .muted {
     color: #666;
-    font-size: 9.2px;
+    font-size: 9.6px;
   }
 
   .skills {
@@ -100,7 +101,7 @@ export function cvExample5Template(
     background: #f1f1f1;
     padding: 2px 5px;
     border-radius: 3px;
-    font-size: 9.1px;
+    font-size: 9.6px;
   }
 
   .link {

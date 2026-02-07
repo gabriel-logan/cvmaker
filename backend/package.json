@@ -21,7 +21,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json --verbose",
     "test:e2e:watch": "jest --config ./test/jest-e2e.json --watch",
-    "pre:push": "pnpm test && pnpm lint && pnpm format:check && pnpm test:e2e && pnpm build"
+    "pre:push": "pnpm format && pnpm lint:fix && pnpm test && pnpm build && pnpm test:e2e"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.13",

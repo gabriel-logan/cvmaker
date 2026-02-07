@@ -7,6 +7,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "nest build",
+    "install:puppeteer": "npx puppeteer browsers install chrome",
     "format": "prettier --write **/*.{ts,js,json,md,yml,mjs}",
     "format:check": "prettier --check **/*.{ts,js,json,md,yml,mjs}",
     "dev": "nest start --watch",

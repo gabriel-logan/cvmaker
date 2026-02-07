@@ -21,7 +21,7 @@ export function cvExample5Template(
     <style>
         @page {
             size: A4;
-            margin: 14mm;
+            margin: 12mm;
         }
 
         * {

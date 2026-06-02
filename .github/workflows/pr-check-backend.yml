@@ -53,12 +53,12 @@ jobs:
           cache-dependency-path: backend/pnpm-lock.yaml
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
           version: latest
 
       - name: Install dependencies
-        run: pnpm install --config.minimumReleaseAge=0
+        run: pnpm ci
 
       - name: Create .env file for tests
         run: |

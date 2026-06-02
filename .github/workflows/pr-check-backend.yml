@@ -58,7 +58,7 @@ jobs:
           version: latest
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Create .env file for tests
         run: |

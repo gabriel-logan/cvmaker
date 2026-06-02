@@ -67,6 +67,16 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.60.1"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "@scarf/scarf",
+      "@typescript-eslint/visitor-keys",
+      "puppeteer",
+      "typescript-eslint",
+      "unrs-resolver"
+    ]
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",

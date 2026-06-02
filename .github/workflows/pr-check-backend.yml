@@ -57,9 +57,6 @@ jobs:
         with:
           version: latest
 
-      - name: Clean installation
-        run: pnpm clean --lockfile
-
       - name: Install dependencies
         run: pnpm install
 

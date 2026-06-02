@@ -26,8 +26,7 @@ export const joinFullName = (
 export const formatDate = (
   v?: string | number | null,
   locales?: Intl.LocalesArgument | null,
-): string =>
-  v ? new Date(v).toLocaleDateString(locales ?? undefined) : "";
+): string => (v ? new Date(v).toLocaleDateString(locales ?? undefined) : "");
 
 const window = new JSDOM("").window;
 const purify = DOMPurify(window);

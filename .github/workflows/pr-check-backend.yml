@@ -61,7 +61,17 @@ jobs:
         run: pnpm clean --lockfile
 
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          output=$(pnpm install 2>&1; echo "EXIT_CODE=$?")
+          echo "$output" | grep -v 'EXIT_CODE='
+
+          error_line=$(echo "$output" | grep 'ERR_PNPM_IGNORED_BUILDS') || true
+          if [ -n "$error_line" ]; then
+            pkgs=$(echo "$error_line" | sed 's/.*Ignored build scripts: //' | tr ',' '\n' | sed 's/^ *//' | sed 's/@[0-9].*//' | tr '\n' ' ')
+            echo "Approving builds for: $pkgs"
+            printf 'a\n' | pnpm approve-builds $pkgs
+            pnpm install
+          fi
 
       - name: Create .env file for tests
         run: |

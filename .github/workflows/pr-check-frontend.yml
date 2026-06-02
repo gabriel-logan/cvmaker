@@ -50,6 +50,9 @@ jobs:
           cache: "pnpm"
           cache-dependency-path: frontend/pnpm-lock.yaml
 
+      - name: Clean installation
+        run: pnpm clean --lockfile
+
       - name: Install dependencies
         run: pnpm install
 

@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - '@scarf/scarf'
+  - '@typescript-eslint/visitor-keys'
+  - 'puppeteer'
+  - 'typescript-eslint'
+  - 'unrs-resolver'

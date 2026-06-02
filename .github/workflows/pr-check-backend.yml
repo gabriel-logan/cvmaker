@@ -57,14 +57,8 @@ jobs:
         with:
           version: latest
 
-      - name: Configure pnpm for CI
-        run: |
-          pnpm config set --location project minimumReleaseAge 0
-          pnpm config set --location project onlyBuiltDependencies '["@nestjs/core","@scarf/scarf","@typescript-eslint/visitor-keys","puppeteer","typescript-eslint","unrs-resolver"]'
-
       - name: Install dependencies
-        run: |
-          pnpm install
+        run: pnpm install
 
       - name: Create .env file for tests
         run: |

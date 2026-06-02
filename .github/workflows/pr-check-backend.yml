@@ -81,7 +81,9 @@ jobs:
           EOF
 
       - name: Install puppeteer dependencies
-        run: npx puppeteer browsers install chrome
+        run: |
+          rm -rf ~/.cache/puppeteer
+          npx puppeteer browsers install chrome
 
       - name: Run prettier formatting check
         run: pnpm format:check

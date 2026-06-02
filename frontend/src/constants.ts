@@ -30,6 +30,9 @@ export const emptyCV: CV = {
   otherExperiences: [],
   references: [],
   links: [],
+  margin: 0,
+  localeFormatDate: null,
+
   createdAt: 0,
   updatedAt: 0,
 };

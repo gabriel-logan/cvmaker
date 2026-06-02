@@ -83,6 +83,9 @@ export interface CV {
     url: string;
   }>;
 
+  margin: number;
+  localeFormatDate: string | null;
+
   createdAt: number;
   updatedAt: number;
 }

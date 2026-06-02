@@ -24,7 +24,8 @@ export default function EditCVPage() {
   const cVFinded = cVs.find((cV) => cV.id === id);
 
   const [cV, setCV] = useState<CV>({
-    ...(cVFinded || emptyCV),
+    ...emptyCV,
+    ...cVFinded,
   });
 
   function handleSubmit(

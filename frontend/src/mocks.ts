@@ -111,6 +111,9 @@ export const mockCV = {
     },
   ],
 
+  margin: 0,
+  localeFormatDate: null,
+
   createdAt: 1766629999999,
   updatedAt: 1766629999999,
 };

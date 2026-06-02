@@ -1,6 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
-import { IsArray, IsObject, IsOptional, ValidateNested } from "class-validator";
+import {
+  IsArray,
+  IsNumber,
+  IsObject,
+  IsOptional,
+  Min,
+  ValidateNested,
+} from "class-validator";
 import { IsNotBlankString } from "src/common/decorators/validation/IsNotBlankString";
 import { IsTimestamp } from "src/common/decorators/validation/IsTimestamp";
 import { locales } from "src/templates/locales";
@@ -505,6 +512,25 @@ export class CreateCVDto {
   @ValidateNested()
   @Type(() => CreateCVLinkDto)
   public links: CreateCVLinkDto[];
+
+  @ApiProperty({
+    type: Number,
+    description: "Page margin in mm for the PDF @page rule. Defaults to 0.",
+  })
+  @IsNumber()
+  @Min(0)
+  public margin: number;
+
+  @ApiProperty({
+    type: String,
+    nullable: true,
+    required: false,
+    description:
+      "Locale for date formatting (e.g. 'en', 'pt-BR'). Falls back to the default if not set.",
+  })
+  @IsNotBlankString()
+  @IsOptional()
+  public localeFormatDate: string | null;
 
   @ApiProperty({
     example: Date.now(),

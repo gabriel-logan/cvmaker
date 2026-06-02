@@ -41,6 +41,8 @@
   "Email": "Email",
   "Phone": "Phone",
   "Address": "Address",
+  "PageMargin": "Page margin (mm)",
+  "DateFormatLocale": "Date format locale",
   "Website": "Website",
   "Summary": "Summary",
   "NoSummaryAdded": "No summary added yet.",

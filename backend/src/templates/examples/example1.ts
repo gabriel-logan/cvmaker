@@ -19,7 +19,7 @@ export function cvExample1Template(
     <style>
         @page {
             size: A4;
-            margin: 0;
+            margin: ${dto.margin}mm;
         }
 
         :root {
@@ -393,8 +393,8 @@ export function cvExample1Template(
 
       <footer>
           CV ID: ${dto.id}<br />
-          ${localeContent.CreatedAt}: ${formatDate(dto.createdAt)} |
-          ${localeContent.UpdatedAt}: ${formatDate(dto.updatedAt)}
+          ${localeContent.CreatedAt}: ${formatDate(dto.createdAt, dto.localeFormatDate)} |
+          ${localeContent.UpdatedAt}: ${formatDate(dto.updatedAt, dto.localeFormatDate)}
       </footer>
 
   </main>

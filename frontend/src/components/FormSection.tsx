@@ -33,6 +33,43 @@ export default function FormSection({
         </select>
       </div>
 
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label className="mb-1 block text-sm text-zinc-400">
+            {t("PageMargin")}
+          </label>
+          <input
+            type="number"
+            min="0"
+            value={cV.margin}
+            onChange={(e) =>
+              setCV({
+                ...cV,
+                margin: Math.max(0, Number(e.target.value)),
+              })
+            }
+            placeholder="e.g. 12 (mm)"
+            className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm text-zinc-400">
+            {t("DateFormatLocale")}
+          </label>
+          <input
+            value={cV.localeFormatDate || ""}
+            onChange={(e) =>
+              setCV({
+                ...cV,
+                localeFormatDate: e.target.value || null,
+              })
+            }
+            placeholder="e.g. pt-BR"
+            className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-3 py-2"
+          />
+        </div>
+      </div>
+
       <div>
         <label className="mb-1 block text-sm text-zinc-400">
           {t("CVName")} <span className="text-red-500">*</span>

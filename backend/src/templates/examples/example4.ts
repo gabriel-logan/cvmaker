@@ -761,7 +761,7 @@ ${
 
 <!-- FOOTER -->
 <div class="footer">
-  CV ID: ${dto.id} • ${localeContent.CreatedAt}: ${formatDate(dto.createdAt)} • ${localeContent.UpdatedAt}: ${formatDate(dto.updatedAt)}
+  CV ID: ${dto.id} • ${localeContent.CreatedAt}: ${formatDate(dto.createdAt, dto.localeFormatDate)} • ${localeContent.UpdatedAt}: ${formatDate(dto.updatedAt, dto.localeFormatDate)}
 </div>
 
 </div>

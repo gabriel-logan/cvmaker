@@ -67,7 +67,7 @@ export class CvsService {
     }
 
     await page.setContent(sanitizedContent, {
-      waitUntil: "networkidle0",
+      waitUntil: "load",
       timeout: maxTimeoutMs,
     });
 

@@ -21,7 +21,7 @@ export function cvExample5Template(
     <style>
         @page {
             size: A4;
-            margin: 12mm;
+            margin: ${dto.margin}mm;
         }
 
         * {
@@ -205,8 +205,10 @@ export function cvExample5Template(
                 <h3>${e.degree}</h3>
                 <div class="muted">
                     ${e.institution}<br />
-                    ${e.startDate ? formatDate(e.startDate) : ""} ${
-                      e.endDate ? `- ${formatDate(e.endDate)}` : ""
+                    ${e.startDate ? formatDate(e.startDate, dto.localeFormatDate) : ""} ${
+                      e.endDate
+                        ? `- ${formatDate(e.endDate, dto.localeFormatDate)}`
+                        : ""
                     }
                 </div>
                 ${e.fieldOfStudy ? `<p>${e.fieldOfStudy}</p>` : ""}
@@ -232,8 +234,10 @@ export function cvExample5Template(
             <div class="item">
                 <h3>${o.title}</h3>
                 <div class="muted">
-                    ${o.startDate ? formatDate(o.startDate) : ""} ${
-                      o.endDate ? `- ${formatDate(o.endDate)}` : ""
+                    ${o.startDate ? formatDate(o.startDate, dto.localeFormatDate) : ""} ${
+                      o.endDate
+                        ? `- ${formatDate(o.endDate, dto.localeFormatDate)}`
+                        : ""
                     }
                 </div>
                 <p>${o.description}</p>
@@ -268,8 +272,10 @@ export function cvExample5Template(
             <div class="item">
                 <h3>${e.position} — ${e.company}</h3>
                 <div class="muted">
-                    ${formatDate(e.startDate)} ${
-                      e.endDate ? `- ${formatDate(e.endDate)}` : "- Present"
+                    ${formatDate(e.startDate, dto.localeFormatDate)} ${
+                      e.endDate
+                        ? `- ${formatDate(e.endDate, dto.localeFormatDate)}`
+                        : "- Present"
                     }
                     ${e.location ? ` • ${e.location}` : ""}
                 </div>
@@ -286,8 +292,10 @@ export function cvExample5Template(
             <div class="item">
                 <h3>${p.name}</h3>
                 <div class="muted">
-                    ${formatDate(p.startDate)} ${
-                      p.endDate ? `- ${formatDate(p.endDate)}` : ""
+                    ${formatDate(p.startDate, dto.localeFormatDate)} ${
+                      p.endDate
+                        ? `- ${formatDate(p.endDate, dto.localeFormatDate)}`
+                        : ""
                     }
                 </div>
                 <p>${p.description}</p>

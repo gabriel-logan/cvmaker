@@ -41,6 +41,8 @@
   "Email": "E-mail",
   "Phone": "Telefone",
   "Address": "Endereço",
+  "PageMargin": "Margem da página (mm)",
+  "DateFormatLocale": "Locale do formato da data",
   "Website": "Site",
   "Summary": "Resumo",
   "NoSummaryAdded": "Nenhum resumo adicionado ainda.",

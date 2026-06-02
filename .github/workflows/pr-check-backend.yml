@@ -61,7 +61,7 @@ jobs:
         run: pnpm clean --lockfile
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Create .env file for tests
         run: |

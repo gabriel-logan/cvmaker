@@ -54,7 +54,7 @@ jobs:
         run: pnpm clean --lockfile
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Run prettier formatting check
         run: pnpm format:check

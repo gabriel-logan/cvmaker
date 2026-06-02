@@ -58,7 +58,7 @@ jobs:
           version: latest
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --config.minimumReleaseAge=0
 
       - name: Create .env file for tests
         run: |

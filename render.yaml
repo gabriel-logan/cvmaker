@@ -12,7 +12,7 @@ services:
   buildCommand: cd ./frontend && pnpm install && pnpm build && cd ../backend && pnpm
     install && pnpm build
   startCommand: cd backend/ && npx puppeteer browsers install chrome && pnpm start
-  healthCheckPath: /api
+  healthCheckPath: /api/health
   autoDeployTrigger: commit
   previews:
     generation: automatic

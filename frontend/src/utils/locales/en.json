@@ -1,6 +1,7 @@
 {
   "Home": "Home",
   "Settings": "Settings",
+  "AiGenerate": "AI Generate",
   "SendStatic": "Send Static",
 
   "YouAre'SingularState'": "You are",
@@ -135,6 +136,19 @@
   "CVNotFound": "CV not Found",
   "CVDoesNotExist": "CV does not exist",
   "TheCVYouAreLookingForDoesNotExist": "The CV you are trying to edit does not exist.",
+
+  "AiGeneratePageTitle": "AI Template Generator",
+  "AiGeneratePageDescription": "Describe the template you want and let AI generate a custom CV layout for you.",
+  "SelectACV": "Select a CV",
+  "PleaseSelectACVToGenerate": "Please select a CV to generate a template.",
+  "PleaseEnterAPrompt": "Please enter a description for the template.",
+  "PromptPlaceholder": "Describe the template style... (e.g. 'Modern with a dark sidebar, blue accents, clean typography')",
+  "GenerateTemplate": "Generate Template",
+  "GeneratingTemplate": "Generating template...",
+  "TemplateGeneratedSuccessfully": "Template generated successfully!",
+  "FailedToGenerateTemplate": "Failed to generate template. Please try again.",
+  "GenerateTemplateFirst": "Generate a template first before downloading.",
+  "NoTemplateGeneratedYet": "No template generated yet. Select a CV, describe your desired style, and click generate.",
 
   "AllRightsReserved": "All rights reserved.",
   "ProjectSourceCodeAvailableOnColonSpace": "Project source code available on: ",

@@ -1,6 +1,7 @@
 {
   "Home": "Startseite",
   "Settings": "Einstellungen",
+  "AiGenerate": "KI Generieren",
   "SendStatic": "Statisch senden",
 
   "YouAre'SingularState'": "Du bist",
@@ -135,6 +136,19 @@
   "CVNotFound": "Lebenslauf nicht gefunden",
   "CVDoesNotExist": "Der Lebenslauf existiert nicht",
   "TheCVYouAreLookingForDoesNotExist": "Der Lebenslauf, den du bearbeiten möchtest, existiert nicht.",
+
+  "AiGeneratePageTitle": "KI-Template-Generator",
+  "AiGeneratePageDescription": "Beschreibe das gewünschte Template und lass die KI ein persönliches Lebenslauf-Layout für dich erstellen.",
+  "SelectACV": "Lebenslauf auswählen",
+  "PleaseSelectACVToGenerate": "Bitte wähle einen Lebenslauf aus, um ein Template zu generieren.",
+  "PleaseEnterAPrompt": "Bitte gib eine Beschreibung für das Template ein.",
+  "PromptPlaceholder": "Beschreibe den Template-Stil... (z.B. 'Modern mit dunkler Seitenleiste, blauen Akzenten, sauberer Typografie')",
+  "GenerateTemplate": "Template generieren",
+  "GeneratingTemplate": "Template wird generiert...",
+  "TemplateGeneratedSuccessfully": "Template erfolgreich generiert!",
+  "FailedToGenerateTemplate": "Template konnte nicht generiert werden. Bitte versuche es erneut.",
+  "GenerateTemplateFirst": "Generiere zuerst ein Template, bevor du herunterlädst.",
+  "NoTemplateGeneratedYet": "Noch kein Template generiert. Wähle einen Lebenslauf, beschreibe den gewünschten Stil und klicke auf Generieren.",
 
   "AllRightsReserved": "Alle Rechte vorbehalten.",
   "ProjectSourceCodeAvailableOnColonSpace": "Quellcode des Projekts verfügbar unter: ",

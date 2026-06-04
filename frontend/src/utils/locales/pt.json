@@ -1,6 +1,7 @@
 {
   "Home": "Início",
   "Settings": "Configurações",
+  "AiGenerate": "IA Generativa",
   "SendStatic": "Enviar Estático",
 
   "YouAre'SingularState'": "Você está",
@@ -135,6 +136,19 @@
   "CVNotFound": "Currículo não encontrado",
   "CVDoesNotExist": "O currículo não existe",
   "TheCVYouAreLookingForDoesNotExist": "O currículo que você está tentando editar não existe.",
+
+  "AiGeneratePageTitle": "Gerador de Template com IA",
+  "AiGeneratePageDescription": "Descreva o template que você deseja e deixe a IA gerar um layout de currículo personalizado para você.",
+  "SelectACV": "Selecione um currículo",
+  "PleaseSelectACVToGenerate": "Por favor, selecione um currículo para gerar um template.",
+  "PleaseEnterAPrompt": "Por favor, descreva o estilo do template.",
+  "PromptPlaceholder": "Descreva o estilo do template... (ex.: 'Moderno com barra lateral escura, detalhes em azul, tipografia limpa')",
+  "GenerateTemplate": "Gerar Template",
+  "GeneratingTemplate": "Gerando template...",
+  "TemplateGeneratedSuccessfully": "Template gerado com sucesso!",
+  "FailedToGenerateTemplate": "Falha ao gerar o template. Tente novamente.",
+  "GenerateTemplateFirst": "Gere um template antes de baixar.",
+  "NoTemplateGeneratedYet": "Nenhum template gerado ainda. Selecione um currículo, descreva o estilo desejado e clique em gerar.",
 
   "AllRightsReserved": "Todos os direitos reservados.",
   "ProjectSourceCodeAvailableOnColonSpace": "Código-fonte do projeto disponível em: ",

@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { join } from "node:path";
 
+import { AiModule } from "./ai/ai.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import envGlobal from "./configs/env.global";
@@ -14,6 +15,7 @@ import { CvsModule } from "./cvs/cvs.module";
       load: [envGlobal],
       envFilePath: [join(__dirname, "..", "..", ".env")],
     }),
+    AiModule,
     CvsModule,
   ],
   controllers: [AppController],

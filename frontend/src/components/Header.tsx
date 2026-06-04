@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FiFileText, FiMenu, FiSend, FiSettings, FiX } from "react-icons/fi";
+import {
+  FiCpu,
+  FiFileText,
+  FiMenu,
+  FiSend,
+  FiSettings,
+  FiX,
+} from "react-icons/fi";
 import { Link } from "react-router";
 
 import logo from "/vite.svg"; // nosonar
@@ -10,6 +17,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
+    { to: "/ai-generate", label: t("AiGenerate"), icon: <FiCpu /> },
     { to: "/send-static", label: t("SendStatic"), icon: <FiSend /> },
     { to: "/create", label: t("CreateCV"), icon: <FiFileText /> },
     { to: "/settings", label: t("Settings"), icon: <FiSettings /> },

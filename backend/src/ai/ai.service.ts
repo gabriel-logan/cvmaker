@@ -1,10 +1,15 @@
-import { Injectable, InternalServerErrorException } from "@nestjs/common";
+import {
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+} from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import OpenAI from "openai";
 import type { EnvGlobalConfig } from "src/configs/env.global";
 
 @Injectable()
 export class AiService {
+  private readonly logger = new Logger(AiService.name);
   private readonly openai: OpenAI;
   private readonly models: readonly string[];
 
@@ -82,12 +87,10 @@ User's template description: ${prompt}`;
       }
     }
 
-    const modelsAttempted = errors
-      .map((e) => `${e.model}: ${e.error}`)
-      .join("; ");
+    this.logger.error(`All AI models failed: ${JSON.stringify(errors)}`);
 
     throw new InternalServerErrorException(
-      `All AI models failed. Attempted models: ${modelsAttempted}`,
+      "Failed to generate template. Please try again later.",
     );
   }
 }

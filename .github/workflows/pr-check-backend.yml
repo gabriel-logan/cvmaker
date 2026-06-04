@@ -56,11 +56,10 @@ jobs:
         run: pnpm install
 
       - name: Create .env file for tests
-        run: |
-          cat <<EOF > ../.env
-          NODE_ENV=test
-          SERVER_PORT=3001
-          EOF
+        run: cp ../.env.example ../.env
+
+      - name: Set NODE_ENV to test
+        run: sed -i 's/NODE_ENV=development/NODE_ENV=test/' ../.env
 
       - name: Install puppeteer dependencies
         run: |

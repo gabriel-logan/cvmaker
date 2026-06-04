@@ -53,7 +53,7 @@ User's template description: ${prompt}`;
             { role: "system", content: systemPrompt },
             { role: "user", content: "Generate the HTML template now." },
           ],
-          temperature: 0.7,
+          temperature: 0.5,
           max_tokens: 8192,
         });
 

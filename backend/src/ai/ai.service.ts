@@ -6,7 +6,7 @@ import type { EnvGlobalConfig } from "src/configs/env.global";
 @Injectable()
 export class AiService {
   private readonly openai: OpenAI;
-  private readonly model: string;
+  private readonly models: readonly string[];
 
   constructor(private readonly configService: ConfigService<EnvGlobalConfig>) {
     const serverConfig = this.configService.get("server", { infer: true })!;
@@ -16,7 +16,7 @@ export class AiService {
       baseURL: serverConfig.aiBaseUrl,
     });
 
-    this.model = serverConfig.aiModels[0] ?? "gpt-4o";
+    this.models = serverConfig.aiModels;
   }
 
   async generateTemplate(
@@ -43,44 +43,51 @@ ${JSON.stringify(cvData, null, 2)}
 
 User's template description: ${prompt}`;
 
-    try {
-      const response = await this.openai.chat.completions.create({
-        model: this.model,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: "Generate the HTML template now." },
-        ],
-        temperature: 0.7,
-        max_tokens: 8192,
-      });
+    const errors: Array<{ model: string; error: string }> = [];
 
-      const content = response.choices[0]?.message?.content;
+    for (const model of this.models) {
+      try {
+        const response = await this.openai.chat.completions.create({
+          model,
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: "Generate the HTML template now." },
+          ],
+          temperature: 0.7,
+          max_tokens: 8192,
+        });
 
-      if (!content) {
-        throw new InternalServerErrorException(
-          "AI returned an empty response.",
-        );
+        const content = response.choices[0]?.message?.content;
+
+        if (!content) {
+          throw new Error("AI returned an empty response.");
+        }
+
+        let html = content.trim();
+
+        if (html.startsWith("```")) {
+          html = html.replace(/^```(?:html)?\n?/, "").replace(/\n?```$/, "");
+        }
+
+        if (!html.startsWith("<!DOCTYPE html") && !html.startsWith("<html")) {
+          html = `<!DOCTYPE html>\n${html}`;
+        }
+
+        return html;
+      } catch (error) {
+        errors.push({
+          model,
+          error: (error as Error).message,
+        });
       }
-
-      let html = content.trim();
-
-      if (html.startsWith("```")) {
-        html = html.replace(/^```(?:html)?\n?/, "").replace(/\n?```$/, "");
-      }
-
-      if (!html.startsWith("<!DOCTYPE html") && !html.startsWith("<html")) {
-        html = `<!DOCTYPE html>\n${html}`;
-      }
-
-      return html;
-    } catch (error) {
-      if (error instanceof InternalServerErrorException) {
-        throw error;
-      }
-
-      throw new InternalServerErrorException(
-        `Failed to generate template: ${(error as Error).message}`,
-      );
     }
+
+    const modelsAttempted = errors
+      .map((e) => `${e.model}: ${e.error}`)
+      .join("; ");
+
+    throw new InternalServerErrorException(
+      `All AI models failed. Attempted models: ${modelsAttempted}`,
+    );
   }
 }

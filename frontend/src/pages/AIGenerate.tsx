@@ -8,7 +8,7 @@ import { useCVsStore } from "../stores/cVsStore";
 import type { CV } from "../types";
 import getAxiosErrorMessage from "../utils/getAxiosErrorMessage";
 
-export default function AiGeneratePage() {
+export default function AIGeneratePage() {
   const { t } = useTranslation();
 
   const { cVs } = useCVsStore();

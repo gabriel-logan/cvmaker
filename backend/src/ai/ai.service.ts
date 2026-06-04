@@ -49,15 +49,16 @@ ${JSON.stringify(cvData, null, 2)}
 Generate the HTML template now.`;
 
     const errors: Array<{ model: string; error: string }> = [];
+    const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: prompt },
+    ];
 
     for (const model of this.models) {
       try {
         const response = await this.openai.chat.completions.create({
           model,
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: prompt },
-          ],
+          messages,
           temperature: 0.5,
           max_tokens: 8192,
         });

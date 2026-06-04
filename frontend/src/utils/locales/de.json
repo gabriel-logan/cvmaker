@@ -137,6 +137,7 @@
   "CVDoesNotExist": "Der Lebenslauf existiert nicht",
   "TheCVYouAreLookingForDoesNotExist": "Der Lebenslauf, den du bearbeiten möchtest, existiert nicht.",
 
+  "AIGenerateDevNotice": "Diese Funktion befindet sich in Entwicklung und kann Fehler enthalten. KI-generierte Templates können Anpassungen erfordern.",
   "AiGeneratePageTitle": "KI-Template-Generator",
   "AiGeneratePageDescription": "Beschreibe das gewünschte Template und lass die KI ein persönliches Lebenslauf-Layout für dich erstellen.",
   "SelectACV": "Lebenslauf auswählen",

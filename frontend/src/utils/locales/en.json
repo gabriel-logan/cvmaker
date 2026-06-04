@@ -137,6 +137,7 @@
   "CVDoesNotExist": "CV does not exist",
   "TheCVYouAreLookingForDoesNotExist": "The CV you are trying to edit does not exist.",
 
+  "AIGenerateDevNotice": "This feature is in development and may contain bugs. AI-generated templates may require adjustments.",
   "AiGeneratePageTitle": "AI Template Generator",
   "AiGeneratePageDescription": "Describe the template you want and let AI generate a custom CV layout for you.",
   "SelectACV": "Select a CV",

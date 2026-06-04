@@ -137,6 +137,7 @@
   "CVDoesNotExist": "O currículo não existe",
   "TheCVYouAreLookingForDoesNotExist": "O currículo que você está tentando editar não existe.",
 
+  "AIGenerateDevNotice": "Esta funcionalidade está em desenvolvimento e pode conter bugs. Templates gerados por IA podem precisar de ajustes.",
   "AiGeneratePageTitle": "Gerador de Template com IA",
   "AiGeneratePageDescription": "Descreva o template que você deseja e deixe a IA gerar um layout de currículo personalizado para você.",
   "SelectACV": "Selecione um currículo",

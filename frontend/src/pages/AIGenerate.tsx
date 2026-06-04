@@ -129,7 +129,12 @@ export default function AIGeneratePage() {
       <h1 className="text-3xl font-semibold">{t("AiGeneratePageTitle")}</h1>
       <p className="mt-2 text-zinc-400">{t("AiGeneratePageDescription")}</p>
 
-      <div className="mt-6 flex w-full max-w-md flex-col gap-4">
+      <div className="mt-4 w-full max-w-md rounded-md border border-yellow-700 bg-yellow-900/30 px-4 py-3 text-sm text-yellow-200">
+        <strong>{t("NOTEColonSpace")}</strong>
+        {t("AIGenerateDevNotice")}
+      </div>
+
+      <div className="mt-4 flex w-full max-w-md flex-col gap-4">
         <select
           className="w-full rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-zinc-100 focus:border-indigo-500 focus:outline-none"
           value={selectedCV?.id || ""}

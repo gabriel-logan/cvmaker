@@ -46,7 +46,7 @@ REQUIREMENTS:
 CV Data:
 ${JSON.stringify(cvData, null, 2)}
 
-User's template description: ${prompt}`;
+Generate the HTML template now.`;
 
     const errors: Array<{ model: string; error: string }> = [];
 
@@ -56,7 +56,7 @@ User's template description: ${prompt}`;
           model,
           messages: [
             { role: "system", content: systemPrompt },
-            { role: "user", content: "Generate the HTML template now." },
+            { role: "user", content: prompt },
           ],
           temperature: 0.5,
           max_tokens: 8192,

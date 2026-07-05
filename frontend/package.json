@@ -20,14 +20,14 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-i18next": "^16.6.6",
-    "react-icons": "^5.6.0",
-    "react-router": "^7.18.0",
+    "react-icons": "^5.7.0",
+    "react-router": "^7.18.1",
     "react-toastify": "^11.1.0",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
-    "@tailwindcss/vite": "^4.3.1",
+    "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
@@ -40,11 +40,11 @@
     "eslint-plugin-react-refresh": "^0.4.26",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^16.5.0",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.4",
     "prettier-plugin-tailwindcss": "^0.7.4",
-    "tailwindcss": "^4.3.1",
+    "tailwindcss": "^4.3.2",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.62.0",
+    "typescript-eslint": "^8.62.1",
     "vite": "^7.3.6"
   }
 }

@@ -14,6 +14,26 @@ export function sortByDate<T>(
   });
 }
 
+export function sortExperiencesByDate<
+  T extends {
+    startDate: string | number | null | undefined;
+    endDate: string | number | null | undefined;
+  },
+>(items: T[]): T[] {
+  const toTime = (date: string | number | null | undefined): number =>
+    date ? new Date(date).getTime() : 0;
+
+  return [...items].sort((a, b) => {
+    if (!a.endDate && b.endDate) return -1;
+    if (a.endDate && !b.endDate) return 1;
+
+    const startDiff = toTime(b.startDate) - toTime(a.startDate);
+    if (startDiff !== 0) return startDiff;
+
+    return toTime(b.endDate) - toTime(a.endDate);
+  });
+}
+
 export const joinFullName = (
   ...parts: Array<string | null | undefined>
 ): string => {

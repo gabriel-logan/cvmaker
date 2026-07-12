@@ -3,6 +3,7 @@ import {
   joinFullName,
   sanitizeHtmlString,
   sortByDate,
+  sortExperiencesByDate,
 } from "./utils";
 
 describe("sortByDate", () => {
@@ -47,6 +48,42 @@ describe("sortByDate", () => {
       { id: 2, date: "2022-12-31" },
       { id: 1, date: "2023-01-01" },
       { id: 3, date: "2023-06-15" },
+    ]);
+  });
+});
+
+describe("sortExperiencesByDate", () => {
+  it("should order current jobs first, then by latest start date", () => {
+    const experiences = [
+      {
+        company: "Brascomm ERP",
+        startDate: "2025-08-31",
+        endDate: "2026-04-30",
+      },
+      {
+        company: "SportsFlima",
+        startDate: "2022-11-30",
+        endDate: "2024-12-31",
+      },
+      {
+        company: "Inmeta",
+        startDate: "2023-10-31",
+        endDate: "2024-02-29",
+      },
+      {
+        company: "Freelance",
+        startDate: "2021-11-30",
+        endDate: null,
+      },
+    ];
+
+    const sorted = sortExperiencesByDate(experiences);
+
+    expect(sorted.map((experience) => experience.company)).toEqual([
+      "Freelance",
+      "Brascomm ERP",
+      "Inmeta",
+      "SportsFlima",
     ]);
   });
 });

@@ -1,5 +1,9 @@
 import type { CreateCVDto } from "src/cvs/dto/create-cv.dto";
-import { formatDate, joinFullName } from "src/shared/utils";
+import {
+  formatDate,
+  joinFullName,
+  sortExperiencesByDate,
+} from "src/shared/utils";
 
 import type { Locale, LocaleContent } from "../locales";
 
@@ -392,7 +396,7 @@ ${
     <div class="section-icon"></div>
     <h2 class="section-title">${localeContent.Experience}</h2>
   </div>
-  ${dto.experience
+  ${sortExperiencesByDate(dto.experience)
     .map(
       (e) => `
   <div class="entry">

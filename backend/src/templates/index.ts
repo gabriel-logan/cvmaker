@@ -5,6 +5,7 @@ import { cvExample2Template } from "./examples/example2";
 import { cvExample3Template } from "./examples/example3";
 import { cvExample4Template } from "./examples/example4";
 import { cvExample5Template } from "./examples/example5";
+import { cvExample6Template } from "./examples/example6";
 import type { Locale, LocaleContent } from "./locales";
 import getTranslationsByLocale from "./locales";
 
@@ -40,6 +41,9 @@ export default function cvTemplates(dto: CreateCVDto, locale: Locale): string {
 
     case "template5":
       return cvExample5Template(dto, localizedContent, locale);
+
+    case "template6":
+      return cvExample6Template(dto, localizedContent, locale);
 
     default:
       return defaultHtml;

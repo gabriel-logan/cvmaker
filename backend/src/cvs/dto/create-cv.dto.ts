@@ -317,7 +317,12 @@ class CreateCVLinkDto {
 }
 
 export type TemplateIds =
-  "template1" | "template2" | "template3" | "template4" | "template5";
+  | "template1"
+  | "template2"
+  | "template3"
+  | "template4"
+  | "template5"
+  | "template6";
 
 export class CreateCVDto {
   @ApiProperty()

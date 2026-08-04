@@ -32,7 +32,7 @@
     "@nestjs/swagger": "^11.4.6",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.4",
-    "dompurify": "^3.4.12",
+    "dompurify": "^3.4.13",
     "helmet": "^8.3.0",
     "openai": "^6.49.0",
     "puppeteer": "^24.43.1",
@@ -66,7 +66,7 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.66.0"
   },
   "jest": {
     "moduleFileExtensions": [

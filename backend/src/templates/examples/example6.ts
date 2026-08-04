@@ -96,6 +96,10 @@ export function cvExample6Template(
             margin-bottom: 5px;
         }
 
+        .right .item {
+            margin-bottom: 12px;
+        }
+
         .muted {
             color: #666;
             font-size: 9.6px;

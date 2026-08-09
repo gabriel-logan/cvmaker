@@ -62,4 +62,8 @@ export const templatesOptions: Array<{ id: TemplateIds; name: string }> = [
     id: "template6",
     name: "Template 5 - Gabriel Logan NEW",
   },
+  {
+    id: "template7",
+    name: "Template 7 - General Roles",
+  },
 ];

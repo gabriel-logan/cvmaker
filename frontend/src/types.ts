@@ -96,7 +96,8 @@ export type TemplateIds =
   | "template3"
   | "template4"
   | "template5"
-  | "template6";
+  | "template6"
+  | "template7";
 
 export type ApiErrorResponse = {
   statusCode: number;

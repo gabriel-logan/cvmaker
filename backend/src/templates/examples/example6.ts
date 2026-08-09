@@ -97,7 +97,7 @@ export function cvExample6Template(
         }
 
         .right .item {
-            margin-bottom: 12px;
+            margin-bottom: 22px;
         }
 
         .muted {
